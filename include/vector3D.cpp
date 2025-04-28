@@ -8,7 +8,7 @@
 #include "vector3D.hpp"
 
 /* Operations */
-Vector3D &Vector3D::operator+(const Vector3D &v)
+Vector3D &Vector3D::operator+=(const Vector3D &v)
 {
     x += v.x;
     y += v.y;
@@ -40,6 +40,14 @@ Vector3D &Vector3D::operator*(const Vector3D &v)
     return *this;
 }
 
+Vector3D &Vector3D::operator/(const Vector3D &v)
+{
+    x /= v.x;
+    y /= v.y;
+    z /= v.z;
+    return *this;
+}
+
 Vector3D &Vector3D::operator*=(const double t)
 {
     x *= t;
@@ -63,6 +71,27 @@ Vector3D &Vector3D::operator*(const double t)
     z *= t;
     return *this;
 }
+
+/* TO REMOVE FROM HERE */
+Vector3D operator*(double t, const Vector3D &v)
+{
+    return Vector3D(v.x * t, v.y * t, v.z * t);
+}
+
+Vector3D operator+(const Vector3D &v1, const Vector3D &v2)
+{
+    return Vector3D(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+}
+
+/* ------------------------------ */
+
+Vector3D &Vector3D::operator/(const double a)
+{
+    x /= a;
+    y /= a;
+    z /= a;
+    return *this;
+};
 
 /* Get Data */
 double Vector3D::length(void) const 

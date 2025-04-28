@@ -19,13 +19,15 @@ class Vector3D
         ~Vector3D() = default;
 
         /* Operations */
-        Vector3D &operator+(const Vector3D &v);
+        Vector3D &operator+=(const Vector3D &v);
         Vector3D &operator*=(const Vector3D &v);
         Vector3D &operator/=(const Vector3D &v);
         Vector3D &operator*(const Vector3D &v);
+        Vector3D &operator/(const Vector3D &v);
         Vector3D &operator*=(const double t);
         Vector3D &operator/=(const double t);
         Vector3D &operator*(const double t);
+        Vector3D &operator/(const double a);
 
         /* Get data */
         double length(void) const;
@@ -37,13 +39,19 @@ class Vector3D
         double z;
     
         /* Extern the operators */
-        friend Vector3D operator+(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator+=(const Vector3D &v, const Vector3D &a);
         friend Vector3D operator*=(const Vector3D &v, const Vector3D &a);
         friend Vector3D operator/=(const Vector3D &v, const Vector3D &a);
         friend Vector3D operator*(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator/(const Vector3D &v, const Vector3D &a);
         friend Vector3D operator*=(const double t, const Vector3D &v);
         friend Vector3D operator/=(const double t, const Vector3D &v);
         friend Vector3D operator*(const double t, const Vector3D &v);
+        friend Vector3D operator/(const double a, const Vector3D &v);
+
+        friend Vector3D operator+(const Vector3D &v, const Vector3D &a);
+
+        // friend Vector3D operator-(const Vector3D &v, const Point3D &p);
 };
 
 /* Un point 3D est un vecteur fixe */
