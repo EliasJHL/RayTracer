@@ -7,6 +7,8 @@
 
 #include "Parser.hpp"
 
+Parser *Parser::mParser = nullptr;
+
 Parser *Parser::GetInstance(const std::string &path = "") 
 {
     if (mParser == nullptr)

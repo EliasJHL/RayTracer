@@ -9,10 +9,15 @@ NAME	=	raytracer
 
 SRC	=	$(wildcard src/*.cpp) $(wildcard include/*.cpp)
 
+LIBS	=	$(shell pkg-config --libs libconfig++)
+
+CFLAGS	=	$(shell pkg-config --cflags libconfig++)
+
 all: $(NAME)
 
+
 $(NAME):
-	g++ -o $(NAME) $(SRC) -I ./include
+	g++ $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS)
 	@echo "\033[32m= = = = =  COMPILATION COMPLETED  = = = = =\033[0m"
 
 clean:

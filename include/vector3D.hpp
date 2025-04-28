@@ -10,9 +10,6 @@
 
 #include <cmath>
 
-/* Un point 3D est un vecteur fixe */
-using Point3D = Vector3D;
-
 class Vector3D
 {
     public:
@@ -22,35 +19,34 @@ class Vector3D
         ~Vector3D() = default;
 
         /* Operations */
-        Vector3D &operator+=(const Vector3D &v) {
-            x += v.x;
-            y += v.y;
-            z += v.z;
-            return *this;
-        }
-        Vector3D &operator*=(double t) {
-            x *= t;
-            y *= t;
-            z *= t;
-            return *this;
-        }
-        Vector3D operator/=(double t) {
-            return *this *= 1/t;
-        }
+        Vector3D &operator+(const Vector3D &v);
+        Vector3D &operator*=(const Vector3D &v);
+        Vector3D &operator/=(const Vector3D &v);
+        Vector3D &operator*(const Vector3D &v);
+        Vector3D &operator*=(const double t);
+        Vector3D &operator/=(const double t);
+        Vector3D &operator*(const double t);
 
         /* Get data */
-        double length(void) const {
-            return std::sqrt(length_sqrt());
-        }
-
-        double length_sqrt(void) const {
-            return ((x * x) + (y * y) + (z * z));
-        }
+        double length(void) const;
+        double length_sqrt(void) const;
 
         /* Variables */
         double x;
         double y;
         double z;
+    
+        /* Extern the operators */
+        friend Vector3D operator+(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator*=(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator/=(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator*(const Vector3D &v, const Vector3D &a);
+        friend Vector3D operator*=(const double t, const Vector3D &v);
+        friend Vector3D operator/=(const double t, const Vector3D &v);
+        friend Vector3D operator*(const double t, const Vector3D &v);
 };
+
+/* Un point 3D est un vecteur fixe */
+using Point3D = Vector3D;
 
 #endif /* !VECTOR3D_HPP_ */

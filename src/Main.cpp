@@ -16,12 +16,12 @@ void errorHanling(int ac, char **av)
     
 }
 
-int main(int ac, char **av)
-{
-    try {
-        errorHanling(ac, av);
-    } catch (std::runtime_error &e) {
-        std::cerr << e.what() << std::endl;
-        return 84;
-    }
-}
+// int main(int ac, char **av)
+// {
+//     try {
+//         errorHanling(ac, av);
+//     } catch (std::runtime_error &e) {
+//         std::cerr << e.what() << std::endl;
+//         return 84;
+//     }
+// }
