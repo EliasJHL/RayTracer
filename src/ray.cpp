@@ -5,7 +5,7 @@
 ** ray
 */
 
-#include "ray.hpp"
+#include "Math/ray.hpp"
 
 Vector3D Ray::getOrigin(void) const
 {

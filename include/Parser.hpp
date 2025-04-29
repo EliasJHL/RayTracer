@@ -21,17 +21,17 @@
 #include "structs/LightStruct.hpp"
 #include "structs/PrimitesStructs.hpp"
 
-struct AllData {
-    ConfigStruct::Camera *camera;
-    std::vector<std::unique_ptr<ConfigStruct::Light>> lights;
-    std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
-    std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
-};
+// struct AllData {
+//     ConfigStruct::Camera *camera;
+//     std::vector<std::unique_ptr<ConfigStruct::Light>> lights;
+//     std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
+//     std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
+// };
 
-struct DataPrimitives {
-    std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
-    std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
-};
+// struct DataPrimitives {
+//     std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
+//     std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
+// };
 
 using ConfSetting = libconfig::Setting;
 

@@ -8,25 +8,17 @@
 #ifndef SPHERE_HPP_
 #define SPHERE_HPP_
 
-#include "vector3D.hpp"
-#include "ray.hpp"
-
-double dot(const Vector3D &a, const Vector3D &b)
-{
-    return (a.x * b.x + a.y * b.y + a.z * b.z);
-}
-
-Vector3D operator-(const Vector3D &v1, const Point3D &v2)
-{
-    return Vector3D(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
-}
+#include "Math/ray.hpp"
+#include "Math/vector3D.hpp"
+#include "Utils/structs.hpp"
+#include "Math/operators.hpp"
 
 class Sphere {
     public:
-        Sphere(Point3D c, double r) : center(c), radius(r) {};
+        Sphere(Point3D c, double r, Structs::Color col) : center(c), radius(r), color(col) {};
         ~Sphere() = default;
 
-        bool hits(const Ray &ray)
+        double hits(const Ray &ray, HitRecord &hit)
         {
             Vector3D oc = ray.getOrigin() - center;
             
@@ -37,11 +29,15 @@ class Sphere {
             /* Quadratic Equation */
             float discriminant = b * b - 4 * a * c;
             
-            return (discriminant > 0);
+            if (discriminant < 0)
+                return -1.0;
+            hit.color = {int(color.r * 0.7), int(color.g * 0.7), int(color.b * 0.7)};
+            return (-b - sqrt(discriminant)) / (2 * a);
         };
 
         Point3D center;
         double radius;
+        Structs::Color color;
 };
 
 #endif /* !SPHERE_HPP_ */

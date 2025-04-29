@@ -2,20 +2,18 @@
 ** EPITECH PROJECT, 2025
 ** B-OOP-400-MPL-4-1-raytracer-elias-josue.hajjar-llauquen
 ** File description:
-** PrimitesStructs
+** structs
 */
 
-#ifndef PRIMITESSTRUCTS_HPP_
-#define PRIMITESSTRUCTS_HPP_
+#ifndef STRUCTS_HPP_
+#define STRUCTS_HPP_
 
-#include <string>
-
-namespace ConfigStruct {
+namespace Structs {
     struct Color {
         int r;
         int g;
         int b;
     };
-};
+}
 
-#endif /* !PRIMITESSTRUCTS_HPP_ */
+#endif /* !STRUCTS_HPP_ */

@@ -7,7 +7,7 @@
 
 NAME	=	raytracer
 
-SRC	=	$(wildcard src/*.cpp) $(wildcard include/*.cpp)
+SRC	=	$(shell find src include -name "*.cpp")
 
 LIBS	=	$(shell pkg-config --libs libconfig++)
 

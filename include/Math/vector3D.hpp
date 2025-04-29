@@ -48,10 +48,6 @@ class Vector3D
         friend Vector3D operator/=(const double t, const Vector3D &v);
         friend Vector3D operator*(const double t, const Vector3D &v);
         friend Vector3D operator/(const double a, const Vector3D &v);
-
-        friend Vector3D operator+(const Vector3D &v, const Vector3D &a);
-
-        // friend Vector3D operator-(const Vector3D &v, const Point3D &p);
 };
 
 /* Un point 3D est un vecteur fixe */

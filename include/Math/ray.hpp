@@ -16,7 +16,14 @@
 // a : point d'origine
 // b : Direction
 
-#include "vector3D.hpp"
+#include "Math/vector3D.hpp"
+#include "Utils/structs.hpp"
+#include "Math/operators.hpp"
+
+struct HitRecord {
+    double t;
+    Structs::Color color;
+};
 
 class Ray {
     public:

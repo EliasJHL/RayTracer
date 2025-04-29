@@ -13,13 +13,16 @@ void errorHanling(int ac, char **av)
     if (ac < 2 || ac > 4) {
         throw std::runtime_error("USAGE: ./raytracer <SCENE_FILE>\n  SCENE_FILE: scene configuration");
     }
-    
 }
 
 // int main(int ac, char **av)
 // {
+//     Parser *parser;
+
 //     try {
 //         errorHanling(ac, av);
+//         parser = Parser::GetInstance(av[1]);
+//         parser->ParseConfig();
 //     } catch (std::runtime_error &e) {
 //         std::cerr << e.what() << std::endl;
 //         return 84;
