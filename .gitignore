@@ -1,0 +1,5 @@
+raytracer
+output.ppm
+
+.vscode/
+build/
