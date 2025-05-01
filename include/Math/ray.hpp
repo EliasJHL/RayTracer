@@ -20,12 +20,6 @@
 #include "Utils/structs.hpp"
 #include "Math/operators.hpp"
 
-struct HitRecord {
-    double t;
-    Point3D point;
-    Structs::Color color;
-};
-
 class Ray {
     public:
         Ray() {};

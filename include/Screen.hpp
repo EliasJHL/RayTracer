@@ -13,30 +13,39 @@
 #include "Math/ray.hpp"
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
+#include "Abstracts/APrimitive.hpp"
 #include "RayTracer/Primitives/Sphere.hpp"
+#include "RayTracer/Primitives/Plate.hpp"
 
 class Screen {
     public:
         Screen() {};
         ~Screen() {};
 
+        bool checkForHit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const
+        {
+            Structs::hitRecord temp_rec;
+            bool hitAnything = false;
+
+            for (const auto &primitive : mPrimitives) {
+                if (primitive->hit(r, t_min, t_max, temp_rec)) {
+                    hitAnything = true;
+                    rec = temp_rec;
+                }
+            }
+            return hitAnything;
+        }
+
         Vector3D getColor(const Ray &ray) {
-            HitRecord rec;
-            Sphere s1(Vector3D(0.7, 0, -0.9), 0.5, Structs::Color{255, 0, 0});
-            Sphere s2(Vector3D(-0.9, -0, -0.9), 0.3, Structs::Color{255, 0, 0});
-            double t = s1.hits(ray, rec);
-            if (t > 0) {
-                Vector3D N = ray.pointAtParameter(t) / ray.pointAtParameter(t).length();
+            Structs::hitRecord rec;
+            if (checkForHit(ray, 0.001, MAXFLOAT, rec)) {
+                Vector3D N = ray.pointAtParameter(rec.t) / ray.pointAtParameter(rec.t).length();
                 return N;
+            } else {
+                Vector3D unit = ray.getDirection() / ray.getDirection().length();
+                double t = 0.5 * (unit.y + 1);
+                return (1 - t) * Vector3D(1,1,1);
             }
-            t = s2.hits(ray, rec);
-            if (t > 0) {
-                Vector3D N = ray.pointAtParameter(t) / ray.pointAtParameter(t).length();
-                return N;
-            }
-            Vector3D unit = ray.getDirection() / ray.getDirection().length();
-            t = 0.5 * (unit.y + 1);
-            return (1 - t) * Vector3D(1,1,1);
         };
 
         void startRendering(void) {
@@ -44,6 +53,9 @@ class Screen {
 
             int image_width = 800;
             int image_height = 400;
+
+            mPrimitives.push_back((APrimitive *)new Sphere(Vector3D(0.7, 0, -0.9), 0.5, Structs::Color{255, 0, 0}));
+            //Plate p(Vector3D(-0.9, 1, -1), Structs::Color{255, 0, 0}, 5, 5);
 
             Camera cam;
 
@@ -69,7 +81,7 @@ class Screen {
         };
 
     protected:
-    private:
+        std::vector<APrimitive *> mPrimitives;
 };
 
 #endif /* !SCREEN_HPP_ */

@@ -14,6 +14,12 @@ namespace Structs {
         int g;
         int b;
     };
+
+    struct hitRecord {
+        double t;
+        Vector3D point;
+        Vector3D normal;
+    };
 }
 
 #endif /* !STRUCTS_HPP_ */

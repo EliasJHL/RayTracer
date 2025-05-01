@@ -8,31 +8,45 @@
 #ifndef SPHERE_HPP_
 #define SPHERE_HPP_
 
+#include "Abstracts/APrimitive.hpp"
 #include "Math/ray.hpp"
 #include "Math/vector3D.hpp"
 #include "Utils/structs.hpp"
 #include "Math/operators.hpp"
 
-class Sphere {
+class Sphere : public APrimitive {
     public:
         Sphere(Point3D c, double r, Structs::Color col) : center(c), radius(r), color(col) {};
         ~Sphere() = default;
 
-        double hits(const Ray &ray, HitRecord &hit)
+        bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {
-            Vector3D oc = ray.getOrigin() - center;
+            Vector3D oc = r.getOrigin() - center;
             
-            double a = dot(ray.getDirection(), ray.getDirection());
-            double b = 2.0 * dot(oc, ray.getDirection());
+            double a = dot(r.getDirection(), r.getDirection());
+            double b = 2.0 * dot(oc, r.getDirection());
             double c = dot(oc, oc) - radius * radius;
 
             /* Quadratic Equation */
             float discriminant = b * b - 4 * a * c;
 
-            if (discriminant < 0)
-                return -1.0;
-            return (-b - sqrt(discriminant)) / (2 * a);
-        };
+            if (discriminant > 0) {
+                double t = (-b - sqrt(discriminant)) / a;
+                if (t < t_max && t > t_min) {
+                    rec.t = t;
+                    rec.point = r.pointAtParameter(t);
+                    rec.normal = (rec.point - center) / radius;
+                }
+                t = (-b + sqrt(discriminant)) / a;
+                if (t < t_max && t > t_min) {
+                    rec.t = t;
+                    rec.point = r.pointAtParameter(t);
+                    rec.normal = (rec.point - center) / radius;
+                }
+                return true;
+            }
+            return false;
+        }
 
         Point3D center;
         double radius;
