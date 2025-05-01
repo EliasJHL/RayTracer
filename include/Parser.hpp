@@ -47,14 +47,14 @@ class Parser {
         ConfigStruct::Camera &getCameraConfig(void);
 
         // Ajouter la récup des différents éléments
+        ConfigStruct::Camera *mCameraConfig;
+        int antiAliasing;
 
     protected:
         Parser(const std::string &path) : mConfigPath(path) {};
 
         void ParseCamera(const ConfSetting &cam, const ConfSetting &res,
             const ConfSetting &pos, const ConfSetting &rota);
-
-        ConfigStruct::Camera *mCameraConfig;
 
         static Parser* mParser;
         std::string mConfigPath;

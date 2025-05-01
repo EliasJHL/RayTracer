@@ -28,10 +28,9 @@ class Sphere {
 
             /* Quadratic Equation */
             float discriminant = b * b - 4 * a * c;
-            
+
             if (discriminant < 0)
                 return -1.0;
-            hit.color = {int(color.r * 0.7), int(color.g * 0.7), int(color.b * 0.7)};
             return (-b - sqrt(discriminant)) / (2 * a);
         };
 

@@ -37,8 +37,10 @@ void Parser::ParseConfig(void)
     const ConfSetting &root = cfg.getRoot();
 
     /* Check config file integrity */
-    if (!root.exists("camera") || !root.exists("primitives") || !root.exists("lights"))
+    if (!root.exists("camera") || !root.exists("primitives") || !root.exists("lights") || !root.exists("antiAliasing"))
         throw std::runtime_error("[!] Error : Incomplete config file");
+
+    antiAliasing = root["antiAliasing"];
 
     /* Get the camera */
     try {

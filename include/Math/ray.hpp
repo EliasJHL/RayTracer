@@ -22,6 +22,7 @@
 
 struct HitRecord {
     double t;
+    Point3D point;
     Structs::Color color;
 };
 
