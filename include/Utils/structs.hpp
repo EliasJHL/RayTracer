@@ -8,6 +8,11 @@
 #ifndef STRUCTS_HPP_
 #define STRUCTS_HPP_
 
+#include "Math/vector3D.hpp"
+#include <memory>
+
+class AMaterial;
+
 namespace Structs {
     struct Color {
         int r;
@@ -19,6 +24,8 @@ namespace Structs {
         double t;
         Vector3D point;
         Vector3D normal;
+        AMaterial *material = nullptr;
+        Structs::Color color;
     };
 }
 

@@ -10,7 +10,6 @@
 
 #include "Math/vector3D.hpp"
 #include "Math/ray.hpp"
-#include "Utils/structs.hpp"
 
 class IPrimitive {
     public:

@@ -8,12 +8,14 @@
 #ifndef IMATERIAL_HPP_
 #define IMATERIAL_HPP_
 
+#include "IPrimitive.hpp"
+#include "Utils/structs.hpp"
+
 class IMaterial {
     public:
         virtual ~IMaterial() = default;
-
-        //virutal bool scatter(const ray &rayIn, const )
-
+        virtual bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const = 0;
+ 
 };
 
 #endif /* !IMATERIAL_HPP_ */

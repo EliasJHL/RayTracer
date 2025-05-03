@@ -10,15 +10,19 @@
 
 #include "Interfaces/IPrimitive.hpp"
 #include "Math/vector3D.hpp"
+#include "Abstracts/AMaterial.hpp"
 
 class APrimitive : public IPrimitive {
     public:
-        APrimitive() {};
+        APrimitive(const Point3D &c = Point3D(0,0,0), Structs::Color col = Structs::Color{255,255,255}, AMaterial *mat = nullptr) : 
+            center(c), color(col), material(mat) {};
         virtual ~APrimitive() = default;
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override = 0;
 
         /* Primitive's common data */
-        Vector3D center;
+        Point3D center;
+        Structs::Color color;
+        AMaterial *material;
 };
 
 #endif /* !APRIMITIVE_HPP_ */
