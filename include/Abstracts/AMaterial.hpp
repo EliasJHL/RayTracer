@@ -14,9 +14,11 @@
 
 class AMaterial : public IMaterial {
     public:
-        AMaterial() {};
+        AMaterial(const std::string &name = "") {};
         virtual ~AMaterial() = default;
         bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const = 0;
+        
+        std::string name;
 };
 
 #endif /* !AMATERIAL_HPP_ */

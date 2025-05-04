@@ -15,6 +15,7 @@
 #include "Math/operators.hpp"
 #include "PrimitiveBuilder.hpp"
 #include <algorithm>
+#include <map>
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
 #include "RayTracer/Primitives/Plate.hpp"
@@ -31,7 +32,10 @@ bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimit
 
 class Screen {
     public:
-        Screen() {};
+        Screen() {
+            mMaterials["flatcolor"] = std::make_shared<Flatcolor>();
+            mMaterials["metal"] = std::make_shared<Metal>();
+        };
         ~Screen() {};
 
         bool checkForHit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const
@@ -71,21 +75,10 @@ class Screen {
             int image_width = 800;
             int image_height = 400;
 
-            PrimitiveBuilder builder;
-
-            
-            mMaterials.push_back(new Flatcolor());
-            mMaterials.push_back(new Metal());
-            
-            if (!mMaterials[0]) {
-                std::cerr << "Material is nullptr!" << std::endl;
-                return;
-            }
-
             Point3D center(0.7, 0, -0.9);
-            mPrimitives.push_back(std::make_unique<Sphere>(center, Structs::Color{255, 190, 190}, mMaterials[1], 0.5));
-            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(-0.7, 0, -0.9), Structs::Color{190, 255, 190}, mMaterials[0], 0.5));
-            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(0, 0, -2), Structs::Color{190, 250, 190}, mMaterials[1], 0.5));
+            mPrimitives.push_back(std::make_unique<Sphere>(center, Structs::Color{255, 190, 190}, mMaterials["metal"], 0.5));
+            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(-0.7, 0, -0.9), Structs::Color{190, 255, 190}, mMaterials["flatcolor"], 0.5));
+            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(0, 0, -2), Structs::Color{190, 250, 190}, mMaterials["metal"], 0.5));
 
             std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
             // builder = builder.setCenter(Point3D(0.7, 0, -0.9));
@@ -121,9 +114,9 @@ class Screen {
             }
         };
 
-    protected:
         std::vector<std::unique_ptr<APrimitive>> mPrimitives;
-        std::vector<AMaterial *> mMaterials;
+        std::map<std::string, std::shared_ptr<AMaterial>> mMaterials;
+    protected:
 };
 
 #endif /* !SCREEN_HPP_ */

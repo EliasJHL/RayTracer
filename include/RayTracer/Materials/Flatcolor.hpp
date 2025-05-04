@@ -14,7 +14,9 @@
 
 class Flatcolor : public AMaterial {
     public:
-        Flatcolor() {};
+        Flatcolor(const std::string &n = "flatcolor") {
+            name = n;
+        };
         ~Flatcolor() = default;
 
         bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const

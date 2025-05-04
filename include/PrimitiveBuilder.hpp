@@ -18,10 +18,12 @@
 struct Params {
     Point3D center;
     Structs::Color color;
-    AMaterial *material;
+    std::shared_ptr<AMaterial> material;
 
     /* Optionnal */
     double radius;
+    int size_x;
+    int size_y;
 };
 
 class PrimitiveBuilder {
@@ -33,7 +35,7 @@ class PrimitiveBuilder {
             mParams.center = center;
             return *this;
         };
-        PrimitiveBuilder &setMaterial(AMaterial *material) {
+        PrimitiveBuilder &setMaterial(std::shared_ptr<AMaterial> material) {
             mParams.material = material;
             return *this;
         };
@@ -41,6 +43,10 @@ class PrimitiveBuilder {
             mParams.radius = radius;
             return *this;
         };
+        PrimitiveBuilder &setColor(Structs::Color color) {
+            mParams.color = color;
+            return *this;
+        }
 
         std::unique_ptr<APrimitive> createSphere(void) {
             return std::make_unique<Sphere>(mParams.center, mParams.color, mParams.material, mParams.radius);

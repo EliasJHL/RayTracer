@@ -55,6 +55,7 @@ class Parser {
 
         void ParseCamera(const ConfSetting &cam, const ConfSetting &res,
             const ConfSetting &pos, const ConfSetting &rota);
+        void ParseSphere(const ConfSetting &sphere);
 
         static Parser* mParser;
         std::string mConfigPath;

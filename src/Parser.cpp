@@ -6,6 +6,7 @@
 */
 
 #include "Parser.hpp"
+#include "PrimitiveBuilder.hpp"
 
 Parser *Parser::mParser = nullptr;
 
@@ -19,6 +20,30 @@ Parser *Parser::GetInstance(const std::string &path = "")
 void Parser::ParseCamera(const ConfSetting &cam, const ConfSetting &res, const ConfSetting &pos, const ConfSetting &rota)
 {
     
+}
+
+void Parser::ParseSphere(const ConfSetting &sphere)
+{
+    std::string material;
+    PrimitiveBuilder builder;
+    int x, y, z, radius;
+    int r, g, b;
+
+    x = sphere["x"];
+    y = sphere["y"];
+    z = sphere["z"];
+    radius = sphere["r"];
+    material = (std::string)sphere["material"];
+    r = sphere["color"]["r"];
+    g = sphere["color"]["g"];
+    b = sphere["color"]["b"];
+
+    builder = builder.setCenter(Point3D(x, y, z));
+    builder = builder.setRadius(radius);
+    builder = builder.setColor(Structs::Color{r, g, b});
+
+    std::cout << "Sphere parsed: Position(" << x << ", " << y << ", " << z << "), Radius(" << radius
+              << "), Color(" << r << ", " << g << ", " << b << "), Material(" << material << ")" << std::endl;
 }
 
 void Parser::ParseConfig(void)
@@ -55,4 +80,28 @@ void Parser::ParseConfig(void)
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error(nfex.what());
     }
+
+    /* Get the primitives */
+    // try {
+    //     const ConfSetting &primitives = root["primitives"];
+
+    //     const ConfSetting &spheres = primitives["spheres"];
+    //     const ConfSetting &planes = primitives["planes"];
+
+    //     for (int i = 0; i < spheres.getLength(); ++i) {
+    //         const ConfSetting &sphere = spheres[i];
+    //         ParseSphere(sphere);
+    //     }
+
+    //     for (int i = 0; i < planes.getLength(); ++i) {
+    //         const ConfSetting &plane = planes[i];
+    //     }
+    //     // ParseCamera(camera, resolution, position, rotation);
+
+    // } catch (const libconfig::SettingNotFoundException &nfex) {
+    //     throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
+    // } catch (const libconfig::SettingTypeException &e) {
+    //     throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
+    // }
+    //exit(0);
 }

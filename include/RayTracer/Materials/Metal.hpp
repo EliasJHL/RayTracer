@@ -15,7 +15,9 @@ class AMaterial;
 
 class Metal : public AMaterial{
     public:
-        Metal() {};
+        Metal(const std::string &n = "metal") {
+            name = n;
+        };
         ~Metal() = default;
 
         bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const
@@ -25,7 +27,6 @@ class Metal : public AMaterial{
             Vector3D objectColor = Vector3D(rec.color.r / 255.0, rec.color.g / 255.0, rec.color.b / 255.0);
             attenuation = objectColor;
             return true;
-            //return (dot(scattered.getDirection(), rec.normal) > -0.001);
         };
 };
 

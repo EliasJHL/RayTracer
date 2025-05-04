@@ -17,7 +17,7 @@
 
 class Sphere : public APrimitive {
     public:
-        Sphere(const Point3D &center, Structs::Color color, AMaterial *material, double radius)
+        Sphere(const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, double radius)
             : APrimitive(center, color, material), radius(radius) {};
         ~Sphere() = default;
 

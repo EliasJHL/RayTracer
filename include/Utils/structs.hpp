@@ -24,7 +24,7 @@ namespace Structs {
         double t;
         Vector3D point;
         Vector3D normal;
-        AMaterial *material = nullptr;
+        std::shared_ptr<AMaterial> material = nullptr;
         Structs::Color color;
     };
 }
