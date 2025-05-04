@@ -9,23 +9,7 @@
 #define CAMERASTRUCT_HPP_
 
 namespace ConfigStruct {
-    struct Camera {
-        struct resolution {
-            int width;
-            int height;
-        };
-        struct position {
-            double x;
-            double y;
-            double z;
-        };
-        struct rotation {
-            double x;
-            double y;
-            double z;
-        };
-        double fieldOfView;
-    };
+
 };
 
 #endif /* !CAMERASTRUCT_HPP_ */

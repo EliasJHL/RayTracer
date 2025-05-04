@@ -13,8 +13,8 @@
 
 class Camera {
     public:
-        Camera() : lower_left(Vector3D(-2, -1, -1)), horizontal(Vector3D(4, 0, 0)), vertical(Vector3D(0, 2, 0)),
-            origin(Vector3D(0, 0, 0)) {};
+        Camera(const Point3D &pos, double fieldOfView) : lower_left(pos + Vector3D(-2, -1, -1)), horizontal(pos + Vector3D(4, 0, 0)), vertical(pos + Vector3D(0, 2, 0)),
+            origin(pos + Vector3D(0, 0, 0)) {};
         Camera(const Vector3D &origin, const Vector3D &lower_l, const Vector3D &horiz, const Vector3D &verti) : 
             origin(origin), lower_left(lower_l), horizontal(horiz), vertical(verti) {};
         ~Camera() = default;

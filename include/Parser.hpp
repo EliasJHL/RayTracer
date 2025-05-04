@@ -17,21 +17,9 @@
 #include <libconfig.h++>
 
 /* Structs used for the parsing */
-#include "structs/CameraStruct.hpp"
-#include "structs/LightStruct.hpp"
-#include "structs/PrimitesStructs.hpp"
+#include "Utils/structs.hpp"
 
-// struct AllData {
-//     ConfigStruct::Camera *camera;
-//     std::vector<std::unique_ptr<ConfigStruct::Light>> lights;
-//     std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
-//     std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
-// };
-
-// struct DataPrimitives {
-//     std::vector<std::unique_ptr<ConfigStruct::Planes>> planes;
-//     std::vector<std::unique_ptr<ConfigStruct::Sphere>> spheres;
-// };
+class Screen;
 
 using ConfSetting = libconfig::Setting;
 
@@ -42,12 +30,12 @@ class Parser {
 
         static Parser *GetInstance(const std::string &path);
 
-        void ParseConfig(void);
+        void ParseConfig(Screen *s);
 
-        ConfigStruct::Camera &getCameraConfig(void);
+        Structs::Camera &getCameraConfig(void);
 
         // Ajouter la récup des différents éléments
-        ConfigStruct::Camera *mCameraConfig;
+        Structs::Camera *mCameraConfig;
         int antiAliasing;
 
     protected:
@@ -55,7 +43,7 @@ class Parser {
 
         void ParseCamera(const ConfSetting &cam, const ConfSetting &res,
             const ConfSetting &pos, const ConfSetting &rota);
-        void ParseSphere(const ConfSetting &sphere);
+        void ParseSphere(Screen *s, const ConfSetting &sphere);
 
         static Parser* mParser;
         std::string mConfigPath;

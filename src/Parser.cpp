@@ -7,6 +7,7 @@
 
 #include "Parser.hpp"
 #include "PrimitiveBuilder.hpp"
+#include "Screen.hpp"
 
 Parser *Parser::mParser = nullptr;
 
@@ -22,17 +23,17 @@ void Parser::ParseCamera(const ConfSetting &cam, const ConfSetting &res, const C
     
 }
 
-void Parser::ParseSphere(const ConfSetting &sphere)
+void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
 {
     std::string material;
     PrimitiveBuilder builder;
-    int x, y, z, radius;
+    double x, y, z, radius;
     int r, g, b;
 
-    x = sphere["x"];
-    y = sphere["y"];
-    z = sphere["z"];
-    radius = sphere["r"];
+    x = sphere["x"].getType() == ConfSetting::TypeInt ? (int)sphere["x"] : (double)sphere["x"];
+    y = sphere["y"].getType() == ConfSetting::TypeInt ? (int)sphere["y"] : (double)sphere["y"];
+    z = sphere["z"].getType() == ConfSetting::TypeInt ? (int)sphere["z"] : (double)sphere["z"];
+    radius = sphere["r"].getType() == ConfSetting::TypeInt ? (int)sphere["r"] : (double)sphere["r"];
     material = (std::string)sphere["material"];
     r = sphere["color"]["r"];
     g = sphere["color"]["g"];
@@ -41,12 +42,12 @@ void Parser::ParseSphere(const ConfSetting &sphere)
     builder = builder.setCenter(Point3D(x, y, z));
     builder = builder.setRadius(radius);
     builder = builder.setColor(Structs::Color{r, g, b});
+    builder = builder.setMaterial(s->mMaterials[material] != nullptr ? s->mMaterials[material] : s->mMaterials["flatcolor"]);
 
-    std::cout << "Sphere parsed: Position(" << x << ", " << y << ", " << z << "), Radius(" << radius
-              << "), Color(" << r << ", " << g << ", " << b << "), Material(" << material << ")" << std::endl;
+    s->mPrimitives.push_back(builder.createSphere());
 }
 
-void Parser::ParseConfig(void)
+void Parser::ParseConfig(Screen *s)
 {
     libconfig::Config cfg;
 
@@ -82,26 +83,23 @@ void Parser::ParseConfig(void)
     }
 
     /* Get the primitives */
-    // try {
-    //     const ConfSetting &primitives = root["primitives"];
+    try {
+        const ConfSetting &primitives = root["primitives"];
 
-    //     const ConfSetting &spheres = primitives["spheres"];
-    //     const ConfSetting &planes = primitives["planes"];
+        const ConfSetting &spheres = primitives["spheres"];
+        const ConfSetting &planes = primitives["planes"];
 
-    //     for (int i = 0; i < spheres.getLength(); ++i) {
-    //         const ConfSetting &sphere = spheres[i];
-    //         ParseSphere(sphere);
-    //     }
+        for (int i = 0; i < spheres.getLength(); ++i) {
+            const ConfSetting &sphere = spheres[i];
+            ParseSphere(s, sphere);
+        }
 
-    //     for (int i = 0; i < planes.getLength(); ++i) {
-    //         const ConfSetting &plane = planes[i];
-    //     }
-    //     // ParseCamera(camera, resolution, position, rotation);
-
-    // } catch (const libconfig::SettingNotFoundException &nfex) {
-    //     throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
-    // } catch (const libconfig::SettingTypeException &e) {
-    //     throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
-    // }
-    //exit(0);
+        for (int i = 0; i < planes.getLength(); ++i) {
+            const ConfSetting &plane = planes[i];
+        }
+    } catch (const libconfig::SettingNotFoundException &nfex) {
+        throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
+    } catch (const libconfig::SettingTypeException &e) {
+        throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
+    }
 }

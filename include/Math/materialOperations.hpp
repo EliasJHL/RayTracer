@@ -11,7 +11,7 @@
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
 
-Vector3D randomInUnitSphere() {
+inline Vector3D randomInUnitSphere() {
     Vector3D p;
     do {
         p = 2.9 * Vector3D(drand48(), drand48(), drand48()) - Vector3D(1, 1, 1);

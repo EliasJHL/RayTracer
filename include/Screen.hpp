@@ -25,7 +25,7 @@
 #include "RayTracer/Materials/Metal.hpp"
 #include "RayTracer/Materials/Flatcolor.hpp"
 
-bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimitive> &b)
+inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimitive> &b)
 {
     return a->center.z < b->center.z;
 }
@@ -33,6 +33,7 @@ bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimit
 class Screen {
     public:
         Screen() {
+            /* Create the default materials */
             mMaterials["flatcolor"] = std::make_shared<Flatcolor>();
             mMaterials["metal"] = std::make_shared<Metal>();
         };
@@ -75,23 +76,11 @@ class Screen {
             int image_width = 800;
             int image_height = 400;
 
-            Point3D center(0.7, 0, -0.9);
-            mPrimitives.push_back(std::make_unique<Sphere>(center, Structs::Color{255, 190, 190}, mMaterials["metal"], 0.5));
-            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(-0.7, 0, -0.9), Structs::Color{190, 255, 190}, mMaterials["flatcolor"], 0.5));
-            mPrimitives.push_back(std::make_unique<Sphere>(Point3D(0, 0, -2), Structs::Color{190, 250, 190}, mMaterials["metal"], 0.5));
-
             std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
-            // builder = builder.setCenter(Point3D(0.7, 0, -0.9));
-            // builder = builder.setMaterial(mMaterials[1]);
-            // builder = builder.setRadius(0.5);
-            // mPrimitives.push_back(builder.createSphere());
 
-            //mPrimitives.push_back((APrimitive *)new Sphere(Vector3D(0.7, 0, -0.9), 0.5, Structs::Color{255, 0, 0}));
-            //mPrimitives.push_back((APrimitive *)new Sphere(Vector3D(0.7, 0, -0.9), 0.5, Structs::Color{255, 0, 0}, new Flatcolor(Vector3D(0.8, 0.3, 0.3))));
-            //mPrimitives.push_back((APrimitive *)new Sphere(Vector3D(0.7, 0, -0.9), 0.5, Structs::Color{255, 0, 0}));
-            ////Plate p(Vector3D(-0.9, 1, -1), Structs::Color{255, 0, 0}, 5, 5);
+            // Structs::Camera cp = p->mCameraConfig;
 
-            Camera cam;
+            Camera cam(Point3D(0,0,0), -1);
 
             std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
@@ -109,7 +98,6 @@ class Screen {
                     int g = 255 * col.y;
                     int b = 255 * col.z;
                     std::cout << r << ' ' << g << ' ' << b << '\n';
-                    //write_color(pixel_color);
                 }
             }
         };

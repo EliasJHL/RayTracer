@@ -27,6 +27,24 @@ namespace Structs {
         std::shared_ptr<AMaterial> material = nullptr;
         Structs::Color color;
     };
+
+    struct Camera {
+        struct resolution {
+            int width;
+            int height;
+        };
+        struct position {
+            double x;
+            double y;
+            double z;
+        };
+        struct rotation {
+            double x;
+            double y;
+            double z;
+        };
+        double fieldOfView;
+    };
 }
 
 #endif /* !STRUCTS_HPP_ */
