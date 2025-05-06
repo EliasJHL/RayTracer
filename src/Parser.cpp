@@ -20,7 +20,19 @@ Parser *Parser::GetInstance(const std::string &path = "")
 
 void Parser::ParseCamera(const ConfSetting &cam, const ConfSetting &res, const ConfSetting &pos, const ConfSetting &rota)
 {
-    
+    /* Resolution */
+    mCameraConfig->width = (int)res["width"];
+    mCameraConfig->height = (int)res["height"];
+    /* Position */
+    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
+    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
+    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    /* Rotation */
+    mCameraConfig->rot_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
+    mCameraConfig->rot_y = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
+    mCameraConfig->rot_z = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    /* Parameters */
+    mCameraConfig->fieldOfView = (int)cam["fieldOfView"];
 }
 
 void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)

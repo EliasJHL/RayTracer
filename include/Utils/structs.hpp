@@ -29,20 +29,18 @@ namespace Structs {
     };
 
     struct Camera {
-        struct resolution {
-            int width;
-            int height;
-        };
-        struct position {
-            double x;
-            double y;
-            double z;
-        };
-        struct rotation {
-            double x;
-            double y;
-            double z;
-        };
+        /* Resolution */
+        int width;
+        int height;
+        /* Position */
+        double pos_x;
+        double pos_y;
+        double pos_z;
+        /* Rotation */
+        double rot_x;
+        double rot_y;
+        double rot_z;
+        /* Parameters */
         double fieldOfView;
     };
 }
