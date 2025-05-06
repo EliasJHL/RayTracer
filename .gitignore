@@ -1,2 +1,7 @@
 raytracer
 .vscode
+output.ppm
+test.ppm
+
+.vscode/
+build/
