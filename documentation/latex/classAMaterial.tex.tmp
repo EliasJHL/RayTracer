@@ -1,0 +1,30 @@
+\hypertarget{classAMaterial}{}\doxysection{Référence de la classe AMaterial}
+\label{classAMaterial}\index{AMaterial@{AMaterial}}
+
+
+Graphe d\textquotesingle{}héritage de AMaterial\+:
+% FIG 0
+
+
+Graphe de collaboration de AMaterial\+:
+% FIG 1
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAMaterial_af78b7213809ce2e5e91b180b67657715}\label{classAMaterial_af78b7213809ce2e5e91b180b67657715}} 
+{\bfseries AMaterial} (const std\+::string \&name=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{classAMaterial_a84b96e63496eced21a0a3b7f0584b9d8}\label{classAMaterial_a84b96e63496eced21a0a3b7f0584b9d8}} 
+bool {\bfseries scatter} (const \mbox{\hyperlink{classRay}{Ray}} \&ray\+In, const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec, \mbox{\hyperlink{classVector3D}{Vector3D}} \&attenuation, \mbox{\hyperlink{classRay}{Ray}} \&scattered) const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAMaterial_aa89e812f5471f77c7fde4630f28bee6e}\label{classAMaterial_aa89e812f5471f77c7fde4630f28bee6e}} 
+std\+::string {\bfseries name}
+\end{DoxyCompactItemize}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\+Abstracts/AMaterial.\+hpp\end{DoxyCompactItemize}

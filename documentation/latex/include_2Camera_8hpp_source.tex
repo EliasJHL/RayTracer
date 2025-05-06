@@ -1,0 +1,37 @@
+\doxysection{Camera.\+hpp}
+\label{include_2Camera_8hpp_source}\index{include/Camera.hpp@{include/Camera.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Camera}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CAMERA\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }Camera\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ Camera(\textcolor{keyword}{const}\ Point3D\ \&pos,\ \textcolor{keywordtype}{double}\ fieldOfView)\ :\ lower\_left(pos\ +\ Vector3D(-\/2,\ -\/1,\ -\/1)),\ horizontal(pos\ +\ Vector3D(4,\ 0,\ 0)),\ vertical(pos\ +\ Vector3D(0,\ 2,\ 0)),}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ origin(pos\ +\ Vector3D(0,\ 0,\ 0))\ \{\};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Camera(\textcolor{keyword}{const}\ Vector3D\ \&origin,\ \textcolor{keyword}{const}\ Vector3D\ \&lower\_l,\ \textcolor{keyword}{const}\ Vector3D\ \&horiz,\ \textcolor{keyword}{const}\ Vector3D\ \&verti)\ :\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ origin(origin),\ lower\_left(lower\_l),\ horizontal(horiz),\ vertical(verti)\ \{\};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Camera()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ Ray\ getRay(\textcolor{keywordtype}{double}\ u,\ \textcolor{keywordtype}{double}\ v)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ray(origin,\ lower\_left\ +\ u\ *\ horizontal\ +\ v\ *\ vertical);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector3D\ lower\_left;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Vector3D\ horizontal;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Vector3D\ vertical;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Vector3D\ origin;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !CAMERA\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

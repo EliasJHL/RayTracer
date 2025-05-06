@@ -1,0 +1,37 @@
+\doxysection{Flatcolor.\+hpp}
+\label{Flatcolor_8hpp_source}\index{include/RayTracer/Materials/Flatcolor.hpp@{include/RayTracer/Materials/Flatcolor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Flatcolor}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ FLATCOLOR\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ FLATCOLOR\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/vectorOperations.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/materialOperations.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Flatcolor\ :\ \textcolor{keyword}{public}\ AMaterial\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Flatcolor(\textcolor{keyword}{const}\ std::string\ \&n\ =\ \textcolor{stringliteral}{"{}flatcolor"{}})\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ n;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Flatcolor()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ target\ =\ rec.point\ +\ rec.normal\ +\ randomInUnitSphere();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ target\ -\/\ rec.point);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ Vector3D((rec.color.r\ /\ 255),\ (rec.color.g\ /\ 255),\ (rec.color.b\ /\ 255));}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !FLATCOLOR\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

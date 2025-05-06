@@ -15,7 +15,6 @@ class IMaterial {
     public:
         virtual ~IMaterial() = default;
         virtual bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const = 0;
- 
 };
 
 #endif /* !IMATERIAL_HPP_ */

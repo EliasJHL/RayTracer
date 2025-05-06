@@ -1,0 +1,95 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Raytracer Project}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Project Overview}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Project Structure}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Class Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}AMaterial Class Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Member Function Documentation}{9}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}scatter()}{9}{subsubsection.5.1.1.1}%
+\contentsline {section}{\numberline {5.2}APrimitive Class Reference}{9}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Member Function Documentation}{10}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}hit()}{10}{subsubsection.5.2.1.1}%
+\contentsline {section}{\numberline {5.3}Camera Class Reference}{10}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Structs\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Camera Struct Reference}{10}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Color Struct Reference}{11}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Structs\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Color Struct Reference}{11}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Flatcolor Class Reference}{11}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Member Function Documentation}{12}{subsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.1.1}scatter()}{12}{subsubsection.5.7.1.1}%
+\contentsline {section}{\numberline {5.8}Structs\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::hit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Record Struct Reference}{12}{section.5.8}%
+\contentsline {section}{\numberline {5.9}IMaterial Class Reference}{12}{section.5.9}%
+\contentsline {section}{\numberline {5.10}IPrimitive Class Reference}{13}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Light Struct Reference}{13}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Metal Class Reference}{13}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Member Function Documentation}{14}{subsection.5.12.1}%
+\contentsline {subsubsection}{\numberline {5.12.1.1}scatter()}{14}{subsubsection.5.12.1.1}%
+\contentsline {section}{\numberline {5.13}Params Struct Reference}{14}{section.5.13}%
+\contentsline {section}{\numberline {5.14}Parser Class Reference}{14}{section.5.14}%
+\contentsline {section}{\numberline {5.15}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Light\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::point Struct Reference}{15}{section.5.15}%
+\contentsline {section}{\numberline {5.16}Primitive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Class Reference}{15}{section.5.16}%
+\contentsline {section}{\numberline {5.17}Ray Class Reference}{15}{section.5.17}%
+\contentsline {section}{\numberline {5.18}Screen Class Reference}{15}{section.5.18}%
+\contentsline {section}{\numberline {5.19}Sphere Class Reference}{16}{section.5.19}%
+\contentsline {subsection}{\numberline {5.19.1}Member Function Documentation}{16}{subsection.5.19.1}%
+\contentsline {subsubsection}{\numberline {5.19.1.1}hit()}{16}{subsubsection.5.19.1.1}%
+\contentsline {section}{\numberline {5.20}Triangle Class Reference}{17}{section.5.20}%
+\contentsline {subsection}{\numberline {5.20.1}Member Function Documentation}{17}{subsection.5.20.1}%
+\contentsline {subsubsection}{\numberline {5.20.1.1}hit()}{17}{subsubsection.5.20.1.1}%
+\contentsline {section}{\numberline {5.21}Vector3D Class Reference}{17}{section.5.21}%
+\contentsline {chapter}{\numberline {6}File Documentation}{19}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Color.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Ray.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Transform.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Vector3\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}D.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Ambient\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Light.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Directional\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Light.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Flat\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Material.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Cone.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Cylinder.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Plane.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Image.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Renderer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Scene.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.13}%
+\contentsline {section}{\numberline {6.14}Scene\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Loader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.14}%
+\contentsline {section}{\numberline {6.15}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.15}%
+\contentsline {section}{\numberline {6.16}Error.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.16}%
+\contentsline {section}{\numberline {6.17}Logger.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.17}%
+\contentsline {section}{\numberline {6.18}PPMWriter.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.18}%
+\contentsline {section}{\numberline {6.19}Timer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.19}%
+\contentsline {section}{\numberline {6.20}ALight.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.20}%
+\contentsline {section}{\numberline {6.21}AMaterial.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{20}{section.6.21}%
+\contentsline {section}{\numberline {6.22}APrimitive.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{21}{section.6.22}%
+\contentsline {section}{\numberline {6.23}Camera.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{21}{section.6.23}%
+\contentsline {section}{\numberline {6.24}Camera.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{21}{section.6.24}%
+\contentsline {section}{\numberline {6.25}ILight.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.25}%
+\contentsline {section}{\numberline {6.26}ILight.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.26}%
+\contentsline {section}{\numberline {6.27}IMaterial.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.27}%
+\contentsline {section}{\numberline {6.28}IMaterial.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.28}%
+\contentsline {section}{\numberline {6.29}IPrimitive.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.29}%
+\contentsline {section}{\numberline {6.30}IPrimitive.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.30}%
+\contentsline {section}{\numberline {6.31}material\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{22}{section.6.31}%
+\contentsline {section}{\numberline {6.32}operators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{23}{section.6.32}%
+\contentsline {section}{\numberline {6.33}ray.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{23}{section.6.33}%
+\contentsline {section}{\numberline {6.34}vector3\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}D.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{24}{section.6.34}%
+\contentsline {section}{\numberline {6.35}vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{24}{section.6.35}%
+\contentsline {section}{\numberline {6.36}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{25}{section.6.36}%
+\contentsline {section}{\numberline {6.37}Parser.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{25}{section.6.37}%
+\contentsline {section}{\numberline {6.38}Primitive\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{26}{section.6.38}%
+\contentsline {section}{\numberline {6.39}Flatcolor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{26}{section.6.39}%
+\contentsline {section}{\numberline {6.40}Metal.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{27}{section.6.40}%
+\contentsline {section}{\numberline {6.41}Plate.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{27}{section.6.41}%
+\contentsline {section}{\numberline {6.42}Sphere.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{28}{section.6.42}%
+\contentsline {section}{\numberline {6.43}Sphere.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{28}{section.6.43}%
+\contentsline {section}{\numberline {6.44}Screen.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{29}{section.6.44}%
+\contentsline {section}{\numberline {6.45}Camera\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{30}{section.6.45}%
+\contentsline {section}{\numberline {6.46}Light\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Struct.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{30}{section.6.46}%
+\contentsline {section}{\numberline {6.47}Primites\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Structs.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{31}{section.6.47}%
+\contentsline {section}{\numberline {6.48}structs.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{31}{section.6.48}%
+\contentsline {section}{\numberline {6.49}Triangle.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{31}{section.6.49}%
+\contentsline {chapter}{Index}{33}{section*.54}%

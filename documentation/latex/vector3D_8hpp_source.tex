@@ -1,0 +1,62 @@
+\doxysection{vector3\+D.\+hpp}
+\label{vector3D_8hpp_source}\index{include/Math/vector3D.hpp@{include/Math/vector3D.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ vector3D}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ VECTOR3D\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ VECTOR3D\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }Vector3D}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Constructors\ /\ Destructors\ */}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Vector3D()\ :\ x(0),\ y(0),\ z(0)\ \{\};\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Vector3D(\textcolor{keywordtype}{double}\ xa,\ \textcolor{keywordtype}{double}\ ya,\ \textcolor{keywordtype}{double}\ za)\ :\ x(xa),\ y(ya),\ z(za)\ \{\};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \string~Vector3D()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Operations\ */}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ Vector3D\ \&operator+=(\textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Vector3D\ \&operator*=(\textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Vector3D\ \&operator/=(\textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Vector3D\ \&operator*(\textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector3D\ \&operator/(\textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Vector3D\ \&operator*=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Vector3D\ \&operator/=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Vector3D\ \&operator*(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Vector3D\ \&operator/(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ a);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Get\ data\ */}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ length(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ length\_sqrt(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Variables\ */}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ z;}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Extern\ the\ operators\ */}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator+=(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keyword}{const}\ Vector3D\ \&a);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator*=(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keyword}{const}\ Vector3D\ \&a);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator/=(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keyword}{const}\ Vector3D\ \&a);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator*(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keyword}{const}\ Vector3D\ \&a);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator/(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keyword}{const}\ Vector3D\ \&a);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator*=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator/=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator*(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Vector3D\ operator/(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keyword}{const}\ Vector3D\ \&v);}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{/*\ Un\ point\ 3D\ est\ un\ vecteur\ fixe\ */}}
+\DoxyCodeLine{00054\ \textcolor{keyword}{using\ }Point3D\ =\ Vector3D;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !VECTOR3D\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

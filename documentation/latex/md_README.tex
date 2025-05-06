@@ -1,0 +1,93 @@
+\chapter{Raytracer Project}
+\label{md_README}\index{Raytracer Project@{Raytracer Project}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Project Overview}{Project Overview}}\label{md_README_autotoc_md1}
+This project is a raytracer implementation designed to render 3D scenes based on configuration files. It uses a modular architecture to separate concerns such as mathematical operations, scene parsing, and rendering primitives. The project is written in C++ and follows object-\/oriented principles.
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md_README_autotoc_md3}
+Here is the directory tree of the project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{raytracer/}
+\DoxyCodeLine{├──\ include/}
+\DoxyCodeLine{│\ \ \ ├──\ Math/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Color.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Ray.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Transform.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ Vector3D.hpp}
+\DoxyCodeLine{│\ \ \ ├──\ Raytracer/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Lights/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ AmbientLight.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ DirectionalLight.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ ILight.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Materials/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ FlatMaterial.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ IMaterial.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Primitives/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Cone.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Cylinder.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ IPrimitive.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Plane.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ Sphere.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ Scene/}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Camera.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Image.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Renderer.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Scene.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ └──\ SceneLoader.hpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ }
+\DoxyCodeLine{│\ \ \ └──\ Utils/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ ConfigParser.hpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Error.hpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Logger.hpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Parser.hpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ PPMWriter.hpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ Timer.hpp}
+\DoxyCodeLine{├──\ src/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp}
+\DoxyCodeLine{│\ \ \ ├──\ Math/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Color.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Ray.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Transform.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ Vector3D.cpp}
+\DoxyCodeLine{│\ \ \ ├──\ Raytracer/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Lights/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ AmbientLight.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ DirectionalLight.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ ILight.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Materials/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ FlatMaterial.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ IMaterial.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Primitives/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Cone.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Cylinder.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ IPrimitive.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ Plane.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ Sphere.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ Scene/}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Camera.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Image.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Renderer.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ ├──\ Scene.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ \ \ \ \ └──\ SceneLoader.cpp}
+\DoxyCodeLine{│\ \ \ └──\ Utils/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ ConfigParser.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Error.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Logger.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ Parser.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ PPMWriter.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ Timer.cpp}
+\DoxyCodeLine{├──\ scenes/}
+\DoxyCodeLine{│\ \ \ ├──\ scene1.json}
+\DoxyCodeLine{│\ \ \ ├──\ scene2.json}
+\DoxyCodeLine{│\ \ \ └──\ scene3.json}
+\DoxyCodeLine{├──\ screenshots/}
+\DoxyCodeLine{│\ \ \ └──\ scene1.ppm}
+\DoxyCodeLine{├──\ Makefile}
+\DoxyCodeLine{└──\ README.md}
+
+\end{DoxyCode}
+ 

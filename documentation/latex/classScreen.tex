@@ -1,0 +1,28 @@
+\doxysection{Screen Class Reference}
+\label{classScreen}\index{Screen@{Screen}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classScreen_a20f4cc7a6a1f641b545ba082cb99ad1d} 
+bool {\bfseries check\+For\+Hit} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const
+\item 
+\label{classScreen_a563532a5df46d3a8475691d0e23a4c1c} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} {\bfseries get\+Color} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, int depth)
+\item 
+\label{classScreen_a39529f852b22c915a2395cf72458e564} 
+void {\bfseries start\+Rendering} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classScreen_aed99cdfe1e4db0cecd434a525d80db5e} 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAPrimitive}{APrimitive}} $>$ $>$ {\bfseries m\+Primitives}
+\item 
+\label{classScreen_a29289e9bca1a03243cfcc2de9971dd2a} 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ $>$ {\bfseries m\+Materials}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Screen.\+hpp\end{DoxyCompactItemize}

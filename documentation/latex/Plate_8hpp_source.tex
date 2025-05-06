@@ -1,0 +1,50 @@
+\doxysection{Plate.\+hpp}
+\label{Plate_8hpp_source}\index{include/RayTracer/Primitives/Plate.hpp@{include/RayTracer/Primitives/Plate.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Plate}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ PLATE\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ PLATE\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Utils/structs.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ class\ Plate\ :\ public\ APrimitive\ \{}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ \ \ public:}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Plate(const\ Point3D\ \&center,\ Structs::Color\ color,\ AMaterial\ *materialsx,\ double\ sy)\ :\ center(c),\ color(col),\ size\_x(sx),\ size\_y(sy)\ \{\};}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \string~Plate()\ =\ default;}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ double\ hits(const\ Ray\ \&ray,\ Structs::hitRecord\ \&hit)\ \{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ normal(0,\ 1,\ 0);}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ double\ d\ =\ dot\ (normal,\ ray.getDirection());}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ if\ (std::abs(d)\ >\ 0)\ \{}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\ t\ =\ dot((center\ -\/\ ray.getOrigin()),\ normal)\ /\ d;}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (t\ >=\ 0)\ \{}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Point3D\ hitPoint\ =\ ray.getOrigin()\ +\ ray.getDirection()\ *\ t;}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (std::abs(hitPoint.x\ -\/\ center.x)\ <=\ size\_x\ /\ 2\ \&\&}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::abs(hitPoint.z\ -\/\ center.z)\ <=\ size\_y\ /\ 2)\ \{}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ t;}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ return\ -\/1.0;}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Point3D\ center;}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ double\ size\_x;}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ double\ size\_y;}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Structs::Color\ color;}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \};}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !PLATE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

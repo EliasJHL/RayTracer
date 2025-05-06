@@ -1,0 +1,36 @@
+\doxysection{Triangle.\+hpp}
+\label{Triangle_8hpp_source}\index{plugins/primitives/Triangle.hpp@{plugins/primitives/Triangle.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Triangle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ TRIANGLE\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ TRIANGLE\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/Vector3D.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Triangle\ :\ \textcolor{keyword}{public}\ APrimitive\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Triangle(\textcolor{keyword}{const}\ Vector3D\ \&center,\ Structs::Color\ color,\ std::shared\_ptr<AMaterial>\ material,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector3D\ \&v0,\ \textcolor{keyword}{const}\ Vector3D\ \&v1,\ \textcolor{keyword}{const}\ Vector3D\ \&v2);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Triangle()\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&ray,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Vector3D\ mV0;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector3D\ mV1;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Vector3D\ mV2;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !TRIANGLE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

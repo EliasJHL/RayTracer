@@ -21,18 +21,18 @@ Parser *Parser::GetInstance(const std::string &path = "")
 void Parser::ParseCamera(const ConfSetting &cam, const ConfSetting &res, const ConfSetting &pos, const ConfSetting &rota)
 {
     /* Resolution */
-    mCameraConfig->width = (int)res["width"];
-    mCameraConfig->height = (int)res["height"];
+    mCameraConfig.width = (int)res["width"];
+    mCameraConfig.height = (int)res["height"];
     /* Position */
-    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
-    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
-    mCameraConfig->pos_x = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
+    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
+    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
     /* Rotation */
-    mCameraConfig->rot_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
-    mCameraConfig->rot_y = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
-    mCameraConfig->rot_z = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    mCameraConfig.rot_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
+    mCameraConfig.rot_y = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
+    mCameraConfig.rot_z = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
     /* Parameters */
-    mCameraConfig->fieldOfView = (int)cam["fieldOfView"];
+    mCameraConfig.fieldOfView = (int)cam["fieldOfView"];
 }
 
 void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
@@ -46,7 +46,7 @@ void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
     y = sphere["y"].getType() == ConfSetting::TypeInt ? (int)sphere["y"] : (double)sphere["y"];
     z = sphere["z"].getType() == ConfSetting::TypeInt ? (int)sphere["z"] : (double)sphere["z"];
     radius = sphere["r"].getType() == ConfSetting::TypeInt ? (int)sphere["r"] : (double)sphere["r"];
-    material = (std::string)sphere["material"];
+    material = std::string(sphere["material"].c_str());
     r = sphere["color"]["r"];
     g = sphere["color"]["g"];
     b = sphere["color"]["b"];
@@ -92,6 +92,8 @@ void Parser::ParseConfig(Screen *s)
 
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error(nfex.what());
+    } catch (const libconfig::SettingTypeException &e) {
+        throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
     }
 
     /* Get the primitives */

@@ -1,0 +1,49 @@
+\doxysection{Triangle Class Reference}
+\label{classTriangle}\index{Triangle@{Triangle}}
+Inheritance diagram for Triangle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classTriangle}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classTriangle_ae963a7340924e4678b3dee3a616364cb} 
+{\bfseries Triangle} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v0, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v1, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v2)
+\item 
+bool \mbox{\hyperlink{classTriangle_ab7ce9c5f80b504fbd110f271acb43abe}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries APrimitive} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
+\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} {\bfseries color}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfseries material}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Triangle@{Triangle}!hit@{hit}}
+\index{hit@{hit}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \label{classTriangle_ab7ce9c5f80b504fbd110f271acb43abe} 
+bool Triangle\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classAPrimitive}{APrimitive}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+plugins/primitives/Triangle.\+hpp\end{DoxyCompactItemize}

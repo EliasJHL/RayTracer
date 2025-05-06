@@ -1,0 +1,6 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node1" href="$classIPrimitive.html" title=" " alt="" coords="5,31,91,57"/>
+<area shape="rect" id="node2" href="$classAPrimitive.html" title=" " alt="" coords="139,31,229,57"/>
+<area shape="rect" id="node3" href="$classSphere.html" title=" " alt="" coords="281,5,347,32"/>
+<area shape="rect" id="node4" href="$classTriangle.html" title=" " alt="" coords="277,56,351,83"/>
+</map>

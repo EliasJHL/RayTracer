@@ -1,0 +1,43 @@
+\doxysection{operators.\+hpp}
+\label{operators_8hpp_source}\index{include/Math/operators.hpp@{include/Math/operators.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ operators}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ OPERATORS\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ OPERATORS\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00014\ \textcolor{comment}{**\ inline\ sert\ à\ déclarer\ qu'il\ peut\ il\ y\ avoir\ plusieurs\ définitions\ de\ la\ fonction}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{inline}\ Vector3D\ operator*(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Vector3D\ \&v)}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3D(v.x\ *\ t,\ v.y\ *\ t,\ v.z\ *\ t);}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ Vector3D\ operator/(\textcolor{keyword}{const}\ Vector3D\ \&v,\ \textcolor{keywordtype}{double}\ s)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3D\{v.x\ /\ s,\ v.y\ /\ s,\ v.z\ /\ s\};}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{inline}\ Vector3D\ operator+(\textcolor{keyword}{const}\ Vector3D\ \&v1,\ \textcolor{keyword}{const}\ Vector3D\ \&v2)}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3D(v1.x\ +\ v2.x,\ v1.y\ +\ v2.y,\ v1.z\ +\ v2.z);}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{inline}\ Vector3D\ operator-\/(\textcolor{keyword}{const}\ Vector3D\ \&v1,\ \textcolor{keyword}{const}\ Point3D\ \&v2)}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3D(v1.x\ -\/\ v2.x,\ v1.y\ -\/\ v2.y,\ v1.z\ -\/\ v2.z);}
+\DoxyCodeLine{00035\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !OPERATORS\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

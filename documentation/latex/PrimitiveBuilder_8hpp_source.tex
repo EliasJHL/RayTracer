@@ -1,0 +1,64 @@
+\doxysection{Primitive\+Builder.\+hpp}
+\label{PrimitiveBuilder_8hpp_source}\index{include/PrimitiveBuilder.hpp@{include/PrimitiveBuilder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ PrimitiveBuilder}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ PRIMITIVEBUILDER\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ PRIMITIVEBUILDER\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Primitives/Sphere.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <optional>}\ \textcolor{comment}{//\ à\ voir\ pk\ ça\ ne\ fonctionne\ pas}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }Params\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ Point3D\ center;}
+\DoxyCodeLine{00020\ \ \ \ \ Structs::Color\ color;}
+\DoxyCodeLine{00021\ \ \ \ \ std::shared\_ptr<AMaterial>\ material;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{/*\ Optionnal\ */}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ radius;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_x;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_y;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }PrimitiveBuilder\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ PrimitiveBuilder()\ \{\};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \string~PrimitiveBuilder()\ \{\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ PrimitiveBuilder\ \&setCenter(\textcolor{keyword}{const}\ Point3D\ \&center)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ mParams.center\ =\ center;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ PrimitiveBuilder\ \&setMaterial(std::shared\_ptr<AMaterial>\ material)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ mParams.material\ =\ material;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ PrimitiveBuilder\ \&setRadius(\textcolor{keywordtype}{double}\ radius)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ mParams.radius\ =\ radius;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ PrimitiveBuilder\ \&setColor(Structs::Color\ color)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ mParams.color\ =\ color;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::unique\_ptr<APrimitive>\ createSphere(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<Sphere>(mParams.center,\ mParams.color,\ mParams.material,\ mParams.radius);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ Params\ mParams;}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !PRIMITIVEBUILDER\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

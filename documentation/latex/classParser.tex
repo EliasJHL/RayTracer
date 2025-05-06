@@ -1,0 +1,62 @@
+\doxysection{Parser Class Reference}
+\label{classParser}\index{Parser@{Parser}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_aef63582213afaa99a18b682c59ac56f5} 
+{\bfseries Parser} (\mbox{\hyperlink{classParser}{Parser}} \&other)=delete
+\item 
+\label{classParser_acf6eb24e98fb06a41eb6fc65c4c210e8} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classParser}{Parser}} \&other)=delete
+\item 
+\label{classParser_a3b566713cd6003f52f2e757623a4e3f0} 
+void {\bfseries Parse\+Config} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s)
+\item 
+\label{classParser_a02db1167c397411e66723df8b6f972cb} 
+\mbox{\hyperlink{structStructs_1_1Camera}{Structs\+::\+Camera}} \& {\bfseries get\+Camera\+Config} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_a38eaa12b09a493df5054801a45aabdf7} 
+static \mbox{\hyperlink{classParser}{Parser}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Instance} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_a0c9cdc9a97e8624cece9430d3bc4ea3c} 
+\mbox{\hyperlink{structStructs_1_1Camera}{Structs\+::\+Camera}} \texorpdfstring{$\ast$}{*} {\bfseries m\+Camera\+Config}
+\item 
+\label{classParser_a36c508d62ff187dc239a80d3bfd005a2} 
+int {\bfseries anti\+Aliasing}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_ae7a84b82aa8a6ef8521c1315df7a8b8b} 
+{\bfseries Parser} (const std\+::string \&path)
+\item 
+\label{classParser_a1fbd5318321571db438196c58ae8194a} 
+void {\bfseries Parse\+Camera} (const Conf\+Setting \&cam, const Conf\+Setting \&res, const Conf\+Setting \&pos, const Conf\+Setting \&rota)
+\item 
+\label{classParser_a6de90c341d1ab04de24f1c7299a32c20} 
+void {\bfseries Parse\+Sphere} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&sphere)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_af21b83b84f10ef8e52548cd7bc85bcac} 
+std\+::string {\bfseries m\+Config\+Path}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classParser_a1ead15dca39479a93e70a601de6fef3a} 
+static \mbox{\hyperlink{classParser}{Parser}} \texorpdfstring{$\ast$}{*} {\bfseries m\+Parser} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Parser.\+hpp\item 
+src/Parser.\+cpp\end{DoxyCompactItemize}

@@ -35,7 +35,7 @@ class Parser {
         Structs::Camera &getCameraConfig(void);
 
         // Ajouter la récup des différents éléments
-        Structs::Camera *mCameraConfig;
+        Structs::Camera mCameraConfig;
         int antiAliasing;
 
     protected:

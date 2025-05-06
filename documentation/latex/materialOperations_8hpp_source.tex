@@ -1,0 +1,28 @@
+\doxysection{material\+Operations.\+hpp}
+\label{materialOperations_8hpp_source}\index{include/Math/materialOperations.hpp@{include/Math/materialOperations.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ materialOperations}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MATERIALOPERATIONS\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MATERIALOPERATIONS\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{inline}\ Vector3D\ randomInUnitSphere()\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ Vector3D\ p;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ p\ =\ 2.9\ *\ Vector3D(drand48(),\ drand48(),\ drand48())\ -\/\ Vector3D(1,\ 1,\ 1);}
+\DoxyCodeLine{00018\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (p.length\_sqrt()\ >=\ 1.0);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !MATERIALOPERATIONS\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

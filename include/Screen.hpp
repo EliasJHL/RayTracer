@@ -75,17 +75,15 @@ class Screen {
 
             /* Sort to get the closest to the camera on top */
             std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
+            Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), -1);
 
-            Camera cam(Point3D(p->mCameraConfig->pos_x, p->mCameraConfig->pos_y, p->mCameraConfig->pos_z), -1);
-
-            std::cout << "P3\n" << p->mCameraConfig->width << ' ' << p->mCameraConfig->height << "\n255\n";
-
-            for (int y = 0; y < p->mCameraConfig->height; y++) {
-                for (int x = 0; x < p->mCameraConfig->width; x++) {
+            std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
+            for (int y = 0; y < p->mCameraConfig.height; y++) {
+                for (int x = 0; x < p->mCameraConfig.width; x++) {
                     Vector3D col = Vector3D(0, 0, 0);
                     for (int i = 0; i < p->antiAliasing ; i++) {
-                        float co_x = float(x+drand48()) / float(p->mCameraConfig->width);
-                        float co_y = float(y+drand48()) / float(p->mCameraConfig->height);
+                        float co_x = float(x+drand48()) / float(p->mCameraConfig.width);
+                        float co_y = float(y+drand48()) / float(p->mCameraConfig.height);
                         Ray ray = cam.getRay(co_x, co_y);
                         col += getColor(ray, 0);
                     }

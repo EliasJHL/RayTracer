@@ -1,0 +1,30 @@
+\doxysection{AMaterial.\+hpp}
+\label{AMaterial_8hpp_source}\index{include/Abstracts/AMaterial.hpp@{include/Abstracts/AMaterial.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ AMaterial}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ AMATERIAL\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ AMATERIAL\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Utils/structs.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Interfaces/IMaterial.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }AMaterial\ :\ \textcolor{keyword}{public}\ IMaterial\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ AMaterial(\textcolor{keyword}{const}\ std::string\ \&name\ =\ \textcolor{stringliteral}{"{}"{}})\ \{\};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~AMaterial()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !AMATERIAL\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

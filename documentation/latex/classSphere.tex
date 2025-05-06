@@ -1,0 +1,54 @@
+\doxysection{Sphere Class Reference}
+\label{classSphere}\index{Sphere@{Sphere}}
+Inheritance diagram for Sphere\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSphere}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classSphere_ac906863dfaed09579affab5020c79457} 
+{\bfseries Sphere} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, double radius)
+\item 
+bool \mbox{\hyperlink{classSphere_aaa28222bf8846400fde695e28993620f}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries APrimitive} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classSphere_a45d6c6c870fac7c2a885ad2e226334ad} 
+double {\bfseries radius}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
+\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} {\bfseries color}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfseries material}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Sphere@{Sphere}!hit@{hit}}
+\index{hit@{hit}!Sphere@{Sphere}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \label{classSphere_aaa28222bf8846400fde695e28993620f} 
+bool Sphere\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{r}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classAPrimitive}{APrimitive}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Primitives/Sphere.\+hpp\end{DoxyCompactItemize}

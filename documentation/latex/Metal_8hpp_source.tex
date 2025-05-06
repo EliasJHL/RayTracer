@@ -1,0 +1,39 @@
+\doxysection{Metal.\+hpp}
+\label{Metal_8hpp_source}\index{include/RayTracer/Materials/Metal.hpp@{include/RayTracer/Materials/Metal.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Metal}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ METAL\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ METAL\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/vectorOperations.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }AMaterial;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Metal\ :\ \textcolor{keyword}{public}\ AMaterial\{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Metal(\textcolor{keyword}{const}\ std::string\ \&n\ =\ \textcolor{stringliteral}{"{}metal"{}})\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ n;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \string~Metal()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ reflected\ =\ reflect(unit\_vector(rayIn.getDirection()),\ rec.normal);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ reflected);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ objectColor\ =\ Vector3D(rec.color.r\ /\ 255.0,\ rec.color.g\ /\ 255.0,\ rec.color.b\ /\ 255.0);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ objectColor;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !METAL\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

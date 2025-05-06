@@ -1,0 +1,130 @@
+\begin{theindex}
+
+  \item {AMaterial}, \hyperpage{9}
+    \subitem {scatter}, \hyperpage{9}
+  \item {APrimitive}, \hyperpage{9}
+    \subitem {hit}, \hyperpage{10}
+  \item {architest/include/Math/Color.hpp}, \hyperpage{19}
+  \item {architest/include/Math/Ray.hpp}, \hyperpage{19}
+  \item {architest/include/Math/Transform.hpp}, \hyperpage{19}
+  \item {architest/include/Math/Vector3D.hpp}, \hyperpage{19}
+  \item {architest/include/RayTracer/Lights/AmbientLight.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Lights/DirectionalLight.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Lights/ILight.hpp}, \hyperpage{22}
+  \item {architest/include/RayTracer/Materials/FlatMaterial.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Materials/IMaterial.hpp}, 
+		\hyperpage{22}
+  \item {architest/include/RayTracer/Primitives/Cone.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Primitives/Cylinder.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Primitives/IPrimitive.hpp}, 
+		\hyperpage{22}
+  \item {architest/include/RayTracer/Primitives/Plane.hpp}, 
+		\hyperpage{19}
+  \item {architest/include/RayTracer/Primitives/Sphere.hpp}, 
+		\hyperpage{28}
+  \item {architest/include/RayTracer/Scene/Camera.hpp}, \hyperpage{21}
+  \item {architest/include/RayTracer/Scene/Image.hpp}, \hyperpage{20}
+  \item {architest/include/RayTracer/Scene/Renderer.hpp}, 
+		\hyperpage{20}
+  \item {architest/include/RayTracer/Scene/Scene.hpp}, \hyperpage{20}
+  \item {architest/include/RayTracer/Scene/SceneLoader.hpp}, 
+		\hyperpage{20}
+  \item {architest/include/Utils/ConfigParser.hpp}, \hyperpage{20}
+  \item {architest/include/Utils/Error.hpp}, \hyperpage{20}
+  \item {architest/include/Utils/Logger.hpp}, \hyperpage{20}
+  \item {architest/include/Utils/Parser.hpp}, \hyperpage{25}
+  \item {architest/include/Utils/PPMWriter.hpp}, \hyperpage{20}
+  \item {architest/include/Utils/Timer.hpp}, \hyperpage{20}
+
+  \indexspace
+
+  \item {Camera}, \hyperpage{10}
+  \item {ConfigStruct::Color}, \hyperpage{11}
+  \item {ConfigStruct::Light}, \hyperpage{13}
+  \item {ConfigStruct::Light::point}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Flatcolor}, \hyperpage{11}
+    \subitem {scatter}, \hyperpage{12}
+
+  \indexspace
+
+  \item {hit}
+    \subitem {APrimitive}, \hyperpage{10}
+    \subitem {Sphere}, \hyperpage{16}
+    \subitem {Triangle}, \hyperpage{17}
+
+  \indexspace
+
+  \item {IMaterial}, \hyperpage{12}
+  \item {include/Abstracts/ALight.hpp}, \hyperpage{20}
+  \item {include/Abstracts/AMaterial.hpp}, \hyperpage{20}
+  \item {include/Abstracts/APrimitive.hpp}, \hyperpage{21}
+  \item {include/Camera.hpp}, \hyperpage{21}
+  \item {include/Interfaces/ILight.hpp}, \hyperpage{22}
+  \item {include/Interfaces/IMaterial.hpp}, \hyperpage{22}
+  \item {include/Interfaces/IPrimitive.hpp}, \hyperpage{22}
+  \item {include/Math/materialOperations.hpp}, \hyperpage{22}
+  \item {include/Math/operators.hpp}, \hyperpage{23}
+  \item {include/Math/ray.hpp}, \hyperpage{23}
+  \item {include/Math/vector3D.hpp}, \hyperpage{24}
+  \item {include/Math/vectorOperations.hpp}, \hyperpage{24}
+  \item {include/Parser.hpp}, \hyperpage{25}
+  \item {include/PrimitiveBuilder.hpp}, \hyperpage{26}
+  \item {include/RayTracer/Materials/Flatcolor.hpp}, \hyperpage{26}
+  \item {include/RayTracer/Materials/Metal.hpp}, \hyperpage{27}
+  \item {include/RayTracer/Primitives/Plate.hpp}, \hyperpage{27}
+  \item {include/RayTracer/Primitives/Sphere.hpp}, \hyperpage{28}
+  \item {include/Screen.hpp}, \hyperpage{29}
+  \item {include/structs/CameraStruct.hpp}, \hyperpage{30}
+  \item {include/structs/LightStruct.hpp}, \hyperpage{30}
+  \item {include/structs/PrimitesStructs.hpp}, \hyperpage{31}
+  \item {include/Utils/structs.hpp}, \hyperpage{31}
+  \item {IPrimitive}, \hyperpage{13}
+
+  \indexspace
+
+  \item {Metal}, \hyperpage{13}
+    \subitem {scatter}, \hyperpage{14}
+
+  \indexspace
+
+  \item {Params}, \hyperpage{14}
+  \item {Parser}, \hyperpage{14}
+  \item {plugins/primitives/Triangle.hpp}, \hyperpage{31}
+  \item {PrimitiveBuilder}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Ray}, \hyperpage{15}
+  \item {Raytracer Project}, \hyperpage{1}
+
+  \indexspace
+
+  \item {scatter}
+    \subitem {AMaterial}, \hyperpage{9}
+    \subitem {Flatcolor}, \hyperpage{12}
+    \subitem {Metal}, \hyperpage{14}
+  \item {Screen}, \hyperpage{15}
+  \item {Sphere}, \hyperpage{16}
+    \subitem {hit}, \hyperpage{16}
+  \item {Structs::Camera}, \hyperpage{10}
+  \item {Structs::Color}, \hyperpage{11}
+  \item {Structs::hitRecord}, \hyperpage{12}
+
+  \indexspace
+
+  \item {Triangle}, \hyperpage{17}
+    \subitem {hit}, \hyperpage{17}
+
+  \indexspace
+
+  \item {Vector3D}, \hyperpage{17}
+
+\end{theindex}
