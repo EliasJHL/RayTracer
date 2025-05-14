@@ -32,22 +32,6 @@ Vector3D &Vector3D::operator/=(const Vector3D &v)
     return *this;
 }
 
-Vector3D &Vector3D::operator*(const Vector3D &v)
-{
-    x *= v.x;
-    y *= v.y;
-    z *= v.z;
-    return *this;
-}
-
-Vector3D &Vector3D::operator/(const Vector3D &v)
-{
-    x /= v.x;
-    y /= v.y;
-    z /= v.z;
-    return *this;
-}
-
 Vector3D &Vector3D::operator*=(const double t)
 {
     x *= t;
@@ -64,21 +48,18 @@ Vector3D &Vector3D::operator/=(const double t)
     return *this;
 };
 
-Vector3D &Vector3D::operator*(const double t)
+Vector3D &Vector3D::operator*(const Vector3D &v)
 {
-    x *= t;
-    y *= t;
-    z *= t;
+    x *= v.x;
+    y *= v.y;
+    z *= v.z;
     return *this;
 }
 
-Vector3D &Vector3D::operator/(const double a)
+Vector3D Vector3D::operator*(const double t) const
 {
-    x /= a;
-    y /= a;
-    z /= a;
-    return *this;
-};
+    return Vector3D(x * t, y * t, z * t);
+}
 
 /* Get Data */
 double Vector3D::length(void) const 
@@ -89,4 +70,15 @@ double Vector3D::length(void) const
 double Vector3D::length_sqrt(void) const
 {
     return ((x * x) + (y * y) + (z * z));
+}
+
+Vector3D Vector3D::normalize(void)
+{
+    double len = length();
+    if (len != 0) {
+        x /= len;
+        y /= len;
+        z /= len;
+    }
+    return *this;
 }

@@ -26,12 +26,12 @@ class Vector3D
         Vector3D &operator/(const Vector3D &v);
         Vector3D &operator*=(const double t);
         Vector3D &operator/=(const double t);
-        Vector3D &operator*(const double t);
-        Vector3D &operator/(const double a);
+        Vector3D operator*(const double t) const;
 
         /* Get data */
         double length(void) const;
         double length_sqrt(void) const;
+        Vector3D normalize(void);
 
         /* Variables */
         double x;

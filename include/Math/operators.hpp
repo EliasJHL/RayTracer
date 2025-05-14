@@ -19,9 +19,9 @@ inline Vector3D operator*(double t, const Vector3D &v)
     return Vector3D(v.x * t, v.y * t, v.z * t);
 }
 
-inline Vector3D operator/(const Vector3D &v, double s)
+inline Vector3D operator/(const Vector3D &v, double scalar)
 {
-    return Vector3D{v.x / s, v.y / s, v.z / s};
+    return Vector3D(v.x / scalar, v.y / scalar, v.z / scalar);
 }
 
 inline Vector3D operator+(const Vector3D &v1, const Vector3D &v2)

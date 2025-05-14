@@ -18,21 +18,21 @@ Parser *Parser::GetInstance(const std::string &path = "")
     return mParser;
 }
 
-void Parser::ParseCamera(const ConfSetting &cam, const ConfSetting &res, const ConfSetting &pos, const ConfSetting &rota)
+void Parser::ParseCamera(const ConfSetting &camera)
 {
     /* Resolution */
-    mCameraConfig.width = (int)res["width"];
-    mCameraConfig.height = (int)res["height"];
+    mCameraConfig.width = (int)camera["resolution"]["width"];
+    mCameraConfig.height = (int)camera["resolution"]["height"];
     /* Position */
-    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
-    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
-    mCameraConfig.pos_x = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    mCameraConfig.pos_x = (camera["position"]["x"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["x"] : (double)camera["position"]["x"]);
+    mCameraConfig.pos_y = (camera["position"]["y"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["y"] : (double)camera["position"]["y"]);
+    mCameraConfig.pos_z = (camera["position"]["z"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["z"] : (double)camera["position"]["z"]);
     /* Rotation */
-    mCameraConfig.rot_x = ConfSetting::TypeInt ? (int)pos["x"] : (double)pos["x"];
-    mCameraConfig.rot_y = ConfSetting::TypeInt ? (int)pos["y"] : (double)pos["y"];
-    mCameraConfig.rot_z = ConfSetting::TypeInt ? (int)pos["z"] : (double)pos["z"];
+    mCameraConfig.rot_x = (camera["rotation"]["x"].getType() == ConfSetting::TypeInt ? (int)camera["rotation"]["x"] : (double)camera["rotation"]["x"]);
+    mCameraConfig.rot_y = (camera["rotation"]["y"].getType() == ConfSetting::TypeInt ? (int)camera["rotation"]["y"] : (double)camera["rotation"]["y"]);
+    mCameraConfig.rot_z = (camera["rotation"]["z"].getType() == ConfSetting::TypeInt ? (int)camera["rotation"]["z"] : (double)camera["rotation"]["z"]);
     /* Parameters */
-    mCameraConfig.fieldOfView = (int)cam["fieldOfView"];
+    mCameraConfig.fieldOfView = camera["fieldOfView"];
 }
 
 void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
@@ -84,12 +84,7 @@ void Parser::ParseConfig(Screen *s)
     try {
         const ConfSetting &camera = root["camera"];
 
-        const ConfSetting &resolution = camera["resolution"];
-        const ConfSetting &position = camera["position"];
-        const ConfSetting &rotation = camera["rotation"];
-
-        ParseCamera(camera, resolution, position, rotation);
-
+        ParseCamera(camera);
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error(nfex.what());
     } catch (const libconfig::SettingTypeException &e) {

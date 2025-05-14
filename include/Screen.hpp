@@ -75,7 +75,7 @@ class Screen {
 
             /* Sort to get the closest to the camera on top */
             std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
-            Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), -1);
+            Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
 
             std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
             for (int y = 0; y < p->mCameraConfig.height; y++) {
