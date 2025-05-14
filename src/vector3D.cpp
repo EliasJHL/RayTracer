@@ -80,6 +80,12 @@ Vector3D &Vector3D::operator/(const double a)
     return *this;
 };
 
+Vector3D Vector3D::normalize(void) const
+{
+    double length = this->length();
+    return Vector3D(x / length, y / length, z / length);
+}
+
 /* Get Data */
 double Vector3D::length(void) const 
 {

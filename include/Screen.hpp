@@ -24,6 +24,9 @@
 #include "Abstracts/AMaterial.hpp"
 #include "RayTracer/Materials/Metal.hpp"
 #include "RayTracer/Materials/Flatcolor.hpp"
+#include "Interfaces/ILight.hpp"
+#include "RayTracer/Lights/AmbientLight.hpp"
+#include "RayTracer/Lights/DirectionalLight.hpp"
 
 inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimitive> &b)
 {
@@ -53,17 +56,64 @@ class Screen {
             return hitAnything;
         }
 
+        Vector3D calculateLighting(const Ray &ray, const Structs::hitRecord &rec) const {
+            // Start with ambient contribution
+            Vector3D totalLight(0, 0, 0);
+            
+            // Calculate lighting from all light sources
+            for (const auto &light : mLights) {
+                // Get light direction and intensity
+                Vector3D lightDir = light->getDirection(rec.point);
+                float lightIntensity = light->getIntensity(rec.point);
+                
+                // All lights are white, so we just multiply the intensity
+                Vector3D lightColor(lightIntensity, lightIntensity, lightIntensity);
+                
+                // Handle ambient light - adds light regardless of normal
+                if (dynamic_cast<AmbientLight*>(light.get())) {
+                    totalLight += lightColor;
+                    continue;
+                }
+                
+                // For other light types (like directional), calculate diffuse lighting
+                double dotProduct = rec.normal.x * lightDir.x + 
+                                   rec.normal.y * lightDir.y + 
+                                   rec.normal.z * lightDir.z;
+                float diffuseFactor = dotProduct > 0.0 ? dotProduct : 0.0;
+                
+                // Apply diffuse intensity from config
+                diffuseFactor *= diffuseIntensity;
+                
+                // Add diffuse contribution
+                totalLight += lightColor * diffuseFactor;
+            }
+            
+            // If no lights, provide a minimum ambient light so scene isn't completely dark
+            if (mLights.empty()) {
+                totalLight = Vector3D(0.1, 0.1, 0.1); // Minimal ambient light
+            }
+            
+            return totalLight;
+        }
+
         Vector3D getColor(const Ray &ray, int depth) {
             Structs::hitRecord rec;
             if (checkForHit(ray, 0.001, MAXFLOAT, rec)) {
+                // Calculate lighting at the hit point
+                Vector3D lighting = calculateLighting(ray, rec);
+                
+                // Get material color through scattering
                 Ray scattered;
                 Vector3D attenuation;
                 if (depth < 50 && rec.material->scatter(ray, rec, attenuation, scattered)) {
-                    return attenuation * getColor(scattered, depth + 1);
+                    // Combine material color with lighting
+                    return attenuation * lighting * getColor(scattered, depth + 1);
                 } else {
-                    return Vector3D(0, 0, 0);
+                    // Apply lighting to the base material color when no scattering
+                    return Vector3D(0, 0, 0) * lighting;
                 }
             } else {
+                // Background gradient as before
                 Vector3D unit = ray.getDirection() / ray.getDirection().length();
                 double t = 0.5 * (unit.y + 1);
                 return (1 - t) * Vector3D(1,1,1);
@@ -96,8 +146,18 @@ class Screen {
             }
         };
 
+        void addLight(std::shared_ptr<ILight> light) {
+            mLights.push_back(light);
+        }
+
+        void setDiffuseIntensity(float intensity) {
+            diffuseIntensity = intensity;
+        }
+
         std::vector<std::unique_ptr<APrimitive>> mPrimitives;
         std::map<std::string, std::shared_ptr<AMaterial>> mMaterials;
+        std::vector<std::shared_ptr<ILight>> mLights;
+        float diffuseIntensity = 0.6f; // Default value
     protected:
 };
 
