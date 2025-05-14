@@ -41,7 +41,7 @@ namespace Structs {
         double rot_y;
         double rot_z;
         /* Parameters */
-        double fieldOfView;
+        int fieldOfView;
     };
 }
 
