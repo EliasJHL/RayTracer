@@ -124,30 +124,20 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
     try {
         const ConfSetting &root = config.getRoot();
         const ConfSetting &lights = root["lights"];
-
-        // Parse ambient light
         if (lights.exists("ambient")) {
             float ambientIntensity = lights["ambient"];
-            
-            // Directly create ambient light with intensity
             auto ambient = std::make_shared<AmbientLight>(ambientIntensity);
             s->addLight(ambient);
         }
-
-        // Parse diffuse light intensity (for later use in materials)
         if (lights.exists("diffuse")) {
             float diffuseIntensity = lights["diffuse"];
             s->setDiffuseIntensity(diffuseIntensity);
         }
-
-        // Parse directional lights
         if (lights.exists("directional")) {
             const ConfSetting &directional = lights["directional"];
             
             for (int i = 0; i < directional.getLength(); ++i) {
                 const ConfSetting &dirLight = directional[i];
-                
-                // Get direction (normalize it later)
                 Vector3D direction;
                 if (dirLight.exists("direction")) {
                     const ConfSetting &dir = dirLight["direction"];
@@ -155,35 +145,25 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
                     direction.y = dir["y"].getType() == ConfSetting::TypeInt ? (int)dir["y"] : (double)dir["y"];
                     direction.z = dir["z"].getType() == ConfSetting::TypeInt ? (int)dir["z"] : (double)dir["z"];
                 } else {
-                    // If no direction specified, use default (light from above)
                     direction = Vector3D(0.0, -1.0, 0.0);
                 }
-                
-                // Get intensity if specified
                 float intensity = 1.0f;
                 if (dirLight.exists("intensity")) {
                     intensity = dirLight["intensity"];
                 }
-                
                 auto directional = std::make_shared<DirectionalLight>(direction, intensity);
                 s->addLight(directional);
             }
         }
-        
-        // Parse point lights
+
         if (lights.exists("point")) {
             const ConfSetting &pointLights = lights["point"];
             
             for (int i = 0; i < pointLights.getLength(); ++i) {
                 const ConfSetting &pointLight = pointLights[i];
-                
-                // Get position
                 double x = pointLight["x"].getType() == ConfSetting::TypeInt ? (int)pointLight["x"] : (double)pointLight["x"];
                 double y = pointLight["y"].getType() == ConfSetting::TypeInt ? (int)pointLight["y"] : (double)pointLight["y"];
                 double z = pointLight["z"].getType() == ConfSetting::TypeInt ? (int)pointLight["z"] : (double)pointLight["z"];
-                
-                // Just log for now - you'll implement point lights later
-                //std::cout << "Found point light at position: (" << x << ", " << y << ", " << z << ")" << std::endl;
             }
         }
         
