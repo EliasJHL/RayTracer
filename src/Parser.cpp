@@ -24,9 +24,9 @@ void Parser::ParseCamera(const ConfSetting &camera)
     mCameraConfig.width = (int)camera["resolution"]["width"];
     mCameraConfig.height = (int)camera["resolution"]["height"];
     /* Position */
-    mCameraConfig.pos_x = (camera["position"]["x"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["x"] : (double)camera["position"]["x"]);
-    mCameraConfig.pos_y = (camera["position"]["y"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["y"] : (double)camera["position"]["y"]);
-    mCameraConfig.pos_z = (camera["position"]["z"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["z"] : (double)camera["position"]["z"]);
+    mCameraConfig.pos_x = (camera["position"]["x"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["x"] : (double)camera["position"]["x"]) / 100;
+    mCameraConfig.pos_y = (camera["position"]["y"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["y"] : (double)camera["position"]["y"]) / 100;
+    mCameraConfig.pos_z = (camera["position"]["z"].getType() == ConfSetting::TypeInt ? (int)camera["position"]["z"] : (double)camera["position"]["z"]) / 100;
     /* Rotation */
     mCameraConfig.rot_x = (camera["rotation"]["x"].getType() == ConfSetting::TypeInt ? (int)camera["rotation"]["x"] : (double)camera["rotation"]["x"]);
     mCameraConfig.rot_y = (camera["rotation"]["y"].getType() == ConfSetting::TypeInt ? (int)camera["rotation"]["y"] : (double)camera["rotation"]["y"]);
@@ -42,9 +42,9 @@ void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
     double x, y, z, radius;
     int r, g, b;
 
-    x = sphere["x"].getType() == ConfSetting::TypeInt ? (int)sphere["x"] : (double)sphere["x"];
-    y = sphere["y"].getType() == ConfSetting::TypeInt ? (int)sphere["y"] : (double)sphere["y"];
-    z = sphere["z"].getType() == ConfSetting::TypeInt ? (int)sphere["z"] : (double)sphere["z"];
+    x = (sphere["x"].getType() == ConfSetting::TypeInt ? (int)sphere["x"] : (double)sphere["x"]) / 1;
+    y = (sphere["y"].getType() == ConfSetting::TypeInt ? (int)sphere["y"] : (double)sphere["y"]) / 1;
+    z = (sphere["z"].getType() == ConfSetting::TypeInt ? (int)sphere["z"] : (double)sphere["z"]) / 1;
     radius = sphere["r"].getType() == ConfSetting::TypeInt ? (int)sphere["r"] : (double)sphere["r"];
     material = std::string(sphere["material"].c_str());
     r = sphere["color"]["r"];
