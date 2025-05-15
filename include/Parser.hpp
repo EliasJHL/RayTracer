@@ -38,6 +38,8 @@ class Parser {
         Structs::Camera mCameraConfig;
         int antiAliasing;
 
+        void ParseLights(Screen *s, const libconfig::Config &config);
+
     protected:
         Parser(const std::string &path) : mConfigPath(path) {};
 

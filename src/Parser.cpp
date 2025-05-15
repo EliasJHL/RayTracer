@@ -8,6 +8,8 @@
 #include "Parser.hpp"
 #include "PrimitiveBuilder.hpp"
 #include "Screen.hpp"
+#include "RayTracer/Lights/AmbientLight.hpp"
+#include "RayTracer/Lights/DirectionalLight.hpp"
 
 Parser *Parser::mParser = nullptr;
 
@@ -105,7 +107,66 @@ void Parser::ParseConfig(Screen *s)
 
         for (int i = 0; i < planes.getLength(); ++i) {
             const ConfSetting &plane = planes[i];
+            // TODO: Implement ParsePlane method
         }
+    } catch (const libconfig::SettingNotFoundException &nfex) {
+        throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
+    } catch (const libconfig::SettingTypeException &e) {
+        throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
+    }
+    
+    /* Get the lights */
+    ParseLights(s, cfg);
+}
+
+void Parser::ParseLights(Screen *s, const libconfig::Config &config)
+{
+    try {
+        const ConfSetting &root = config.getRoot();
+        const ConfSetting &lights = root["lights"];
+        if (lights.exists("ambient")) {
+            float ambientIntensity = lights["ambient"];
+            auto ambient = std::make_shared<AmbientLight>(ambientIntensity);
+            s->addLight(ambient);
+        }
+        if (lights.exists("diffuse")) {
+            float diffuseIntensity = lights["diffuse"];
+            s->setDiffuseIntensity(diffuseIntensity);
+        }
+        if (lights.exists("directional")) {
+            const ConfSetting &directional = lights["directional"];
+            
+            for (int i = 0; i < directional.getLength(); ++i) {
+                const ConfSetting &dirLight = directional[i];
+                Vector3D direction;
+                if (dirLight.exists("direction")) {
+                    const ConfSetting &dir = dirLight["direction"];
+                    direction.x = dir["x"].getType() == ConfSetting::TypeInt ? (int)dir["x"] : (double)dir["x"];
+                    direction.y = dir["y"].getType() == ConfSetting::TypeInt ? (int)dir["y"] : (double)dir["y"];
+                    direction.z = dir["z"].getType() == ConfSetting::TypeInt ? (int)dir["z"] : (double)dir["z"];
+                } else {
+                    direction = Vector3D(0.0, -1.0, 0.0);
+                }
+                float intensity = 1.0f;
+                if (dirLight.exists("intensity")) {
+                    intensity = dirLight["intensity"];
+                }
+                auto directional = std::make_shared<DirectionalLight>(direction, intensity);
+                s->addLight(directional);
+            }
+        }
+
+        if (lights.exists("point")) {
+            const ConfSetting &pointLights = lights["point"];
+            
+            for (int i = 0; i < pointLights.getLength(); ++i) {
+                const ConfSetting &pointLight = pointLights[i];
+                double x = pointLight["x"].getType() == ConfSetting::TypeInt ? (int)pointLight["x"] : (double)pointLight["x"];
+                double y = pointLight["y"].getType() == ConfSetting::TypeInt ? (int)pointLight["y"] : (double)pointLight["y"];
+                double z = pointLight["z"].getType() == ConfSetting::TypeInt ? (int)pointLight["z"] : (double)pointLight["z"];
+            }
+        }
+        
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
     } catch (const libconfig::SettingTypeException &e) {

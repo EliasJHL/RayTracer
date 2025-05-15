@@ -28,6 +28,8 @@ class Vector3D
         Vector3D &operator/=(const double t);
         Vector3D operator*(const double t) const;
 
+        Vector3D normalize(void) const;
+
         /* Get data */
         double length(void) const;
         double length_sqrt(void) const;
