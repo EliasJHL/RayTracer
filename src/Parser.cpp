@@ -127,11 +127,11 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
         if (lights.exists("ambient")) {
             float ambientIntensity = lights["ambient"];
             auto ambient = std::make_shared<AmbientLight>(ambientIntensity);
-            s->addLight(ambient);
+            s->mLights.push_back(ambient);
         }
         if (lights.exists("diffuse")) {
             float diffuseIntensity = lights["diffuse"];
-            s->setDiffuseIntensity(diffuseIntensity);
+            s->diffuseIntensity = diffuseIntensity;
         }
         if (lights.exists("directional")) {
             const ConfSetting &directional = lights["directional"];
@@ -152,7 +152,7 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
                     intensity = dirLight["intensity"];
                 }
                 auto directional = std::make_shared<DirectionalLight>(direction, intensity);
-                s->addLight(directional);
+                s->mLights.push_back(directional);
             }
         }
 

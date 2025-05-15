@@ -11,14 +11,24 @@ SRC	=	$(shell find src include -name "*.cpp")
 
 LIBS	=	$(shell pkg-config --libs libconfig++)
 
+PLUGINS_SRC	=	./plugins/materials/mirror.cpp
+
 CFLAGS	=	$(shell pkg-config --cflags libconfig++)
 
 all: $(NAME)
 
-
 $(NAME):
 	g++ $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS)
 	@echo "\033[32m= = = = =  COMPILATION COMPLETED  = = = = =\033[0m"
+
+plugins:
+	# @cd plugins
+	# @for src in $(PLUGINS_SRC); do \
+	# 	name=$$(basename $$src .cpp); \
+	# 	g++ -shared -fPIC $$src -o raytracer_$${name}.so -I ./include; \
+	# done
+	g++ -shared -fPIC $(PLUGINS_SRC) -o raytracer_mirror.so -I ./include;
+	@echo "\033[32m= = = = =  PLUGINS COMPLETED  = = = = =\033[0m"
 
 clean:
 	@$(RM) $(NAME)

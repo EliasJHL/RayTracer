@@ -11,8 +11,6 @@
 #include "Abstracts/AMaterial.hpp"
 #include "Math/vectorOperations.hpp"
 
-class AMaterial;
-
 class Metal : public AMaterial{
     public:
         Metal(const std::string &n = "metal") {
