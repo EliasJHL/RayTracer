@@ -24,6 +24,7 @@ int main(int ac, char **av)
     try {
         errorHanling(ac, av);
         parser = Parser::GetInstance(av[1]);
+        parser->LoadAllPlugins(&s);
         parser->ParseConfig(&s);
         s.startRendering();
     } catch (std::runtime_error &e) {

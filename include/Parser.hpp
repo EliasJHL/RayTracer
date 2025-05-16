@@ -13,11 +13,14 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <regex>
 #include <iostream>
+#include <filesystem>
 #include <libconfig.h++>
 
 /* Structs used for the parsing */
 #include "Utils/structs.hpp"
+#include "DLLoader.hpp"
 
 class Screen;
 
@@ -30,20 +33,23 @@ class Parser {
 
         static Parser *GetInstance(const std::string &path);
 
+        void LoadAllPlugins(Screen *s);
         void ParseConfig(Screen *s);
 
         Structs::Camera &getCameraConfig(void);
 
-        // Ajouter la récup des différents éléments
         Structs::Camera mCameraConfig;
         int antiAliasing;
+
+        void ParseLights(Screen *s, const libconfig::Config &config);
 
     protected:
         Parser(const std::string &path) : mConfigPath(path) {};
 
-        void ParseCamera(const ConfSetting &cam, const ConfSetting &res,
-            const ConfSetting &pos, const ConfSetting &rota);
+        void ParseCamera(const ConfSetting &camera);
         void ParseSphere(Screen *s, const ConfSetting &sphere);
+        void ParsePlane(Screen *s, const ConfSetting &plane);
+        void ParseCone(Screen *s, const ConfSetting &cone);
 
         static Parser* mParser;
         std::string mConfigPath;

@@ -11,18 +11,27 @@ SRC	=	$(shell find src include -name "*.cpp")
 
 LIBS	=	$(shell pkg-config --libs libconfig++)
 
+PLUGINS_SRC	=	./plugins/materials/mirror.cpp ./src/*.cpp
+
 CFLAGS	=	$(shell pkg-config --cflags libconfig++)
 
 all: $(NAME)
 
-
-$(NAME):
-	g++ $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS)
+$(NAME): plugins
+	g++ -std=c++17 $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS)
 	@echo "\033[32m= = = = =  COMPILATION COMPLETED  = = = = =\033[0m"
+
+.PHONY: plugins
+plugins:
+#	g++ -shared -fPIC $(PLUGINS_SRC) -o raytracer_mirror.so -I ./include
+#	@mv *.so ./plugins/
+	@echo "\033[32m= = = = =  PLUGINS COMPLETED  = = = = =\033[0m"
 
 clean:
 	@$(RM) $(NAME)
 	@$(RM) ./src/*.o
+	@$(RM) ./plugins/*.so
+	@$(RM) *.ppm
 
 fclean: clean
 	@$(RM) $(NAME)

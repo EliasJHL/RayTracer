@@ -6,6 +6,10 @@ This project is a raytracer implementation designed to render 3D scenes based on
 
 ---
 
+## Requirements
+
+C++17 for <filesystem>
+
 ## Project Structure
 
 Here is the directory tree of the project:

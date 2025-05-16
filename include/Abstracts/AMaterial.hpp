@@ -14,7 +14,7 @@
 
 class AMaterial : public IMaterial {
     public:
-        AMaterial(const std::string &name = "") {};
+        AMaterial(const std::string &name = "") : name(name) {};
         virtual ~AMaterial() = default;
         bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const = 0;
         
