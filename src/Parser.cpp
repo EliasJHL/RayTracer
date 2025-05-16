@@ -10,6 +10,7 @@
 #include "Screen.hpp"
 #include "RayTracer/Lights/AmbientLight.hpp"
 #include "RayTracer/Lights/DirectionalLight.hpp"
+#include <filesystem>
 
 Parser *Parser::mParser = nullptr;
 
@@ -171,5 +172,32 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
         throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
     } catch (const libconfig::SettingTypeException &e) {
         throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
+    }
+}
+
+void Parser::LoadAllPlugins(Screen *s)
+{
+    const std::filesystem::path plugins{"plugins"};
+    std::regex const e{"raytracer_([A-Za-z0-9\\+]+)\\.so"};
+    std::smatch m;
+
+    for (auto const &dir : std::filesystem::directory_iterator{plugins})
+    {
+        std::string dirPath = std::string(dir.path());
+
+        if (!std::regex_search(dirPath, m, e))
+            continue;
+
+        try {
+            auto loader = std::make_shared<DLLoader<AMaterial>>(dirPath);
+            AMaterial *matPtr = loader->getInstance("createMaterial");
+            
+            if (matPtr != nullptr && !matPtr->name.empty()) {
+                s->mMaterials[matPtr->name] = std::shared_ptr<AMaterial>(matPtr);
+            }
+        } catch (const std::exception &e) {
+            // Gérer l'exception
+            std::cerr << "Error loading plugin: " << e.what() << std::endl;
+        }
     }
 }

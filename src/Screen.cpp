@@ -91,6 +91,7 @@ void Screen::startRendering(void) {
 
     Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
+    
     for (int y = 0; y < p->mCameraConfig.height; y++) {
         for (int x = 0; x < p->mCameraConfig.width; x++) {
             Vector3D col = Vector3D(0, 0, 0);

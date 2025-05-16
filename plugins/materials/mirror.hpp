@@ -14,7 +14,7 @@
 
 class Mirror : public AMaterial{
     public:
-        Mirror(const std::string &n = "mirror") {
+        Mirror(const std::string &n = "mirror") : AMaterial(n) {
             name = n;
         };
         ~Mirror() = default;
