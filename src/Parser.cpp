@@ -61,6 +61,32 @@ void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
     s->mPrimitives.push_back(builder.createSphere());
 }
 
+void Parser::ParseCone(Screen *s, const ConfSetting &cone)
+{
+    std::string material;
+    PrimitiveBuilder builder;
+    double x, y, z, radius, height;
+    int r, g, b;
+
+    x = (cone["x"].getType() == ConfSetting::TypeInt ? (int)cone["x"] : (double)cone["x"]) / 1;
+    y = (cone["y"].getType() == ConfSetting::TypeInt ? (int)cone["y"] : (double)cone["y"]) / 1;
+    z = (cone["z"].getType() == ConfSetting::TypeInt ? (int)cone["z"] : (double)cone["z"]) / 1;
+    radius = cone["r"].getType() == ConfSetting::TypeInt ? (int)cone["r"] : (double)cone["r"];
+    height = cone["h"].getType() == ConfSetting::TypeInt ? (int)cone["h"] : (double)cone["h"];
+    material = std::string(cone["material"].c_str());
+    r = cone["color"]["r"];
+    g = cone["color"]["g"];
+    b = cone["color"]["b"];
+
+    builder = builder.setCenter(Point3D(x, y, z));
+    builder = builder.setRadius(radius);
+    builder = builder.setHeight(height);
+    builder = builder.setColor(Structs::Color{r, g, b});
+    builder = builder.setMaterial(s->mMaterials[material] != nullptr ? s->mMaterials[material] : s->mMaterials["flatcolor"]);
+
+    s->mPrimitives.push_back(builder.createCone());
+}
+
 void Parser::ParseConfig(Screen *s)
 {
     libconfig::Config cfg;
@@ -99,6 +125,7 @@ void Parser::ParseConfig(Screen *s)
 
         const ConfSetting &spheres = primitives["spheres"];
         const ConfSetting &planes = primitives["planes"];
+        const ConfSetting &cones = primitives["cones"];
 
         for (int i = 0; i < spheres.getLength(); ++i) {
             const ConfSetting &sphere = spheres[i];
@@ -108,6 +135,10 @@ void Parser::ParseConfig(Screen *s)
         for (int i = 0; i < planes.getLength(); ++i) {
             const ConfSetting &plane = planes[i];
             // TODO: Implement ParsePlane method
+        }
+        for (int i = 0; i < cones.getLength(); ++i) {
+            const ConfSetting &cone = cones[i];
+            ParseCone(s, cone);
         }
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
