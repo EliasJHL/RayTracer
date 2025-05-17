@@ -10,6 +10,7 @@
 
 #include "operators.hpp"
 #include "vector3D.hpp"
+#include <stdexcept>
 
 inline double dot(const Vector3D &a, const Vector3D &b)
 {

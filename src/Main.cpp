@@ -5,9 +5,10 @@
 ** Main
 */
 
+#include <iostream>
 #include "Parser.hpp"
 #include "Screen.hpp"
-#include <iostream>
+#include "PluginsManager.hpp"
 
 void errorHanling(int ac, char **av)
 {
@@ -19,12 +20,17 @@ void errorHanling(int ac, char **av)
 int main(int ac, char **av)
 {
     Parser *parser;
+    PluginsManager *pm;
     Screen s;
 
     try {
         errorHanling(ac, av);
         parser = Parser::GetInstance(av[1]);
-        parser->LoadAllPlugins(&s);
+        pm = PluginsManager::getInstance();
+        pm->LoadAllPlugins();
+        s.mMaterials = pm->getAllMaterials();
+        if (s.mMaterials["mirror"] == nullptr)
+            std::cerr << "AAAA" << std::endl;
         parser->ParseConfig(&s);
         s.startRendering();
     } catch (std::runtime_error &e) {

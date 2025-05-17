@@ -8,14 +8,14 @@
 #ifndef PRIMITIVEBUILDER_HPP_
 #define PRIMITIVEBUILDER_HPP_
 
-#include "Math/vector3D.hpp"
-#include "RayTracer/Primitives/Sphere.hpp"
-#include "RayTracer/Primitives/Cone.hpp"
-#include "Math/ray.hpp"
-#include "Math/vectorOperations.hpp"
 #include <memory>
 #include <vector>
-#include <optional> // à voir pk ça ne fonctionne pas
+#include <optional>
+#include "Math/ray.hpp"
+#include "Math/vector3D.hpp"
+#include "Math/vectorOperations.hpp"
+#include "RayTracer/Primitives/Cone.hpp"
+#include "RayTracer/Primitives/Sphere.hpp"
 
 struct Params {
     Point3D center;
