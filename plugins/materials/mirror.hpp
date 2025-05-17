@@ -11,6 +11,11 @@
 #include <string>
 #include "Abstracts/AMaterial.hpp"
 #include "Math/vectorOperations.hpp"
+#include "mirror.hpp"
+#include "Math/ray.hpp"
+#include "Math/vector3D.hpp"
+#include "Math/vectorOperations.hpp"
+#include "Utils/structs.hpp"
 
 class Mirror : public AMaterial{
     public:

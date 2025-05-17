@@ -8,23 +8,23 @@
 #ifndef SCREEN_HPP_
 #define SCREEN_HPP_
 
+#include <map>
+#include <algorithm>
 #include "Camera.hpp"
 #include "Parser.hpp"
 #include "Math/ray.hpp"
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
 #include "PrimitiveBuilder.hpp"
-#include <algorithm>
-#include <map>
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
-#include "RayTracer/Primitives/Plate.hpp"
+#include "RayTracer/Primitives/Plane.hpp"
 #include "RayTracer/Primitives/Sphere.hpp"
 /* Materials */
+#include "Interfaces/ILight.hpp"
 #include "Abstracts/AMaterial.hpp"
 #include "RayTracer/Materials/Metal.hpp"
 #include "RayTracer/Materials/Flatcolor.hpp"
-#include "Interfaces/ILight.hpp"
 #include "RayTracer/Lights/AmbientLight.hpp"
 #include "RayTracer/Lights/DirectionalLight.hpp"
 

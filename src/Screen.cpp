@@ -69,12 +69,13 @@ Vector3D Screen::getColor(const Ray &ray, int depth)
         if (depth < 50 && rec.material->scatter(ray, rec, attenuation, scattered)) {
             return attenuation * lighting * getColor(scattered, depth + 1);
         } else {
-            return Vector3D(0, 0, 0) * lighting;
+            return attenuation * lighting;
         }
     } else {
         Vector3D unit = ray.getDirection() / ray.getDirection().length();
         double t = 0.5 * (unit.y + 1);
         return (1 - t) * Vector3D(1,1,1);
+        // return Vector3D(0.4, 0.4, 0.4);
     }
 };
 

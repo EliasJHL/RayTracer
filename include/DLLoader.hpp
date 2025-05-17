@@ -9,9 +9,9 @@
 #define DLLOADER_HPP_
 
 #include <string>
-#include <functional>
 #include <dlfcn.h>
 #include <stdexcept>
+#include <functional>
 
 template <typename T>
 class DLLoader {
@@ -24,8 +24,8 @@ public:
     }
 
     ~DLLoader() {
-        // if (handler)
-        //     dlclose(handler);
+        if (handler)
+            dlclose(handler);
     }
 
     T *getInstance(const std::string &symbol) const {

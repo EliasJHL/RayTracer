@@ -16,11 +16,11 @@
 #include <regex>
 #include <iostream>
 #include <filesystem>
+#include "DLLoader.hpp"
 #include <libconfig.h++>
 
 /* Structs used for the parsing */
 #include "Utils/structs.hpp"
-#include "DLLoader.hpp"
 
 class Screen;
 
@@ -33,7 +33,6 @@ class Parser {
 
         static Parser *GetInstance(const std::string &path);
 
-        void LoadAllPlugins(Screen *s);
         void ParseConfig(Screen *s);
 
         Structs::Camera &getCameraConfig(void);

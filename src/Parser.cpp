@@ -57,7 +57,12 @@ void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
     builder = builder.setCenter(Point3D(x, y, z));
     builder = builder.setRadius(radius);
     builder = builder.setColor(Structs::Color{r, g, b});
-    builder = builder.setMaterial(s->mMaterials[material] != nullptr ? s->mMaterials[material] : s->mMaterials["flatcolor"]);
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
 
     s->mPrimitives.push_back(builder.createSphere());
 }
@@ -83,9 +88,42 @@ void Parser::ParseCone(Screen *s, const ConfSetting &cone)
     builder = builder.setRadius(radius);
     builder = builder.setHeight(height);
     builder = builder.setColor(Structs::Color{r, g, b});
-    builder = builder.setMaterial(s->mMaterials[material] != nullptr ? s->mMaterials[material] : s->mMaterials["flatcolor"]);
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
 
     s->mPrimitives.push_back(builder.createCone());
+}
+
+void Parser::ParsePlane(Screen *s, const ConfSetting &plane)
+{
+    std::string material, axis;
+    PrimitiveBuilder builder;
+    double pos;
+    int r, g, b;
+
+    axis = plane["axis"].c_str();
+    pos = (plane["position"].getType() == ConfSetting::TypeInt ? (int)plane["position"] : (double)plane["position"]);
+    material = std::string(plane["material"].c_str());
+
+    r = plane["color"]["r"];
+    g = plane["color"]["g"];
+    b = plane["color"]["b"];
+
+    builder = builder.setAxis(axis);
+    builder = builder.setAxisPosition(pos);
+    builder = builder.setColor(Structs::Color{r, g, b});
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
+
+    s->mPrimitives.push_back(builder.createPlane());
 }
 
 void Parser::ParseConfig(Screen *s)
@@ -112,7 +150,6 @@ void Parser::ParseConfig(Screen *s)
     /* Get the camera */
     try {
         const ConfSetting &camera = root["camera"];
-
         ParseCamera(camera);
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error(nfex.what());
@@ -135,7 +172,7 @@ void Parser::ParseConfig(Screen *s)
 
         for (int i = 0; i < planes.getLength(); ++i) {
             const ConfSetting &plane = planes[i];
-            // TODO: Implement ParsePlane method
+            ParsePlane(s, plane);
         }
         for (int i = 0; i < cones.getLength(); ++i) {
             const ConfSetting &cone = cones[i];
@@ -203,32 +240,5 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
         throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
     } catch (const libconfig::SettingTypeException &e) {
         throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
-    }
-}
-
-void Parser::LoadAllPlugins(Screen *s)
-{
-    const std::filesystem::path plugins{"plugins"};
-    std::regex const e{"raytracer_([A-Za-z0-9\\+]+)\\.so"};
-    std::smatch m;
-
-    for (auto const &dir : std::filesystem::directory_iterator{plugins})
-    {
-        std::string dirPath = std::string(dir.path());
-
-        if (!std::regex_search(dirPath, m, e))
-            continue;
-
-        try {
-            auto loader = std::make_shared<DLLoader<AMaterial>>(dirPath);
-            AMaterial *matPtr = loader->getInstance("createMaterial");
-            
-            if (matPtr != nullptr && !matPtr->name.empty()) {
-                s->mMaterials[matPtr->name] = std::shared_ptr<AMaterial>(matPtr);
-            }
-        } catch (const std::exception &e) {
-            // Gérer l'exception
-            std::cerr << "Error loading plugin: " << e.what() << std::endl;
-        }
     }
 }
