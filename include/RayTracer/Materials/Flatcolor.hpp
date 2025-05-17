@@ -21,9 +21,21 @@ class Flatcolor : public AMaterial {
 
         bool scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &attenuation, Ray &scattered) const
         {
-            attenuation = Vector3D((rec.color.r / 255), (rec.color.g / 255), (rec.color.b / 255));
-        
-            return false;
+            Vector3D baseColor = Vector3D(rec.color.r / 255.0, rec.color.g / 255.0, rec.color.b / 255.0);
+
+            /* Probabilité de 5% de renvoyer le rayon */
+            double reflectionCoeff = 0.05;
+            
+            if (drand48() > reflectionCoeff) {
+                attenuation = baseColor;
+                return false;
+            } else {
+                Vector3D reflected = reflect(unit_vector(rayIn.getDirection()), rec.normal);
+                scattered = Ray(rec.point, reflected);
+                
+                attenuation = baseColor;
+                return true;
+            }
         };
 };
 
