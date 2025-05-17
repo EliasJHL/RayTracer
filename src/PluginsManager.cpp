@@ -37,7 +37,7 @@ void PluginsManager::loadMaterial(const std::string& path, const std::string &na
 {
     auto loaderIt = mLoaders.find(name);
     if (loaderIt != mLoaders.end()) {
-        std::clog << "Material " << name << " (" << path << ") is already loaded." << std::endl;
+        std::clog << "[i] Material " << name << " (" << path << ") is already loaded." << std::endl;
         return;
     }
 
@@ -72,6 +72,8 @@ void PluginsManager::LoadAllPlugins(void)
     std::regex const e{"raytracer_([A-Za-z0-9\\+]+)\\.so"};
     std::smatch m;
 
+    std::clog << "=========\n[>] Loading all plugins..." << std::endl;
+
     for (auto const &dir : std::filesystem::directory_iterator{plugins})
     {
         std::string dirPath = std::string(dir.path());
@@ -86,4 +88,6 @@ void PluginsManager::LoadAllPlugins(void)
             continue;
         }
     }
+
+    std::clog << "[✓] All plugins found are loaded\n=========" << std::endl;
 }
