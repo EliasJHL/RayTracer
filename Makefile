@@ -11,7 +11,8 @@ SRC	=	$(shell find src include -name "*.cpp")
 
 LIBS	=	$(shell pkg-config --libs libconfig++)
 
-PLUGINS_SRC	=	./plugins/materials/mirror.cpp ./src/*.cpp ./src/Raytracer/Lights/*.cpp
+PLUGINS_SRC	=	./plugins/materials/mirror.cpp $(wildcard ./src/*.cpp) $(wildcard ./src/Raytracer/Lights/*.cpp)
+
 
 CFLAGS	=	$(shell pkg-config --cflags libconfig++)
 

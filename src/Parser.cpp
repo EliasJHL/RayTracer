@@ -58,10 +58,10 @@ void Parser::ParseSphere(Screen *s, const ConfSetting &sphere)
     builder = builder.setRadius(radius);
     builder = builder.setColor(Structs::Color{r, g, b});
     if (s->mMaterials[material] != nullptr) {
-        builder.setMaterial(s->mMaterials[material]);
+        builder = builder.setMaterial(s->mMaterials[material]);
     } else {
         std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
-        builder.setMaterial(s->mMaterials["flatcolor"]);
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
     }
 
     s->mPrimitives.push_back(builder.createSphere());
@@ -88,9 +88,42 @@ void Parser::ParseCone(Screen *s, const ConfSetting &cone)
     builder = builder.setRadius(radius);
     builder = builder.setHeight(height);
     builder = builder.setColor(Structs::Color{r, g, b});
-    builder = builder.setMaterial(s->mMaterials[material] != nullptr ? s->mMaterials[material] : s->mMaterials["flatcolor"]);
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
 
     s->mPrimitives.push_back(builder.createCone());
+}
+
+void Parser::ParsePlane(Screen *s, const ConfSetting &plane)
+{
+    std::string material, axis;
+    PrimitiveBuilder builder;
+    double pos;
+    int r, g, b;
+
+    axis = plane["axis"].c_str();
+    pos = (plane["position"].getType() == ConfSetting::TypeInt ? (int)plane["position"] : (double)plane["position"]);
+    material = std::string(plane["material"].c_str());
+
+    r = plane["color"]["r"];
+    g = plane["color"]["g"];
+    b = plane["color"]["b"];
+
+    builder = builder.setAxis(axis);
+    builder = builder.setAxisPosition(pos);
+    builder = builder.setColor(Structs::Color{r, g, b});
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
+
+    s->mPrimitives.push_back(builder.createPlane());
 }
 
 void Parser::ParseConfig(Screen *s)
@@ -117,7 +150,6 @@ void Parser::ParseConfig(Screen *s)
     /* Get the camera */
     try {
         const ConfSetting &camera = root["camera"];
-
         ParseCamera(camera);
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error(nfex.what());
@@ -140,7 +172,7 @@ void Parser::ParseConfig(Screen *s)
 
         for (int i = 0; i < planes.getLength(); ++i) {
             const ConfSetting &plane = planes[i];
-            // TODO: Implement ParsePlane method
+            ParsePlane(s, plane);
         }
         for (int i = 0; i < cones.getLength(); ++i) {
             const ConfSetting &cone = cones[i];

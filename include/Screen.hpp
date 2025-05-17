@@ -18,7 +18,7 @@
 #include "PrimitiveBuilder.hpp"
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
-#include "RayTracer/Primitives/Plate.hpp"
+#include "RayTracer/Primitives/Plane.hpp"
 #include "RayTracer/Primitives/Sphere.hpp"
 /* Materials */
 #include "Interfaces/ILight.hpp"

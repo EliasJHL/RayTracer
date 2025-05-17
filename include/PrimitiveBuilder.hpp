@@ -16,6 +16,7 @@
 #include "Math/vectorOperations.hpp"
 #include "RayTracer/Primitives/Cone.hpp"
 #include "RayTracer/Primitives/Sphere.hpp"
+#include "RayTracer/Primitives/Plane.hpp"
 
 struct Params {
     Point3D center;
@@ -28,6 +29,8 @@ struct Params {
     std::optional<double> angle;
     std::optional<double> size_x;
     std::optional<double> size_y;
+    std::optional<Vector3D> axisPos;
+    std::optional<Axis> axis;
 };
 
 class PrimitiveBuilder {
@@ -39,41 +42,75 @@ class PrimitiveBuilder {
             mParams.center = center;
             return *this;
         };
+        
         PrimitiveBuilder &setMaterial(std::shared_ptr<AMaterial> material) {
             mParams.material = material;
             return *this;
         };
+        
         PrimitiveBuilder &setRadius(double radius) {
             mParams.radius = radius;
             return *this;
         };
+        
         PrimitiveBuilder &setColor(Structs::Color color) {
             mParams.color = color;
             return *this;
         }
+        
         PrimitiveBuilder &setHeight(double height) {
             mParams.height = height;
             return *this;
         };
+        
         PrimitiveBuilder &setAngle(double angle) {
             mParams.angle = angle;
             return *this;
         };
 
+        PrimitiveBuilder &setAxis(const std::string &axe) {
+            if (axe == "X")
+                mParams.axis = Axis::X;
+            else if (axe == "Y")
+                mParams.axis = Axis::Y;
+            else if (axe == "Z")
+                mParams.axis = Axis::Z;
+            else
+                throw std::runtime_error("[!] Invalid axis : " + axe + ".");
+            return *this;
+        }
+
+        PrimitiveBuilder &setAxisPosition(double pos) {
+            if (mParams.axis == Axis::X)
+                mParams.axisPos = Vector3D(pos, 0, 0);
+            if (mParams.axis == Axis::Y)
+                mParams.axisPos = Vector3D(0, pos, 0);
+            if (mParams.axis == Axis::Z)
+                mParams.axisPos = Vector3D(0, 0, pos);
+            return *this;
+        }
+
         std::unique_ptr<APrimitive> createSphere(void) {
             if (!mParams.radius.has_value()) {
-                throw std::runtime_error("Radius is not set for Sphere creation.");
+                throw std::runtime_error("[!] Radius is not set for Sphere creation.");
             }
             return std::make_unique<Sphere>(mParams.center, mParams.color, mParams.material, mParams.radius.value());
         };
 
         std::unique_ptr<APrimitive> createCone(void) {
             if (!mParams.radius.has_value() || !mParams.height.has_value()) {
-                throw std::runtime_error("Radius, height, or direction is not set for Cone creation.");
+                throw std::runtime_error("[!] Radius, height, or direction is not set for Cone creation.");
             }
             Vector3D direction = Vector3D(0, 1, 0);
             return std::make_unique<Cone>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
         };
+
+        std::unique_ptr<APrimitive> createPlane(void) {
+            if (!mParams.axisPos.has_value() || !mParams.axis.has_value()) {
+                throw std::runtime_error("[!] Axis, position not defined.");
+            }
+            return std::make_unique<Plane>(mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
+        }
     private:
         Params mParams;
 };

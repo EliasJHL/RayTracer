@@ -24,8 +24,8 @@ public:
     }
 
     ~DLLoader() {
-        // if (handler)
-        //     dlclose(handler);
+        if (handler)
+            dlclose(handler);
     }
 
     T *getInstance(const std::string &symbol) const {
