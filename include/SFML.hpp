@@ -15,7 +15,7 @@
 
 class WindowManager {
     public:
-        WindowManager(unsigned int width, unsigned int height, const std::string& title = "Raytracer")
+        WindowManager(int width, int height, const std::string& title = "Raytracer")
             : width(width), height(height) {
             window.create(sf::VideoMode(width, height), title);
             texture.create(width, height);
