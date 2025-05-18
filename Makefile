@@ -7,6 +7,8 @@
 
 NAME	=	raytracer
 
+SFML_FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+
 SRC	=	$(shell find src include -name "*.cpp")
 
 LIBS	=	$(shell pkg-config --libs libconfig++)
@@ -19,7 +21,7 @@ CFLAGS	=	$(shell pkg-config --cflags libconfig++)
 all: $(NAME)
 
 $(NAME): plugins
-	g++ -std=c++17 $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS)
+	g++ -std=c++17 $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS) $(SFML_FLAGS)
 	@echo "\033[32m= = = = =  COMPILATION COMPLETED  = = = = =\033[0m"
 
 .PHONY: plugins
