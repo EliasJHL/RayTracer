@@ -27,6 +27,7 @@
 #include "RayTracer/Materials/Flatcolor.hpp"
 #include "RayTracer/Lights/AmbientLight.hpp"
 #include "RayTracer/Lights/DirectionalLight.hpp"
+#include "RayTracer/Lights/PointLight.hpp"
 
 class Screen {
     public:
@@ -45,6 +46,8 @@ class Screen {
         std::map<std::string, std::shared_ptr<AMaterial>> mMaterials;
         std::vector<std::shared_ptr<ILight>> mLights;
         float diffuseIntensity;
+        bool cast_shadows = true;
+        int max_depth = 50;
 };
 
 #endif /* !SCREEN_HPP_ */
