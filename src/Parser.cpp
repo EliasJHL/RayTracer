@@ -10,6 +10,7 @@
 #include "Screen.hpp"
 #include "RayTracer/Lights/AmbientLight.hpp"
 #include "RayTracer/Lights/DirectionalLight.hpp"
+#include "RayTracer/Lights/PointLight.hpp"
 #include <filesystem>
 
 Parser *Parser::mParser = nullptr;
@@ -224,7 +225,6 @@ void Parser::ParseConfig(Screen *s)
         throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
     }
 
-    /* Get the primitives */
     try {
         const ConfSetting &primitives = root["primitives"];
 
@@ -260,8 +260,6 @@ void Parser::ParseConfig(Screen *s)
     } catch (const libconfig::SettingTypeException &e) {
         throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
     }
-    
-    /* Get the lights */
     ParseLights(s, cfg);
 }
 
@@ -270,16 +268,28 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
     try {
         const ConfSetting &root = config.getRoot();
         const ConfSetting &lights = root["lights"];
+
         if (lights.exists("ambient")) {
             float ambientIntensity = lights["ambient"];
-            auto ambient = std::make_shared<AmbientLight>(ambientIntensity);
+            
+            Structs::Color ambientColor = {255, 255, 255};
+            if (lights.exists("ambient_color")) {
+                const ConfSetting &colorSetting = lights["ambient_color"];
+                ambientColor.r = (int)colorSetting["r"];
+                ambientColor.g = (int)colorSetting["g"];
+                ambientColor.b = (int)colorSetting["b"];
+            }
+            
+            auto ambient = std::make_shared<AmbientLight>(ambientIntensity, ambientColor);
             s->mLights.push_back(ambient);
             s->ambientIntensity = ambientIntensity;
         }
+
         if (lights.exists("diffuse")) {
             float diffuseIntensity = lights["diffuse"];
             s->diffuseIntensity = diffuseIntensity;
         }
+
         if (lights.exists("directional")) {
             const ConfSetting &directional = lights["directional"];
             
@@ -293,16 +303,26 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
                     direction.z = dir["z"].getType() == ConfSetting::TypeInt ? (int)dir["z"] : (double)dir["z"];
                 } else {
                     direction = Vector3D(0.0, -1.0, 0.0);
+                }              
+                Structs::Color color = {255, 255, 255};
+                if (dirLight.exists("color")) {
+                    const ConfSetting &colorSetting = dirLight["color"];
+                    color.r = (int)colorSetting["r"];
+                    color.g = (int)colorSetting["g"];
+                    color.b = (int)colorSetting["b"];
                 }
                 float intensity = 1.0f;
                 if (dirLight.exists("intensity")) {
                     intensity = dirLight["intensity"];
+                } else if (dirLight.exists("diffuse")) {
+                    intensity = dirLight["diffuse"];
                 }
-                auto directional = std::make_shared<DirectionalLight>(direction, intensity);
+                
+                auto directional = std::make_shared<DirectionalLight>(direction, intensity, color);
                 s->mLights.push_back(directional);
             }
         }
-
+        
         if (lights.exists("point")) {
             const ConfSetting &pointLights = lights["point"];
             
@@ -311,6 +331,22 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
                 double x = pointLight["x"].getType() == ConfSetting::TypeInt ? (int)pointLight["x"] : (double)pointLight["x"];
                 double y = pointLight["y"].getType() == ConfSetting::TypeInt ? (int)pointLight["y"] : (double)pointLight["y"];
                 double z = pointLight["z"].getType() == ConfSetting::TypeInt ? (int)pointLight["z"] : (double)pointLight["z"];
+                Vector3D position(x, y, z);
+                Structs::Color color = {255, 255, 255};
+                if (pointLight.exists("color")) {
+                    const ConfSetting &colorSetting = pointLight["color"];
+                    color.r = (int)colorSetting["r"];
+                    color.g = (int)colorSetting["g"];
+                    color.b = (int)colorSetting["b"];
+                }
+                float intensity = 1.0f;
+                if (pointLight.exists("intensity")) {
+                    intensity = pointLight["intensity"];
+                } else if (pointLight.exists("diffuse")) {
+                    intensity = pointLight["diffuse"];
+                }
+                auto point = std::make_shared<PointLight>(position, intensity, color);
+                s->mLights.push_back(point);
             }
         }
         
