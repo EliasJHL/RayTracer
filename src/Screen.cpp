@@ -6,6 +6,7 @@
 */
 
 #include "Screen.hpp"
+#include "RenderingState.hpp"
 
 Screen::Screen() : diffuseIntensity(0.6)
 {
@@ -85,11 +86,13 @@ inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<
 }
 
 void Screen::startRendering(void) {
+    RenderingContext context(std::make_unique<InitializationState>());
+    context.execute();
     Parser *p = Parser::GetInstance("");
 
     /* Sort to get the closest to the camera on top */
     std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
-
+    context.execute();
     Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
     
@@ -109,4 +112,5 @@ void Screen::startRendering(void) {
             std::cout << r << ' ' << g << ' ' << b << '\n';
         }
     }
+    context.execute();
 };
