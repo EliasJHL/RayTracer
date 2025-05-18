@@ -9,14 +9,15 @@
 #include <cmath>
 
 DirectionalLight::DirectionalLight()
-    : m_direction(Vector3D(0.0f, -1.0f, 0.0f)),
-      m_intensity(1.0f)
+        : m_direction(Vector3D(0.0f, -1.0f, 0.0f)),
+        m_intensity(1.0f),
+        m_color{255, 255, 255}
 {
     m_direction = m_direction.normalize();
 }
 
-DirectionalLight::DirectionalLight(const Vector3D& direction, float intensity)
-    : m_intensity(intensity)
+DirectionalLight::DirectionalLight(const Vector3D& direction, float intensity, const Structs::Color& color)
+    : m_intensity(intensity), m_color(color)
 {
     m_direction = direction.normalize();
 }
@@ -35,6 +36,11 @@ float DirectionalLight::getIntensity(const Vector3D& point) const
     return m_intensity;
 }
 
+Structs::Color DirectionalLight::getColor() const
+{
+    return m_color;
+}
+
 Vector3D DirectionalLight::getPosition() const
 {
     float LARGE_DISTANCE = 10000.0f;
@@ -51,6 +57,11 @@ void DirectionalLight::setDirection(const Vector3D& direction)
 void DirectionalLight::setIntensity(float intensity)
 {
     m_intensity = intensity;
+}
+
+void DirectionalLight::setColor(const Structs::Color& color)
+{
+    m_color = color;
 }
 
 Vector3D DirectionalLight::getDirection() const

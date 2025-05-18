@@ -33,6 +33,7 @@
 #include "RayTracer/Materials/Flatcolor.hpp"
 #include "RayTracer/Lights/AmbientLight.hpp"
 #include "RayTracer/Lights/DirectionalLight.hpp"
+#include "RayTracer/Lights/PointLight.hpp"
 
 class Screen {
     public:
@@ -58,6 +59,8 @@ class Screen {
         std::vector<std::shared_ptr<ILight>> mLights;
         float ambientIntensity;
         float diffuseIntensity;
+        bool cast_shadows = true;
+        int max_depth = 50;
     private:
         WindowManager* mWindow;
         sf::Texture mTexture;       // Texture pour stocker l'image
