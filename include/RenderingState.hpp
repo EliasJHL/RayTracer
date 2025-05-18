@@ -14,24 +14,24 @@
 class RenderingContext;
 
 class IRenderingState {
-public:
-    virtual ~IRenderingState() = default;
-    virtual void handle(RenderingContext& context) = 0;
+    public:
+        virtual ~IRenderingState() = default;
+        virtual void handle(RenderingContext& context) = 0;
 };
 
 class InitializationState : public IRenderingState {
-public:
-    void handle(RenderingContext& context) override;
+    public:
+        void handle(RenderingContext& context) override;
 };
 
 class RenderingState : public IRenderingState {
-public:
-    void handle(RenderingContext& context) override;
+    public:
+        void handle(RenderingContext& context) override;
 };
 
 class FinishedState : public IRenderingState {
-public:
-    void handle(RenderingContext& context) override;
+    public:
+        void handle(RenderingContext& context) override;
 };
 
 #endif // RENDERING_STATE_HPP
