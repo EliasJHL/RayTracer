@@ -17,11 +17,16 @@
 
 class Cylinder : public APrimitive {
     public:
-        Cylinder(const Point3D &baseCenter, const Vector3D &direction, Structs::Color color, 
+        Cylinder(const std::string &name, const Point3D &baseCenter, const Vector3D &direction, Structs::Color color, 
                 std::shared_ptr<AMaterial> material, double radius, double height)
-            : APrimitive(baseCenter, color, material), direction(normalize(direction)), 
+            : APrimitive(name, baseCenter, color, material), direction(normalize(direction)), 
               radius(radius), height(height) {};
         ~Cylinder() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        };
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {

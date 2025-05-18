@@ -17,9 +17,9 @@
 
 class Triangle : public APrimitive {
     public:
-        Triangle(const Point3D &v0, const Point3D &v1, const Point3D &v2, 
+        Triangle(const std::string &name, const Point3D &v0, const Point3D &v1, const Point3D &v2, 
                 Structs::Color color, std::shared_ptr<AMaterial> material)
-            : APrimitive(calculateCenter(v0, v1, v2), color, material), 
+            : APrimitive(name, calculateCenter(v0, v1, v2), color, material), 
               v0(v0), v1(v1), v2(v2)
         {
             Vector3D edge1 = v1 - v0;
@@ -28,6 +28,11 @@ class Triangle : public APrimitive {
         };
         
         ~Triangle() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        };
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {

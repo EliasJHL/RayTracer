@@ -133,14 +133,14 @@ class PrimitiveBuilder {
                 throw std::runtime_error("[!] Radius or height is not set for Cylinder creation.");
             }
             Vector3D direction = Vector3D(0, 1, 0);
-            return std::make_unique<Cylinder>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+            return std::make_unique<Cylinder>("cylinder", mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
         };
 
         std::unique_ptr<APrimitive> createTriangle(void) {
             if (!mParams.v0.has_value() || !mParams.v1.has_value() || !mParams.v2.has_value()) {
                 throw std::runtime_error("[!] Vertices are not set for Triangle creation.");
             }
-            return std::make_unique<Triangle>(mParams.v0.value(), mParams.v1.value(), mParams.v2.value(), mParams.color, mParams.material);
+            return std::make_unique<Triangle>("triangle", mParams.v0.value(), mParams.v1.value(), mParams.v2.value(), mParams.color, mParams.material);
         };
     private:
         Params mParams;
