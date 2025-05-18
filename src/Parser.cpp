@@ -98,6 +98,37 @@ void Parser::ParseCone(Screen *s, const ConfSetting &cone)
     s->mPrimitives.push_back(builder.createCone());
 }
 
+void Parser::ParseCylinder(Screen *s, const ConfSetting &cylinder)
+{
+    std::string material;
+    PrimitiveBuilder builder;
+    double x, y, z, radius, height;
+    int r, g, b;
+
+    x = (cylinder["x"].getType() == ConfSetting::TypeInt ? (int)cylinder["x"] : (double)cylinder["x"]) / 1;
+    y = (cylinder["y"].getType() == ConfSetting::TypeInt ? (int)cylinder["y"] : (double)cylinder["y"]) / 1;
+    z = (cylinder["z"].getType() == ConfSetting::TypeInt ? (int)cylinder["z"] : (double)cylinder["z"]) / 1;
+    radius = cylinder["r"].getType() == ConfSetting::TypeInt ? (int)cylinder["r"] : (double)cylinder["r"];
+    height = cylinder["h"].getType() == ConfSetting::TypeInt ? (int)cylinder["h"] : (double)cylinder["h"];
+    material = std::string(cylinder["material"].c_str());
+    r = cylinder["color"]["r"];
+    g = cylinder["color"]["g"];
+    b = cylinder["color"]["b"];
+
+    builder = builder.setCenter(Point3D(x, y, z));
+    builder = builder.setRadius(radius);
+    builder = builder.setHeight(height);
+    builder = builder.setColor(Structs::Color{r, g, b});
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
+
+    s->mPrimitives.push_back(builder.createCylinder());
+}
+
 void Parser::ParsePlane(Screen *s, const ConfSetting &plane)
 {
     std::string material, axis;
@@ -124,6 +155,42 @@ void Parser::ParsePlane(Screen *s, const ConfSetting &plane)
     }
 
     s->mPrimitives.push_back(builder.createPlane());
+}
+
+void Parser::ParseTriangle(Screen *s, const ConfSetting &triangle)
+{
+    std::string material;
+    PrimitiveBuilder builder;
+    double x0, y0, z0, x1, y1, z1, x2, y2, z2;
+    int r, g, b;
+
+    x0 = (triangle["v0"]["x"].getType() == ConfSetting::TypeInt ? (int)triangle["v0"]["x"] : (double)triangle["v0"]["x"]) / 1;
+    y0 = (triangle["v0"]["y"].getType() == ConfSetting::TypeInt ? (int)triangle["v0"]["y"] : (double)triangle["v0"]["y"]) / 1;
+    z0 = (triangle["v0"]["z"].getType() == ConfSetting::TypeInt ? (int)triangle["v0"]["z"] : (double)triangle["v0"]["z"]) / 1;
+
+    x1 = (triangle["v1"]["x"].getType() == ConfSetting::TypeInt ? (int)triangle["v1"]["x"] : (double)triangle["v1"]["x"]) / 1;
+    y1 = (triangle["v1"]["y"].getType() == ConfSetting::TypeInt ? (int)triangle["v1"]["y"] : (double)triangle["v1"]["y"]) / 1;
+    z1 = (triangle["v1"]["z"].getType() == ConfSetting::TypeInt ? (int)triangle["v1"]["z"] : (double)triangle["v1"]["z"]) / 1;
+
+    x2 = (triangle["v2"]["x"].getType() == ConfSetting::TypeInt ? (int)triangle["v2"]["x"] : (double)triangle["v2"]["x"]) / 1;
+    y2 = (triangle["v2"]["y"].getType() == ConfSetting::TypeInt ? (int)triangle["v2"]["y"] : (double)triangle["v2"]["y"]) / 1;
+    z2 = (triangle["v2"]["z"].getType() == ConfSetting::TypeInt ? (int)triangle["v2"]["z"] : (double)triangle["v2"]["z"]) / 1;
+
+    material = std::string(triangle["material"].c_str());
+    r = triangle["color"]["r"];
+    g = triangle["color"]["g"];
+    b = triangle["color"]["b"];
+    builder = builder.setV0(Point3D(x0, y0, z0));
+    builder = builder.setV1(Point3D(x1, y1, z1));
+    builder = builder.setV2(Point3D(x2, y2, z2));
+    builder = builder.setColor(Structs::Color{r, g, b});
+    if (s->mMaterials[material] != nullptr) {
+        builder = builder.setMaterial(s->mMaterials[material]);
+    } else {
+        std::cerr << "[!] Material " << material << " not found -> Setting default material : flatcolor." << std::endl;
+        builder = builder.setMaterial(s->mMaterials["flatcolor"]);
+    }
+    s->mPrimitives.push_back(builder.createTriangle());
 }
 
 void Parser::ParseConfig(Screen *s)
@@ -164,6 +231,8 @@ void Parser::ParseConfig(Screen *s)
         const ConfSetting &spheres = primitives["spheres"];
         const ConfSetting &planes = primitives["planes"];
         const ConfSetting &cones = primitives["cones"];
+        const ConfSetting &cylinders = primitives["cylinders"];
+        const ConfSetting &triangles = primitives["triangles"];
 
         for (int i = 0; i < spheres.getLength(); ++i) {
             const ConfSetting &sphere = spheres[i];
@@ -177,6 +246,14 @@ void Parser::ParseConfig(Screen *s)
         for (int i = 0; i < cones.getLength(); ++i) {
             const ConfSetting &cone = cones[i];
             ParseCone(s, cone);
+        }
+        for (int i = 0; i < cylinders.getLength(); ++i) {
+            const ConfSetting &cylinder = cylinders[i];
+            ParseCylinder(s, cylinder);
+        }
+        for (int i = 0; i < triangles.getLength(); ++i) {
+            const ConfSetting &triangle = triangles[i];
+            ParseTriangle(s, triangle);
         }
     } catch (const libconfig::SettingNotFoundException &nfex) {
         throw std::runtime_error("Error : Parameter missing : " + std::string(nfex.getPath()));
