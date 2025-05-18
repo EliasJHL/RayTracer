@@ -94,7 +94,7 @@ class PrimitiveBuilder {
             if (!mParams.radius.has_value()) {
                 throw std::runtime_error("[!] Radius is not set for Sphere creation.");
             }
-            return std::make_unique<Sphere>(mParams.center, mParams.color, mParams.material, mParams.radius.value());
+            return std::make_unique<Sphere>("sphere", mParams.center, mParams.color, mParams.material, mParams.radius.value());
         };
 
         std::unique_ptr<APrimitive> createCone(void) {
@@ -102,14 +102,14 @@ class PrimitiveBuilder {
                 throw std::runtime_error("[!] Radius, height, or direction is not set for Cone creation.");
             }
             Vector3D direction = Vector3D(0, 1, 0);
-            return std::make_unique<Cone>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+            return std::make_unique<Cone>("cone", mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
         };
 
         std::unique_ptr<APrimitive> createPlane(void) {
             if (!mParams.axisPos.has_value() || !mParams.axis.has_value()) {
                 throw std::runtime_error("[!] Axis, position not defined.");
             }
-            return std::make_unique<Plane>(mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
+            return std::make_unique<Plane>("plane", mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
         }
     private:
         Params mParams;

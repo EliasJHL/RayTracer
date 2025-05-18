@@ -74,22 +74,27 @@ Vector3D Screen::getColor(const Ray &ray, int depth)
     } else {
         Vector3D unit = ray.getDirection() / ray.getDirection().length();
         double t = 0.5 * (unit.y + 1);
-        return (1 - t) * Vector3D(1, 1, 1);
+        return (1 - t) * Vector3D(ambientIntensity, ambientIntensity, ambientIntensity);
     }
 };
 
 inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimitive> &b)
 {
+    if (a->getName() == "plane" && b->getName() != "plane")
+        return true;
+    if (a->getName() != "plane" && b->getName() == "plane")
+        return false;
     return a->center.z < b->center.z;
 }
 
-void Screen::startRendering(void) {
+void Screen::startRendering(void)
+{
     Parser *p = Parser::GetInstance("");
 
     /* Sort to get the closest to the camera on top */
     std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
 
-    Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
+    Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView, Vector3D(p->mCameraConfig.rot_x, p->mCameraConfig.rot_y, p->mCameraConfig.rot_z));
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
     
     for (int y = 0; y < p->mCameraConfig.height; y++) {

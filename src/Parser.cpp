@@ -197,6 +197,7 @@ void Parser::ParseLights(Screen *s, const libconfig::Config &config)
             float ambientIntensity = lights["ambient"];
             auto ambient = std::make_shared<AmbientLight>(ambientIntensity);
             s->mLights.push_back(ambient);
+            s->ambientIntensity = ambientIntensity;
         }
         if (lights.exists("diffuse")) {
             float diffuseIntensity = lights["diffuse"];

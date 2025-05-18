@@ -17,9 +17,14 @@
 
 class Sphere : public APrimitive {
     public:
-        Sphere(const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, double radius)
-            : APrimitive(center, color, material), radius(radius) {};
+        Sphere(const std::string &name, const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, double radius)
+            : APrimitive(name, center, color, material), radius(radius) {};
         ~Sphere() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        }
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {
