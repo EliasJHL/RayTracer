@@ -110,7 +110,7 @@ void Screen::startRendering(void)
     std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
   
     context.execute();
-    Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
+    Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView, Vector3D(p->mCameraConfig.rot_x, p->mCameraConfig.rot_y, p->mCameraConfig.rot_z));
     createWindow(p->mCameraConfig.width, p->mCameraConfig.height);
 
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
