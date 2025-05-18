@@ -56,6 +56,7 @@ class Screen {
         std::vector<std::unique_ptr<APrimitive>> mPrimitives;
         std::map<std::string, std::shared_ptr<AMaterial>> mMaterials;
         std::vector<std::shared_ptr<ILight>> mLights;
+        float ambientIntensity;
         float diffuseIntensity;
     private:
         WindowManager* mWindow;

@@ -24,17 +24,22 @@ enum Axis {
 
 class Plane : public APrimitive {
     public:
-        Plane(const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, Axis axe)
-            : APrimitive(center, color, material), axis(axe)
+        Plane(const std::string &name, const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, Axis axe)
+            : APrimitive(name, center, color, material), axis(axe)
         {
             if (axis == Axis::X)
                 normal = Vector3D(1, 0, 0);
-            if (axis == Axis::Y)
+            if (axis == Axis::Y)    
                 normal = Vector3D(0, 1, 0);
             if (axis == Axis::Z)
                 normal = Vector3D(0, 0, 1);
         };
         ~Plane() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        };
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {

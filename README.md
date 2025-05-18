@@ -8,7 +8,7 @@ This project is a raytracer implementation designed to render 3D scenes based on
 
 ## Requirements
 
-C++17 for <filesystem>
+C++17 for filesystem
 
 ## Project Structure
 

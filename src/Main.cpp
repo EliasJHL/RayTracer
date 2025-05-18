@@ -29,8 +29,6 @@ int main(int ac, char **av)
         pm = PluginsManager::getInstance();
         pm->LoadAllPlugins();
         s.mMaterials = pm->getAllMaterials();
-        if (s.mMaterials["mirror"] == nullptr)
-            std::cerr << "AAAA" << std::endl;
         parser->ParseConfig(&s);
         s.startRendering();
     } catch (std::runtime_error &e) {

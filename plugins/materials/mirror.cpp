@@ -12,7 +12,7 @@ bool Mirror::scatter(const Ray &rayIn, const Structs::hitRecord &rec, Vector3D &
     Vector3D reflected = reflect(unit_vector(rayIn.getDirection()), rec.normal);
     scattered = Ray(rec.point, reflected);
     Vector3D objectColor = Vector3D(rec.color.r / 255.0, rec.color.g / 255.0, rec.color.b / 255.0);
-    attenuation = objectColor;
+    attenuation = Vector3D(0.9, 0.9, 0.9) * 0.9 + objectColor * 0.1;
     return true;
 };
 

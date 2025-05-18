@@ -87,13 +87,16 @@ Vector3D Screen::getColor(const Ray &ray, int depth)
     } else {
         Vector3D unit = ray.getDirection() / ray.getDirection().length();
         double t = 0.5 * (unit.y + 1);
-        return (1 - t) * Vector3D(1,1,1);
-        // return Vector3D(0.4, 0.4, 0.4);
+        return (1 - t) * Vector3D(ambientIntensity, ambientIntensity, ambientIntensity);
     }
 };
 
 inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<APrimitive> &b)
 {
+    if (a->getName() == "plane" && b->getName() != "plane")
+        return true;
+    if (a->getName() != "plane" && b->getName() == "plane")
+        return false;
     return a->center.z < b->center.z;
 }
 
@@ -105,6 +108,7 @@ void Screen::startRendering(void)
 
     /* Sort to get the closest to the camera on top */
     std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
+  
     context.execute();
     Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
     createWindow(p->mCameraConfig.width, p->mCameraConfig.height);
