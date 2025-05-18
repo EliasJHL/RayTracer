@@ -13,6 +13,18 @@ Screen::Screen() : diffuseIntensity(0.6)
     /* Create the default materials */
     mMaterials["flatcolor"] = std::make_shared<Flatcolor>();
     mMaterials["metal"] = std::make_shared<Metal>();
+    mWindow = nullptr;
+    mPixels = nullptr;
+}
+
+Screen::~Screen()
+{
+    if (mWindow) {
+        delete mWindow;
+    }
+    if (mPixels) {
+        delete[] mPixels;
+    }
 }
 
 bool Screen::checkForHit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const
@@ -85,7 +97,8 @@ inline bool compare(const std::unique_ptr<APrimitive> &a, const std::unique_ptr<
     return a->center.z < b->center.z;
 }
 
-void Screen::startRendering(void) {
+void Screen::startRendering(void)
+{
     RenderingContext context(std::make_unique<InitializationState>());
     context.execute();
     Parser *p = Parser::GetInstance("");
@@ -94,23 +107,60 @@ void Screen::startRendering(void) {
     std::sort(mPrimitives.begin(), mPrimitives.end(), compare);
     context.execute();
     Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView);
+    createWindow(p->mCameraConfig.width, p->mCameraConfig.height);
+
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
     
     for (int y = 0; y < p->mCameraConfig.height; y++) {
         for (int x = 0; x < p->mCameraConfig.width; x++) {
             Vector3D col = Vector3D(0, 0, 0);
-            for (int i = 0; i < p->antiAliasing ; i++) {
+            for (int i = 0; i < p->antiAliasing; i++) {
                 float co_x = float(x+drand48()) / float(p->mCameraConfig.width);
                 float co_y = float(y+drand48()) / float(p->mCameraConfig.height);
                 Ray ray = cam.getRay(co_x, co_y);
                 col += getColor(ray, 0);
             }
             col /= p->antiAliasing;
-            int r = 255 * col.x;
-            int g = 255 * col.y;
-            int b = 255 * col.z;
+            int r = std::min(255, int(255 * col.x));
+            int g = std::min(255, int(255 * col.y));
+            int b = std::min(255, int(255 * col.z));
             std::cout << r << ' ' << g << ' ' << b << '\n';
+            updatePixel(x, y, r, g, b);
+        }
+        if (y % 10 == 0 || y == p->mCameraConfig.height - 1) {
+            displayWindow();
         }
     }
     context.execute();
-};
+    while (mWindow && mWindow->isOpen()) {
+        mWindow->processEvents();
+        sf::sleep(sf::milliseconds(100));
+    }
+}
+
+void Screen::createWindow(int width, int height)
+{
+    if (mWindow) {
+        delete mWindow;
+    }
+    mWindow = new WindowManager(width, height, "Raytracer");
+    mTexture.create(width, height);
+    mSprite.setTexture(mTexture);
+    mPixels = new sf::Uint8[width * height * 4];
+    memset(mPixels, 0, width * height * 4 * sizeof(sf::Uint8));
+}
+
+void Screen::updatePixel(int x, int y, int r, int g, int b)
+{
+    if (!mWindow) return;
+
+    mWindow->setPixel(x, y, sf::Color(r, g, b));
+}
+
+void Screen::displayWindow()
+{
+    if (!mWindow) return;
+
+    mWindow->display();
+    mWindow->processEvents();
+}
