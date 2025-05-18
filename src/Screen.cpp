@@ -31,10 +31,12 @@ bool Screen::checkForHit(const Ray &r, double t_min, double t_max, Structs::hitR
 {
     Structs::hitRecord temp_rec;
     bool hitAnything = false;
+    double closest_so_far = t_max;
 
     for (const auto &primitive : mPrimitives) {
-        if (primitive->hit(r, t_min, t_max, temp_rec)) {
+        if (primitive->hit(r, t_min, closest_so_far, temp_rec)) {
             hitAnything = true;
+            closest_so_far = temp_rec.t;
             rec = temp_rec;
         }
     }
