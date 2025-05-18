@@ -12,22 +12,21 @@
 #include "RenderingState.hpp"
 
 class RenderingContext {
-private:
-    std::unique_ptr<IRenderingState> currentState;
+    public:
+        RenderingContext(std::unique_ptr<IRenderingState> initialState)
+            : currentState(std::move(initialState)) {}
 
-public:
-    RenderingContext(std::unique_ptr<IRenderingState> initialState)
-        : currentState(std::move(initialState)) {}
-
-    void setState(std::unique_ptr<IRenderingState> newState) {
-        currentState = std::move(newState);
-    }
-
-    void execute() {
-        if (currentState) {
-            currentState->handle(*this);
+        void setState(std::unique_ptr<IRenderingState> newState) {
+            currentState = std::move(newState);
         }
-    }
+
+        void execute() {
+            if (currentState) {
+                currentState->handle(*this);
+            }
+        }
+    private:
+        std::unique_ptr<IRenderingState> currentState;
 };
 
 #endif // RENDERING_CONTEXT_HPP
