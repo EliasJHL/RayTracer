@@ -16,6 +16,8 @@
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
 #include "PrimitiveBuilder.hpp"
+#include "RenderingContext.hpp"
+#include "RenderingState.hpp"
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
 #include "RayTracer/Primitives/Plane.hpp"
