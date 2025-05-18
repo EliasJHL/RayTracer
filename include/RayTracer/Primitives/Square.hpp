@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2025
 ** B-OOP-400-MPL-4-1-raytracer-elias-josue.hajjar-llauquen
 ** File description:
-** Sphere
+** Square
 */
 
-#ifndef SPHERE_HPP_
-#define SPHERE_HPP_
+#ifndef Square_HPP_
+#define Square_HPP_
 
 #include "Abstracts/APrimitive.hpp"
 #include "Math/ray.hpp"
@@ -15,16 +15,11 @@
 #include "Math/operators.hpp"
 #include "Math/vectorOperations.hpp"
 
-class Sphere : public APrimitive {
+class Square : public APrimitive {
     public:
-        Sphere(const std::string &name, const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, double radius)
-            : APrimitive(name, center, color, material), radius(radius) {};
-        ~Sphere() = default;
-
-        const std::string &getName(void) const override
-        {
-            return name;
-        }
+        Square(const Point3D &center, Structs::Color color, std::shared_ptr<AMaterial> material, double radius)
+            : APrimitive(center, color, material), radius(radius) {};
+        ~Square() = default;
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {
@@ -64,4 +59,4 @@ class Sphere : public APrimitive {
         double radius;
 };
 
-#endif /* !SPHERE_HPP_ */
+#endif /* !Square_HPP_ */

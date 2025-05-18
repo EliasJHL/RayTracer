@@ -14,6 +14,7 @@
 class IPrimitive {
     public:
         virtual ~IPrimitive() = default;
+        virtual const std::string &getName(void) const = 0;
         virtual bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const = 0;
 };
 

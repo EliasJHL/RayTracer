@@ -9,6 +9,7 @@
 #define SCREEN_HPP_
 
 #include <map>
+#include <cstring>
 #include <algorithm>
 #include "Camera.hpp"
 #include "Parser.hpp"
@@ -16,6 +17,11 @@
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
 #include "PrimitiveBuilder.hpp"
+#include "RenderingContext.hpp"
+#include "RenderingState.hpp"
+#include "WindowManager.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
 #include "RayTracer/Primitives/Plane.hpp"
@@ -32,7 +38,7 @@
 class Screen {
     public:
         Screen(void);
-        ~Screen() = default;
+        ~Screen();
 
         bool checkForHit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const;
 
@@ -42,12 +48,24 @@ class Screen {
 
         void startRendering(void);
 
+        void createWindow(int width, int height);
+
+        void displayWindow();
+
+        void updatePixel(int x, int y, int r, int g, int b);
+
         std::vector<std::unique_ptr<APrimitive>> mPrimitives;
         std::map<std::string, std::shared_ptr<AMaterial>> mMaterials;
         std::vector<std::shared_ptr<ILight>> mLights;
+        float ambientIntensity;
         float diffuseIntensity;
         bool cast_shadows = true;
         int max_depth = 50;
+    private:
+        WindowManager* mWindow;
+        sf::Texture mTexture;       // Texture pour stocker l'image
+        sf::Sprite mSprite;         // Sprite pour afficher l'image
+        sf::Uint8* mPixels;
 };
 
 #endif /* !SCREEN_HPP_ */

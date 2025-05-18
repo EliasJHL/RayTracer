@@ -17,11 +17,16 @@
 
 class Cone : public APrimitive {
     public:
-        Cone(const Point3D &apex, const Vector3D &direction, Structs::Color color, 
+        Cone(const std::string &name, const Point3D &apex, const Vector3D &direction, Structs::Color color, 
              std::shared_ptr<AMaterial> material, double radius, double height)
-            : APrimitive(apex, color, material), direction(normalize(direction)), 
+            : APrimitive(name, apex, color, material), direction(normalize(direction)), 
               radius(radius), height(height) {};
         ~Cone() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        }
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {

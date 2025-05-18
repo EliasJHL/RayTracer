@@ -18,6 +18,7 @@
 #include "RayTracer/Primitives/Sphere.hpp"
 #include "RayTracer/Primitives/Plane.hpp"
 #include "RayTracer/Primitives/Cylinder.hpp"
+#include "RayTracer/Primitives/Triangle.hpp"
 
 struct Params {
     Point3D center;
@@ -32,6 +33,7 @@ struct Params {
     std::optional<double> size_y;
     std::optional<Vector3D> axisPos;
     std::optional<Axis> axis;
+    std::optional<Point3D> v0, v1, v2;
 };
 
 class PrimitiveBuilder {
@@ -69,6 +71,19 @@ class PrimitiveBuilder {
             return *this;
         };
 
+        PrimitiveBuilder &setV0(const Point3D &v0) {
+            mParams.v0 = v0;
+            return *this;
+        };
+        PrimitiveBuilder &setV1(const Point3D &v1) {
+            mParams.v1 = v1;
+            return *this;
+        };
+        PrimitiveBuilder &setV2(const Point3D &v2) {
+            mParams.v2 = v2;
+            return *this;
+        };
+
         PrimitiveBuilder &setAxis(const std::string &axe) {
             if (axe == "X")
                 mParams.axis = Axis::X;
@@ -95,7 +110,7 @@ class PrimitiveBuilder {
             if (!mParams.radius.has_value()) {
                 throw std::runtime_error("[!] Radius is not set for Sphere creation.");
             }
-            return std::make_unique<Sphere>(mParams.center, mParams.color, mParams.material, mParams.radius.value());
+            return std::make_unique<Sphere>("sphere", mParams.center, mParams.color, mParams.material, mParams.radius.value());
         };
 
         std::unique_ptr<APrimitive> createCone(void) {
@@ -103,14 +118,14 @@ class PrimitiveBuilder {
                 throw std::runtime_error("[!] Radius, height, or direction is not set for Cone creation.");
             }
             Vector3D direction = Vector3D(0, 1, 0);
-            return std::make_unique<Cone>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+            return std::make_unique<Cone>("cone", mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
         };
 
         std::unique_ptr<APrimitive> createPlane(void) {
             if (!mParams.axisPos.has_value() || !mParams.axis.has_value()) {
                 throw std::runtime_error("[!] Axis, position not defined.");
             }
-            return std::make_unique<Plane>(mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
+            return std::make_unique<Plane>("plane", mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
         }
 
         std::unique_ptr<APrimitive> createCylinder(void) {
@@ -118,7 +133,14 @@ class PrimitiveBuilder {
                 throw std::runtime_error("[!] Radius or height is not set for Cylinder creation.");
             }
             Vector3D direction = Vector3D(0, 1, 0);
-            return std::make_unique<Cylinder>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+            return std::make_unique<Cylinder>("cylinder", mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+        };
+
+        std::unique_ptr<APrimitive> createTriangle(void) {
+            if (!mParams.v0.has_value() || !mParams.v1.has_value() || !mParams.v2.has_value()) {
+                throw std::runtime_error("[!] Vertices are not set for Triangle creation.");
+            }
+            return std::make_unique<Triangle>("triangle", mParams.v0.value(), mParams.v1.value(), mParams.v2.value(), mParams.color, mParams.material);
         };
     private:
         Params mParams;

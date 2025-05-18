@@ -17,11 +17,16 @@
 
 class Cylinder : public APrimitive {
     public:
-        Cylinder(const Point3D &baseCenter, const Vector3D &direction, Structs::Color color, 
+        Cylinder(const std::string &name, const Point3D &baseCenter, const Vector3D &direction, Structs::Color color, 
                 std::shared_ptr<AMaterial> material, double radius, double height)
-            : APrimitive(baseCenter, color, material), direction(normalize(direction)), 
+            : APrimitive(name, baseCenter, color, material), direction(normalize(direction)), 
               radius(radius), height(height) {};
         ~Cylinder() = default;
+
+        const std::string &getName(void) const override
+        {
+            return name;
+        };
 
         bool hit(const Ray &r, double t_min, double t_max, Structs::hitRecord &rec) const override
         {
@@ -30,15 +35,12 @@ class Cylinder : public APrimitive {
             Vector3D oc = r.getOrigin() - center;
             Vector3D rayDir = r.getDirection();
 
-            // Calcul des projections
             double dotDirOc = dot(dir, oc);
             double dotDirRayDir = dot(dir, rayDir);
 
-            // Calcul des composantes perpendiculaires
             Vector3D ocPerp = oc - dir * dotDirOc;
             Vector3D rayDirPerp = rayDir - dir * dotDirRayDir;
 
-            // Coefficients de l'équation quadratique pour l'intersection avec la surface cylindrique
             double a = dot(rayDirPerp, rayDirPerp);
             double b = 2 * dot(rayDirPerp, ocPerp);
             double c = dot(ocPerp, ocPerp) - radius * radius;
@@ -47,7 +49,6 @@ class Cylinder : public APrimitive {
             if (discriminant < 0)
                 return false;
             
-            // Résolution de l'équation quadratique
             double t = (-b - sqrt(discriminant)) / (2 * a);
             if (t < t_min || t > t_max) {
                 t = (-b + sqrt(discriminant)) / (2 * a);
@@ -55,10 +56,8 @@ class Cylinder : public APrimitive {
                     return false;
             }
 
-            // Calcul du point d'intersection
             Point3D hitPoint = r.pointAtParameter(t);
             
-            // Vérification que le point est dans les limites de hauteur du cylindre
             Vector3D hitVector = hitPoint - center;
             double hitHeight = dot(hitVector, dir);
             
