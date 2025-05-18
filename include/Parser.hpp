@@ -50,6 +50,7 @@ class Parser {
         void ParsePlane(Screen *s, const ConfSetting &plane);
         void ParseCone(Screen *s, const ConfSetting &cone);
         void ParseCylinder(Screen *s, const ConfSetting &cylinder);
+        void ParseTriangle(Screen *s, const ConfSetting &triangle);
 
         static Parser* mParser;
         std::string mConfigPath;
