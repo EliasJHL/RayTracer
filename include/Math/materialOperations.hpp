@@ -11,6 +11,14 @@
 #include "Math/vector3D.hpp"
 #include "Math/operators.hpp"
 
+/**
+ * @brief Generates a random point inside a unit sphere
+ * 
+ * Uses rejection sampling to find a random point inside a unit sphere.
+ * Creates random points in a cube and discards those outside the sphere.
+ * 
+ * @return Vector3D A random vector point inside a unit sphere
+ */
 inline Vector3D randomInUnitSphere() {
     Vector3D p;
     do {
