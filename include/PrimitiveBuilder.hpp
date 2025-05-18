@@ -17,6 +17,7 @@
 #include "RayTracer/Primitives/Cone.hpp"
 #include "RayTracer/Primitives/Sphere.hpp"
 #include "RayTracer/Primitives/Plane.hpp"
+#include "RayTracer/Primitives/Cylinder.hpp"
 
 struct Params {
     Point3D center;
@@ -111,6 +112,14 @@ class PrimitiveBuilder {
             }
             return std::make_unique<Plane>(mParams.axisPos.value(), mParams.color, mParams.material, mParams.axis.value());
         }
+
+        std::unique_ptr<APrimitive> createCylinder(void) {
+            if (!mParams.radius.has_value() || !mParams.height.has_value()) {
+                throw std::runtime_error("[!] Radius or height is not set for Cylinder creation.");
+            }
+            Vector3D direction = Vector3D(0, 1, 0);
+            return std::make_unique<Cylinder>(mParams.center, direction, mParams.color, mParams.material, mParams.radius.value(), mParams.height.value());
+        };
     private:
         Params mParams;
 };
