@@ -1,0 +1,251 @@
+\doxysection{Ambient\+Light Class Reference}
+\label{classAmbientLight}\index{AmbientLight@{AmbientLight}}
+
+
+Ambient Light implementation.  
+
+
+
+
+{\ttfamily \#include $<$Ambient\+Light.\+hpp$>$}
+
+Inheritance diagram for Ambient\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAmbientLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAmbientLight_a17fc66917dfe63f174b1582e92be9242}{Ambient\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAmbientLight_a8effc50b5709813288d4eb03c464dcca}{Ambient\+Light}} (float intensity=0.\+1f, const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAmbientLight_aae3b553ddaaf4868672d969dc9878935}{\texorpdfstring{$\sim$}{\string~}\+Ambient\+Light}} () override
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classAmbientLight_a4908c43ef5b9f94cff8673995bddd497}{get\+Direction}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get direction from point to light. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classAmbientLight_af5b4475457b6c590eaa132f0e38c53dc}{get\+Intensity}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get light intensity at a point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \mbox{\hyperlink{classAmbientLight_ae56eb6d7ede539f367b5568414645fdb}{get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get light color. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAmbientLight_ac16c67c3bccf1abef0e006077425115e}{is\+Shadowed}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point, const \mbox{\hyperlink{classRay}{Ray}} \&ray) const override
+\begin{DoxyCompactList}\small\item\em Check if point is in shadow. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classAmbientLight_ac732d2636ac965a5696cff548ab383c1}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get light position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAmbientLight_a43c0b26de2f4e2be6d4ecdd1be1b2c99}{set\+Intensity}} (float intensity) override
+\begin{DoxyCompactList}\small\item\em Set light intensity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAmbientLight_a31a8894f09c3b3e96db002869fdbd8cb}{set\+Color}} (const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color) override
+\begin{DoxyCompactList}\small\item\em Set light color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classILight}{ILight}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ILight} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{classILight_af70c2902232a48a92915270050b54c0e}{get\+Attenuation}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const
+\begin{DoxyCompactList}\small\item\em Get the attenuation factor based on distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ambient Light implementation. 
+
+Ambient light represents the indirect, scattered light that illuminates all surfaces uniformly regardless of their orientation. It provides a base level of illumination to prevent completely dark shadows. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{AmbientLight@{AmbientLight}!AmbientLight@{AmbientLight}}
+\index{AmbientLight@{AmbientLight}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{AmbientLight()}{AmbientLight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classAmbientLight_a17fc66917dfe63f174b1582e92be9242} 
+Ambient\+Light\+::\+Ambient\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Creates an ambient light with default parameters
+
+Default constructor Creates an ambient light with default intensity (0.\+1) and white color \index{AmbientLight@{AmbientLight}!AmbientLight@{AmbientLight}}
+\index{AmbientLight@{AmbientLight}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{AmbientLight()}{AmbientLight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classAmbientLight_a8effc50b5709813288d4eb03c464dcca} 
+Ambient\+Light\+::\+Ambient\+Light (\begin{DoxyParamCaption}\item[{float}]{intensity}{ = {\ttfamily 0.1f}, }\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{ = {\ttfamily \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255,~255,~255\}}}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The intensity of the ambient light (0.\+0-\/1.\+0) \\
+\hline
+{\em color} & The RGB color of the ambient light\\
+\hline
+\end{DoxyParams}
+Parameterized constructor Creates an ambient light with specified intensity and color \index{AmbientLight@{AmbientLight}!````~AmbientLight@{\texorpdfstring{$\sim$}{\string~}AmbientLight}}
+\index{````~AmbientLight@{\texorpdfstring{$\sim$}{\string~}AmbientLight}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AmbientLight()}{\string~AmbientLight()}}
+{\footnotesize\ttfamily \label{classAmbientLight_aae3b553ddaaf4868672d969dc9878935} 
+Ambient\+Light\+::\texorpdfstring{$\sim$}{\string~}\+Ambient\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor. 
+
+Destructor 
+
+\doxysubsection{Member Function Documentation}
+\index{AmbientLight@{AmbientLight}!getColor@{getColor}}
+\index{getColor@{getColor}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{classAmbientLight_ae56eb6d7ede539f367b5568414645fdb} 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} Ambient\+Light\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light color. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structStructs_1_1Color}{Structs\+::\+Color} The RGB color of the ambient light
+\end{DoxyReturn}
+Get light color 
+
+Implements \mbox{\hyperlink{classILight_a79bdda1dadbb06fcefececc87a6267a8}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily \label{classAmbientLight_a4908c43ef5b9f94cff8673995bddd497} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Ambient\+Light\+::get\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get direction from point to light. 
+
+For ambient light, direction is meaningless since it\textquotesingle{}s non-\/directional. Returns a zero vector by convention.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point (unused for ambient light) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} A zero vector
+\end{DoxyReturn}
+Get direction from point to light For ambient light, direction is meaningless since it illuminates all surfaces uniformly regardless of their orientation. Returns a zero vector. 
+
+Implements \mbox{\hyperlink{classILight_aaa3b9d09f776a569fa44a77ba6f5216b}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!getIntensity@{getIntensity}}
+\index{getIntensity@{getIntensity}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{getIntensity()}{getIntensity()}}
+{\footnotesize\ttfamily \label{classAmbientLight_af5b4475457b6c590eaa132f0e38c53dc} 
+float Ambient\+Light\+::get\+Intensity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light intensity at a point. 
+
+For ambient light, intensity is uniform regardless of position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point (unused for ambient light) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The global ambient intensity
+\end{DoxyReturn}
+Get light intensity at a point For ambient light, intensity is uniform throughout the scene 
+
+Implements \mbox{\hyperlink{classILight_a6a0f1fba0c2d764f634c22ab7512526f}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classAmbientLight_ac732d2636ac965a5696cff548ab383c1} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Ambient\+Light\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light position. 
+
+For ambient light, position is meaningless. Returns a zero vector by convention.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} A zero vector
+\end{DoxyReturn}
+Get light position For ambient light, position is meaningless. Returns a zero vector. 
+
+Implements \mbox{\hyperlink{classILight_a20b0f7f8385a2d17b521148d048b57d8}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!isShadowed@{isShadowed}}
+\index{isShadowed@{isShadowed}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{isShadowed()}{isShadowed()}}
+{\footnotesize\ttfamily \label{classAmbientLight_ac16c67c3bccf1abef0e006077425115e} 
+bool Ambient\+Light\+::is\+Shadowed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{, }\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if point is in shadow. 
+
+Ambient light is never blocked, so this always returns false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point (unused) \\
+\hline
+{\em ray} & The ray from camera to point (unused) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Always false (ambient light can\textquotesingle{}t be blocked)
+\end{DoxyReturn}
+Check if point is in shadow Ambient light is never blocked, so always returns false 
+
+Reimplemented from \mbox{\hyperlink{classILight_a879a896c50e03a73fa97c202378adf3c}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!setColor@{setColor}}
+\index{setColor@{setColor}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classAmbientLight_a31a8894f09c3b3e96db002869fdbd8cb} 
+void Ambient\+Light\+::set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The new RGB color\\
+\hline
+\end{DoxyParams}
+Set light color 
+
+Implements \mbox{\hyperlink{classILight_a48d1bcf3861afa43baae5f0335f92081}{ILight}}.
+
+\index{AmbientLight@{AmbientLight}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!AmbientLight@{AmbientLight}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily \label{classAmbientLight_a43c0b26de2f4e2be6d4ecdd1be1b2c99} 
+void Ambient\+Light\+::set\+Intensity (\begin{DoxyParamCaption}\item[{float}]{intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light intensity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The new intensity value (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Set light intensity 
+
+Implements \mbox{\hyperlink{classILight_a054870bb327c14e0fda175918bdba868}{ILight}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Lights/Ambient\+Light.\+hpp\item 
+src/\+Raytracer/\+Lights/Ambient\+Light.\+cpp\end{DoxyCompactItemize}

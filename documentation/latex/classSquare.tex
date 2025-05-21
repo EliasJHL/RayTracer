@@ -1,0 +1,83 @@
+\doxysection{Square Class Reference}
+\label{classSquare}\index{Square@{Square}}
+Inheritance diagram for Square\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSquare}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classSquare_aeb4c7132c0b38aca57de1ecdc95fcc4d} 
+{\bfseries Square} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, double radius)
+\item 
+bool \mbox{\hyperlink{classSquare_a2e2aa5c2af4c629c92fd6d5fdba5f430}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
+\begin{DoxyCompactList}\small\item\em Calculate whether a ray hits this primitive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries APrimitive} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+\item 
+const std\+::string \& \mbox{\hyperlink{classAPrimitive_a74c94f22e30c2e16e49560d475a15029}{get\+Name}} (void) const override=0
+\begin{DoxyCompactList}\small\item\em Get the name of the primitive type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIPrimitive}{IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPrimitive} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classSquare_a8cbc10af438e78d25a7dfa45eed42bb0} 
+double {\bfseries radius}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\item 
+\mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
+\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} {\bfseries color}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfseries material}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Square@{Square}!hit@{hit}}
+\index{hit@{hit}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \label{classSquare_a2e2aa5c2af4c629c92fd6d5fdba5f430} 
+bool Square\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{r}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate whether a ray hits this primitive. 
+
+Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The ray to check for intersection \\
+\hline
+{\em t\+\_\+min} & The minimum distance along the ray to check \\
+\hline
+{\em t\+\_\+max} & The maximum distance along the ray to check \\
+\hline
+{\em rec} & Output parameter for hit information if an intersection occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray intersects the primitive, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a31bd7f4356c8dea34e6c6ae121eeaf1c}{APrimitive}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Primitives/Square.\+hpp\end{DoxyCompactItemize}

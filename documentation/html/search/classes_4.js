@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['imaterial_0',['IMaterial',['../classIMaterial.html',1,'']]],
-  ['iprimitive_1',['IPrimitive',['../classIPrimitive.html',1,'']]]
+  ['hitrecord_0',['hitRecord',['../structhitRecord.html',1,'hitRecord'],['../structStructs_1_1hitRecord.html',1,'Structs::hitRecord']]]
 ];

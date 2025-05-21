@@ -14,26 +14,54 @@
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/vectorOperations.hpp"{}}}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }AMaterial;}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Metal\ :\ \textcolor{keyword}{public}\ AMaterial\{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Metal(\textcolor{keyword}{const}\ std::string\ \&n\ =\ \textcolor{stringliteral}{"{}metal"{}})\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ n;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \string~Metal()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ reflected\ =\ reflect(unit\_vector(rayIn.getDirection()),\ rec.normal);}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ reflected);}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ objectColor\ =\ Vector3D(rec.color.r\ /\ 255.0,\ rec.color.g\ /\ 255.0,\ rec.color.b\ /\ 255.0);}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ objectColor;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !METAL\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/materialOperations.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Metal\ :\ \textcolor{keyword}{public}\ AMaterial\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Metal(\textcolor{keyword}{const}\ std::string\ \&n\ =\ \textcolor{stringliteral}{"{}metal"{}})\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ n;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Metal()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ reflected\ =\ reflect(unit\_vector(rayIn.getDirection()),\ rec.normal);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ reflected\ =\ reflected\ +\ 0.9\ *\ randomInUnitSphere();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ reflected);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ reflectivity\ =\ 0.9;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ specularFactor\ =\ 0.8;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cosine\ =\ std::max(0.0,\ -\/dot(unit\_vector(rayIn.getDirection()),\ rec.normal));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fresnelFactor\ =\ reflectivity\ +\ (1\ -\/\ reflectivity)\ *\ pow(1\ -\/\ cosine,\ 5);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ baseColor\ =\ Vector3D(rec.color.r\ /\ 255.0,\ rec.color.g\ /\ 255.0,\ rec.color.b\ /\ 255.0);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ metallicTint;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (baseColor.x\ >\ 0.6\ \&\&\ baseColor.y\ >\ 0.6\ \&\&\ baseColor.z\ >\ 0.6)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ metallicTint\ =\ Vector3D(0.972,\ 0.960,\ 0.915);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (baseColor.x\ >\ 0.6\ \&\&\ baseColor.y\ >\ 0.4\ \&\&\ baseColor.z\ <\ 0.4)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ metallicTint\ =\ Vector3D(0.955,\ 0.637,\ 0.538);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (baseColor.x\ <\ 0.4\ \&\&\ baseColor.y\ >\ 0.4\ \&\&\ baseColor.z\ <\ 0.4)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ metallicTint\ =\ Vector3D(0.254,\ 0.829,\ 0.483);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (baseColor.x\ <\ 0.4\ \&\&\ baseColor.y\ <\ 0.4\ \&\&\ baseColor.z\ >\ 0.6)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ metallicTint\ =\ Vector3D(0.273,\ 0.471,\ 0.792);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ metallicTint\ =\ Vector3D(0.560,\ 0.570,\ 0.580);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ baseColor\ *\ (1.0\ -\/\ specularFactor)\ +\ metallicTint\ *\ specularFactor\ *\ fresnelFactor;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ minReflectivity\ =\ 0.3;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ attenuation\ *\ std::max(minReflectivity,\ fresnelFactor);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (dot(scattered.getDirection(),\ rec.normal)\ >\ 0);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !METAL\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

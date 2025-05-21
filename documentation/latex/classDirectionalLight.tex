@@ -1,0 +1,259 @@
+\doxysection{Directional\+Light Class Reference}
+\label{classDirectionalLight}\index{DirectionalLight@{DirectionalLight}}
+
+
+Directional Light implementation.  
+
+
+
+
+{\ttfamily \#include $<$Directional\+Light.\+hpp$>$}
+
+Inheritance diagram for Directional\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDirectionalLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDirectionalLight_a949b877ae041b9818f47eb812d80fa1b}{Directional\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDirectionalLight_ac12c573469beb8eb4d63e2b195d31f6c}{Directional\+Light}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&direction, float intensity=1.\+0f, const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDirectionalLight_a9dd45789bfe04e6376fe12c001940432}{\texorpdfstring{$\sim$}{\string~}\+Directional\+Light}} () override
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classDirectionalLight_a7f95271c1dabb3a2069b7e8cad05291b}{get\+Direction}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get direction from point to light. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classDirectionalLight_a929ba2b5c6b39f45a437f36b5c22730e}{get\+Intensity}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get light intensity at a point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \mbox{\hyperlink{classDirectionalLight_af7b2bc8b13bccde8149a0f9f4065fdca}{get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get light color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classDirectionalLight_aa5b9de8148076060dc4087eb37d88596}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get light position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDirectionalLight_aaa84b31b4f2470157f185831e60f1454}{set\+Direction}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&direction)
+\begin{DoxyCompactList}\small\item\em Set the direction of the light rays. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDirectionalLight_aad46eaeccd527058727da8c9b95ba7e1}{set\+Intensity}} (float intensity) override
+\begin{DoxyCompactList}\small\item\em Set light intensity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDirectionalLight_a2e817847abfd6f71601bf8b89557a3bf}{set\+Color}} (const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color) override
+\begin{DoxyCompactList}\small\item\em Set light color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classDirectionalLight_ab62f7d2d406d04833e4871b0c093b6c3}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Get the raw direction vector of the light. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classILight}{ILight}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ILight} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classILight_a879a896c50e03a73fa97c202378adf3c}{is\+Shadowed}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point, const \mbox{\hyperlink{classRay}{Ray}} \&ray) const
+\begin{DoxyCompactList}\small\item\em Check if a point is in shadow relative to this light. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{classILight_af70c2902232a48a92915270050b54c0e}{get\+Attenuation}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const
+\begin{DoxyCompactList}\small\item\em Get the attenuation factor based on distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Directional Light implementation. 
+
+Directional light represents light coming from a specific direction, like sunlight. The light rays are considered parallel and the light source is effectively at infinite distance, so only the direction matters. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{DirectionalLight@{DirectionalLight}!DirectionalLight@{DirectionalLight}}
+\index{DirectionalLight@{DirectionalLight}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{DirectionalLight()}{DirectionalLight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classDirectionalLight_a949b877ae041b9818f47eb812d80fa1b} 
+Directional\+Light\+::\+Directional\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Creates a directional light with default parameters (pointing downward from Y-\/axis)
+
+Default constructor Creates a directional light pointing downward along the Y-\/axis with default intensity (1.\+0) and white color \index{DirectionalLight@{DirectionalLight}!DirectionalLight@{DirectionalLight}}
+\index{DirectionalLight@{DirectionalLight}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{DirectionalLight()}{DirectionalLight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classDirectionalLight_ac12c573469beb8eb4d63e2b195d31f6c} 
+Directional\+Light\+::\+Directional\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{direction}{, }\item[{float}]{intensity}{ = {\ttfamily 1.0f}, }\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{ = {\ttfamily \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255,~255,~255\}}}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction vector for the light rays \\
+\hline
+{\em intensity} & The intensity of the light (0.\+0-\/1.\+0) \\
+\hline
+{\em color} & The RGB color of the light\\
+\hline
+\end{DoxyParams}
+Parameterized constructor Creates a directional light with specified direction, intensity, and color \index{DirectionalLight@{DirectionalLight}!````~DirectionalLight@{\texorpdfstring{$\sim$}{\string~}DirectionalLight}}
+\index{````~DirectionalLight@{\texorpdfstring{$\sim$}{\string~}DirectionalLight}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DirectionalLight()}{\string~DirectionalLight()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_a9dd45789bfe04e6376fe12c001940432} 
+Directional\+Light\+::\texorpdfstring{$\sim$}{\string~}\+Directional\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor. 
+
+Destructor 
+
+\doxysubsection{Member Function Documentation}
+\index{DirectionalLight@{DirectionalLight}!getColor@{getColor}}
+\index{getColor@{getColor}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_af7b2bc8b13bccde8149a0f9f4065fdca} 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} Directional\+Light\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light color. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structStructs_1_1Color}{Structs\+::\+Color} The RGB color of the directional light
+\end{DoxyReturn}
+Get light color 
+
+Implements \mbox{\hyperlink{classILight_a79bdda1dadbb06fcefececc87a6267a8}{ILight}}.
+
+\index{DirectionalLight@{DirectionalLight}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classDirectionalLight_ab62f7d2d406d04833e4871b0c093b6c3} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Directional\+Light\+::get\+Direction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the raw direction vector of the light. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} The direction in which the light rays travel
+\end{DoxyReturn}
+Get the raw direction vector of the light \index{DirectionalLight@{DirectionalLight}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classDirectionalLight_a7f95271c1dabb3a2069b7e8cad05291b} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Directional\+Light\+::get\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get direction from point to light. 
+
+For directional light, this is the same for all points (the negative of the light\textquotesingle{}s direction vector).
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point (unused for directional light) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} The direction from the point to the light
+\end{DoxyReturn}
+Get direction from point to light For directional lights, this is the same for all points (the negative of the light\textquotesingle{}s direction vector), since the light is considered to be at infinity 
+
+Implements \mbox{\hyperlink{classILight_aaa3b9d09f776a569fa44a77ba6f5216b}{ILight}}.
+
+\index{DirectionalLight@{DirectionalLight}!getIntensity@{getIntensity}}
+\index{getIntensity@{getIntensity}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{getIntensity()}{getIntensity()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_a929ba2b5c6b39f45a437f36b5c22730e} 
+float Directional\+Light\+::get\+Intensity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light intensity at a point. 
+
+For directional light, intensity is uniform regardless of position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point (unused for directional light) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The directional light intensity
+\end{DoxyReturn}
+Get light intensity at a point For directional lights, intensity is uniform throughout the scene 
+
+Implements \mbox{\hyperlink{classILight_a6a0f1fba0c2d764f634c22ab7512526f}{ILight}}.
+
+\index{DirectionalLight@{DirectionalLight}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_aa5b9de8148076060dc4087eb37d88596} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Directional\+Light\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light position. 
+
+For directional light, this returns a very distant point in the opposite direction of the light rays.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} A distant point in the light\textquotesingle{}s direction
+\end{DoxyReturn}
+Get light position For directional lights, returns a very distant point in the opposite direction of the light rays 
+
+Implements \mbox{\hyperlink{classILight_a20b0f7f8385a2d17b521148d048b57d8}{ILight}}.
+
+\index{DirectionalLight@{DirectionalLight}!setColor@{setColor}}
+\index{setColor@{setColor}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_a2e817847abfd6f71601bf8b89557a3bf} 
+void Directional\+Light\+::set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The new RGB color\\
+\hline
+\end{DoxyParams}
+Set light color 
+
+Implements \mbox{\hyperlink{classILight_a48d1bcf3861afa43baae5f0335f92081}{ILight}}.
+
+\index{DirectionalLight@{DirectionalLight}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_aaa84b31b4f2470157f185831e60f1454} 
+void Directional\+Light\+::set\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Set the direction of the light rays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The new direction vector (will be normalized)\\
+\hline
+\end{DoxyParams}
+Set the direction of the light rays \index{DirectionalLight@{DirectionalLight}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily \label{classDirectionalLight_aad46eaeccd527058727da8c9b95ba7e1} 
+void Directional\+Light\+::set\+Intensity (\begin{DoxyParamCaption}\item[{float}]{intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light intensity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The new intensity value (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Set light intensity 
+
+Implements \mbox{\hyperlink{classILight_a054870bb327c14e0fda175918bdba868}{ILight}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Lights/Directional\+Light.\+hpp\item 
+src/\+Raytracer/\+Lights/Directional\+Light.\+cpp\end{DoxyCompactItemize}

@@ -25,13 +25,24 @@
 \DoxyCodeLine{00021\ }
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ Ray\ \&rayIn,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec,\ Vector3D\ \&attenuation,\ Ray\ \&scattered)\textcolor{keyword}{\ const}}
 \DoxyCodeLine{00023\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ target\ =\ rec.point\ +\ rec.normal\ +\ randomInUnitSphere();}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ target\ -\/\ rec.point);}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ Vector3D((rec.color.r\ /\ 255),\ (rec.color.g\ /\ 255),\ (rec.color.b\ /\ 255));}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00029\ \};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !FLATCOLOR\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ baseColor\ =\ Vector3D(rec.color.r\ /\ 255.0,\ rec.color.g\ /\ 255.0,\ rec.color.b\ /\ 255.0);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Probabilité\ de\ 5\%\ de\ renvoyer\ le\ rayon\ */}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ reflectionCoeff\ =\ 0.05;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (drand48()\ >\ reflectionCoeff)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ baseColor;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ reflected\ =\ reflect(unit\_vector(rayIn.getDirection()),\ rec.normal);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scattered\ =\ Ray(rec.point,\ reflected);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attenuation\ =\ baseColor;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !FLATCOLOR\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

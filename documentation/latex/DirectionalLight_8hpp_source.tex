@@ -1,7 +1,47 @@
 \doxysection{Directional\+Light.\+hpp}
-\label{DirectionalLight_8hpp_source}\index{architest/include/RayTracer/Lights/DirectionalLight.hpp@{architest/include/RayTracer/Lights/DirectionalLight.hpp}}
+\label{DirectionalLight_8hpp_source}\index{include/RayTracer/Lights/DirectionalLight.hpp@{include/RayTracer/Lights/DirectionalLight.hpp}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ Raytracer}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ DirectionalLight\ -\/\ Implementation\ of\ directional\ lighting\ (like\ sunlight)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Interfaces/ILight.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }DirectionalLight\ :\ \textcolor{keyword}{public}\ ILight\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ DirectionalLight();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \ \ \ \ DirectionalLight(\textcolor{keyword}{const}\ Vector3D\&\ direction,\ \textcolor{keywordtype}{float}\ intensity\ =\ 1.0f,\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Structs::Color\&\ color\ =\ Structs::Color\{255,\ 255,\ 255\});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \string~DirectionalLight()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00053\ \ \ \ \ Vector3D\ getDirection(\textcolor{keyword}{const}\ Vector3D\&\ point)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ getIntensity(\textcolor{keyword}{const}\ Vector3D\&\ point)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ Structs::Color\ getColor()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00080\ \ \ \ \ Vector3D\ getPosition()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ setDirection(\textcolor{keyword}{const}\ Vector3D\&\ direction);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ setIntensity(\textcolor{keywordtype}{float}\ intensity)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ setColor(\textcolor{keyword}{const}\ Structs::Color\&\ color)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ Vector3D\ getDirection()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00111\ \ \ \ \ Vector3D\ m\_direction;\ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_intensity;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ Structs::Color\ m\_color;\ \ \ \ }
+\DoxyCodeLine{00114\ \};\ }
 
 \end{DoxyCode}

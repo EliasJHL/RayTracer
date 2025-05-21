@@ -18,17 +18,19 @@
 \DoxyCodeLine{00014\ }
 \DoxyCodeLine{00015\ \textcolor{keyword}{class\ }APrimitive\ :\ \textcolor{keyword}{public}\ IPrimitive\ \{}
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ APrimitive(\textcolor{keyword}{const}\ Point3D\ \&c\ =\ Point3D(0,0,0),\ Structs::Color\ col\ =\ Structs::Color\{255,255,255\},\ std::shared\_ptr<AMaterial>\ material\ =\ \textcolor{keyword}{nullptr})\ :\ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ center(c),\ color(col),\ material(material)\ \{\};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ APrimitive(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ Point3D\ \&c\ =\ Point3D(0,0,0),\ Structs::Color\ col\ =\ Structs::Color\{255,255,255\},\ std::shared\_ptr<AMaterial>\ material\ =\ \textcolor{keyword}{nullptr})\ :\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ name(name),\ center(c),\ color(col),\ material(material)\ \{\};}
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~APrimitive()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const\ override}\ =\ 0;}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Primitive's\ common\ data\ */}}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Point3D\ center;}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Structs::Color\ color;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::shared\_ptr<AMaterial>\ material;}
-\DoxyCodeLine{00026\ \};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !APRIMITIVE\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&getName(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const\ override}\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const\ override}\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Primitive's\ common\ data\ */}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Point3D\ center;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Structs::Color\ color;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::shared\_ptr<AMaterial>\ material;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !APRIMITIVE\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

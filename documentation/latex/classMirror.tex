@@ -1,0 +1,71 @@
+\doxysection{Mirror Class Reference}
+\label{classMirror}\index{Mirror@{Mirror}}
+Inheritance diagram for Mirror\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMirror}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classMirror_a72c1242dedfd3b57d130eb0fbaaa36fb} 
+{\bfseries Mirror} (const std\+::string \&n="{}mirror"{})
+\item 
+bool \mbox{\hyperlink{classMirror_a7fd30d119f51c7a11e4b3178c088c159}{scatter}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray\+In, const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec, \mbox{\hyperlink{classVector3D}{Vector3D}} \&attenuation, \mbox{\hyperlink{classRay}{Ray}} \&scattered) const
+\begin{DoxyCompactList}\small\item\em Calculates how a ray scatters when hitting this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAMaterial}{AMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries AMaterial} (const std\+::string \&name="{}"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIMaterial}{IMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMaterial} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAMaterial}{AMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Mirror@{Mirror}!scatter@{scatter}}
+\index{scatter@{scatter}!Mirror@{Mirror}}
+\doxysubsubsection{\texorpdfstring{scatter()}{scatter()}}
+{\footnotesize\ttfamily \label{classMirror_a7fd30d119f51c7a11e4b3178c088c159} 
+bool Mirror\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray\+In}{, }\item[{const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{, }\item[{\mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{attenuation}{, }\item[{\mbox{\hyperlink{classRay}{Ray}} \&}]{scattered}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates how a ray scatters when hitting this material. 
+
+This method determines whether a ray is absorbed or scattered by the material and if scattered, in what direction and with what attenuation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray\+In} & The incoming ray that hits the surface \\
+\hline
+{\em rec} & The hit record containing information about the intersection \\
+\hline
+{\em attenuation} & Output parameter for the ray\textquotesingle{}s color attenuation \\
+\hline
+{\em scattered} & Output parameter for the scattered ray \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray was scattered, false if it was absorbed 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAMaterial_a84b96e63496eced21a0a3b7f0584b9d8}{AMaterial}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+plugins/materials/mirror.\+hpp\item 
+plugins/materials/mirror.\+cpp\end{DoxyCompactItemize}

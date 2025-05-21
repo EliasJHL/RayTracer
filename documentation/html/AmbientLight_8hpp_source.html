@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RayTracer: architest/include/RayTracer/Lights/AmbientLight.hpp Source File</title>
+<title>RayTracer: include/RayTracer/Lights/AmbientLight.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,13 +106,64 @@ $(function(){initNavTree('AmbientLight_8hpp_source.html',''); initResizable(true
   <div class="headertitle"><div class="title">AmbientLight.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2025</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** Raytracer</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** AmbientLight - Implementation of ambient lighting</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Interfaces/ILight.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classAmbientLight.html">   19</a></span><span class="keyword">class </span><a class="code hl_function" href="classAmbientLight.html#a17fc66917dfe63f174b1582e92be9242">AmbientLight</a> : <span class="keyword">public</span> <a class="code hl_class" href="classILight.html">ILight</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="classAmbientLight.html#a17fc66917dfe63f174b1582e92be9242">AmbientLight</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="classAmbientLight.html#a17fc66917dfe63f174b1582e92be9242">AmbientLight</a>(<span class="keywordtype">float</span> intensity = 0.1f, <span class="keyword">const</span> <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a>&amp; color = <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a>{255, 255, 255});</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="classAmbientLight.html#aae3b553ddaaf4868672d969dc9878935">~AmbientLight</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classVector3D.html">Vector3D</a> <a class="code hl_function" href="classAmbientLight.html#a4908c43ef5b9f94cff8673995bddd497">getDirection</a>(<span class="keyword">const</span> <a class="code hl_class" href="classVector3D.html">Vector3D</a>&amp; point) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classAmbientLight.html#af5b4475457b6c590eaa132f0e38c53dc">getIntensity</a>(<span class="keyword">const</span> <a class="code hl_class" href="classVector3D.html">Vector3D</a>&amp; point) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a> <a class="code hl_function" href="classAmbientLight.html#ae56eb6d7ede539f367b5568414645fdb">getColor</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classAmbientLight.html#ac16c67c3bccf1abef0e006077425115e">isShadowed</a>(<span class="keyword">const</span> <a class="code hl_class" href="classVector3D.html">Vector3D</a>&amp; point, <span class="keyword">const</span> <a class="code hl_class" href="classRay.html">Ray</a>&amp; ray) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_class" href="classVector3D.html">Vector3D</a> <a class="code hl_function" href="classAmbientLight.html#ac732d2636ac965a5696cff548ab383c1">getPosition</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAmbientLight.html#a43c0b26de2f4e2be6d4ecdd1be1b2c99">setIntensity</a>(<span class="keywordtype">float</span> intensity) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAmbientLight.html#a31a8894f09c3b3e96db002869fdbd8cb">setColor</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a>&amp; color) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">float</span> m_intensity;         </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a> m_color;    </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
+</div>
+<div class="ttc" id="aclassAmbientLight_html_a17fc66917dfe63f174b1582e92be9242"><div class="ttname"><a href="classAmbientLight.html#a17fc66917dfe63f174b1582e92be9242">AmbientLight::AmbientLight</a></div><div class="ttdeci">AmbientLight()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:14</div></div>
+<div class="ttc" id="aclassAmbientLight_html_a31a8894f09c3b3e96db002869fdbd8cb"><div class="ttname"><a href="classAmbientLight.html#a31a8894f09c3b3e96db002869fdbd8cb">AmbientLight::setColor</a></div><div class="ttdeci">void setColor(const Structs::Color &amp;color) override</div><div class="ttdoc">Set light color.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:91</div></div>
+<div class="ttc" id="aclassAmbientLight_html_a43c0b26de2f4e2be6d4ecdd1be1b2c99"><div class="ttname"><a href="classAmbientLight.html#a43c0b26de2f4e2be6d4ecdd1be1b2c99">AmbientLight::setIntensity</a></div><div class="ttdeci">void setIntensity(float intensity) override</div><div class="ttdoc">Set light intensity.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:83</div></div>
+<div class="ttc" id="aclassAmbientLight_html_a4908c43ef5b9f94cff8673995bddd497"><div class="ttname"><a href="classAmbientLight.html#a4908c43ef5b9f94cff8673995bddd497">AmbientLight::getDirection</a></div><div class="ttdeci">Vector3D getDirection(const Vector3D &amp;point) const override</div><div class="ttdoc">Get direction from point to light.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:40</div></div>
+<div class="ttc" id="aclassAmbientLight_html_aae3b553ddaaf4868672d969dc9878935"><div class="ttname"><a href="classAmbientLight.html#aae3b553ddaaf4868672d969dc9878935">AmbientLight::~AmbientLight</a></div><div class="ttdeci">~AmbientLight() override</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:31</div></div>
+<div class="ttc" id="aclassAmbientLight_html_ac16c67c3bccf1abef0e006077425115e"><div class="ttname"><a href="classAmbientLight.html#ac16c67c3bccf1abef0e006077425115e">AmbientLight::isShadowed</a></div><div class="ttdeci">bool isShadowed(const Vector3D &amp;point, const Ray &amp;ray) const override</div><div class="ttdoc">Check if point is in shadow.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:66</div></div>
+<div class="ttc" id="aclassAmbientLight_html_ac732d2636ac965a5696cff548ab383c1"><div class="ttname"><a href="classAmbientLight.html#ac732d2636ac965a5696cff548ab383c1">AmbientLight::getPosition</a></div><div class="ttdeci">Vector3D getPosition() const override</div><div class="ttdoc">Get light position.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:75</div></div>
+<div class="ttc" id="aclassAmbientLight_html_ae56eb6d7ede539f367b5568414645fdb"><div class="ttname"><a href="classAmbientLight.html#ae56eb6d7ede539f367b5568414645fdb">AmbientLight::getColor</a></div><div class="ttdeci">Structs::Color getColor() const override</div><div class="ttdoc">Get light color.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:57</div></div>
+<div class="ttc" id="aclassAmbientLight_html_af5b4475457b6c590eaa132f0e38c53dc"><div class="ttname"><a href="classAmbientLight.html#af5b4475457b6c590eaa132f0e38c53dc">AmbientLight::getIntensity</a></div><div class="ttdeci">float getIntensity(const Vector3D &amp;point) const override</div><div class="ttdoc">Get light intensity at a point.</div><div class="ttdef"><b>Definition</b> AmbientLight.cpp:49</div></div>
+<div class="ttc" id="aclassILight_html"><div class="ttname"><a href="classILight.html">ILight</a></div><div class="ttdoc">Interface for all light sources in the raytracer.</div><div class="ttdef"><b>Definition</b> ILight.hpp:21</div></div>
+<div class="ttc" id="aclassRay_html"><div class="ttname"><a href="classRay.html">Ray</a></div><div class="ttdef"><b>Definition</b> ray.hpp:23</div></div>
+<div class="ttc" id="aclassVector3D_html"><div class="ttname"><a href="classVector3D.html">Vector3D</a></div><div class="ttdoc">3D vector class for mathematical operations</div><div class="ttdef"><b>Definition</b> vector3D.hpp:21</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html"><div class="ttname"><a href="structStructs_1_1Color.html">Structs::Color</a></div><div class="ttdef"><b>Definition</b> structs.hpp:73</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3ca5e0d45a4baf0ba6ac7f6e242bf375.html">architest</a></li><li class="navelem"><a class="el" href="dir_a730f6cd98c6498294c4afd89cf5ac14.html">include</a></li><li class="navelem"><a class="el" href="dir_1a67a2c38e5c0e6627d84431e997aafc.html">RayTracer</a></li><li class="navelem"><a class="el" href="dir_26f69e76e5eed7eea2f82980b567450b.html">Lights</a></li><li class="navelem"><b>AmbientLight.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7ea4d960c7cdbb1df7ad6e7465476ebf.html">RayTracer</a></li><li class="navelem"><a class="el" href="dir_2f1a89bf0ff7c52ef62bf6465a2c20e1.html">Lights</a></li><li class="navelem"><b>AmbientLight.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

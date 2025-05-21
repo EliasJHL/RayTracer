@@ -109,26 +109,130 @@ $(function(){initNavTree('classIPrimitive.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IPrimitive Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for all geometric primitives in the raytracer.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IPrimitive_8hpp_source.html">IPrimitive.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IPrimitive:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classIPrimitive.png" usemap="#IPrimitive_map" alt=""/>
   <map id="IPrimitive_map" name="IPrimitive_map">
-<area href="classAPrimitive.html" alt="APrimitive" shape="rect" coords="39,56,108,80"/>
-<area href="classSphere.html" alt="Sphere" shape="rect" coords="0,112,69,136"/>
-<area href="classTriangle.html" alt="Triangle" shape="rect" coords="79,112,148,136"/>
+<area href="classAPrimitive.html" alt="APrimitive" shape="rect" coords="197,56,266,80"/>
+<area href="classCone.html" alt="Cone" shape="rect" coords="0,112,69,136"/>
+<area href="classCylinder.html" alt="Cylinder" shape="rect" coords="79,112,148,136"/>
+<area href="classPlane.html" alt="Plane" shape="rect" coords="158,112,227,136"/>
+<area href="classSphere.html" alt="Sphere" shape="rect" coords="237,112,306,136"/>
+<area href="classSquare.html" alt="Square" shape="rect" coords="316,112,385,136"/>
+<area href="classTriangle.html" alt="Triangle" shape="rect" coords="395,112,464,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7a326ba9ce08639ca1cd8fa77f7c0cd7" id="r_a7a326ba9ce08639ca1cd8fa77f7c0cd7"><td class="memItemLeft" align="right" valign="top"><a id="a7a326ba9ce08639ca1cd8fa77f7c0cd7" name="a7a326ba9ce08639ca1cd8fa77f7c0cd7"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>hit</b> (const <a class="el" href="classRay.html">Ray</a> &amp;r, double t_min, double t_max, <a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;rec) const =0</td></tr>
+<tr class="memitem:a8079fb4001c84b6e715ffe521fd45897" id="r_a8079fb4001c84b6e715ffe521fd45897"><td class="memItemLeft" align="right" valign="top"><a id="a8079fb4001c84b6e715ffe521fd45897" name="a8079fb4001c84b6e715ffe521fd45897"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IPrimitive</b> ()=default</td></tr>
+<tr class="memdesc:a8079fb4001c84b6e715ffe521fd45897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:a8079fb4001c84b6e715ffe521fd45897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91e068ed90eeaa2d86f446385ef2172" id="r_ab91e068ed90eeaa2d86f446385ef2172"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab91e068ed90eeaa2d86f446385ef2172">getName</a> (void) const =0</td></tr>
+<tr class="memdesc:ab91e068ed90eeaa2d86f446385ef2172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the primitive type.  <br /></td></tr>
+<tr class="separator:ab91e068ed90eeaa2d86f446385ef2172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a326ba9ce08639ca1cd8fa77f7c0cd7" id="r_a7a326ba9ce08639ca1cd8fa77f7c0cd7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a326ba9ce08639ca1cd8fa77f7c0cd7">hit</a> (const <a class="el" href="classRay.html">Ray</a> &amp;r, double t_min, double t_max, <a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;rec) const =0</td></tr>
+<tr class="memdesc:a7a326ba9ce08639ca1cd8fa77f7c0cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate whether a ray hits this primitive.  <br /></td></tr>
 <tr class="separator:a7a326ba9ce08639ca1cd8fa77f7c0cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for all geometric primitives in the raytracer. </p>
+<p>This interface defines the behaviors required for any geometric object that can be rendered in the scene, such as spheres, planes, or triangles. Primitives can determine ray intersections and provide information about the intersection point. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab91e068ed90eeaa2d86f446385ef2172" name="ab91e068ed90eeaa2d86f446385ef2172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91e068ed90eeaa2d86f446385ef2172">&#9670;&#160;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; IPrimitive::getName </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the name of the primitive type. </p>
+<dl class="section return"><dt>Returns</dt><dd>const std::string&amp; The primitive's type name </dd></dl>
+
+<p>Implemented in <a class="el" href="classAPrimitive.html#a74c94f22e30c2e16e49560d475a15029">APrimitive</a>, <a class="el" href="classCone.html#ac65e5245b71c77b5311ae30dabe97301">Cone</a>, <a class="el" href="classCylinder.html#a234bcd4406ae93691f95cbc7d53e945e">Cylinder</a>, <a class="el" href="classPlane.html#ae84406cd6dbeda851ba35f14d2ec7330">Plane</a>, <a class="el" href="classSphere.html#a7bb91c2d826fc47c29a983008b1b4aa4">Sphere</a>, and <a class="el" href="classTriangle.html#ad796e809b2e5a4c2b5820d9f63fb8300">Triangle</a>.</p>
+
+</div>
+</div>
+<a id="a7a326ba9ce08639ca1cd8fa77f7c0cd7" name="a7a326ba9ce08639ca1cd8fa77f7c0cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a326ba9ce08639ca1cd8fa77f7c0cd7">&#9670;&#160;</a></span>hit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool IPrimitive::hit </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classRay.html">Ray</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>t_min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>t_max</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rec</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate whether a ray hits this primitive. </p>
+<p>Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>The ray to check for intersection </td></tr>
+    <tr><td class="paramname">t_min</td><td>The minimum distance along the ray to check </td></tr>
+    <tr><td class="paramname">t_max</td><td>The maximum distance along the ray to check </td></tr>
+    <tr><td class="paramname">rec</td><td>Output parameter for hit information if an intersection occurs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the ray intersects the primitive, false otherwise </dd></dl>
+
+<p>Implemented in <a class="el" href="classAPrimitive.html#a31bd7f4356c8dea34e6c6ae121eeaf1c">APrimitive</a>, <a class="el" href="classCone.html#a9ded7de9dee274ad6ea10df84b98b770">Cone</a>, <a class="el" href="classCylinder.html#acda956356c5d7ac7b56c2badfdc03bf0">Cylinder</a>, <a class="el" href="classPlane.html#ae566a08ab17b61f7b658de25f309d424">Plane</a>, <a class="el" href="classSphere.html#aaa28222bf8846400fde695e28993620f">Sphere</a>, <a class="el" href="classSquare.html#a2e2aa5c2af4c629c92fd6d5fdba5f430">Square</a>, and <a class="el" href="classTriangle.html#a5f25d981a506e5b8e75591e1a33d310f">Triangle</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/Interfaces/<a class="el" href="include_2Interfaces_2IPrimitive_8hpp_source.html">IPrimitive.hpp</a></li>
+<li>include/Interfaces/<a class="el" href="IPrimitive_8hpp_source.html">IPrimitive.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

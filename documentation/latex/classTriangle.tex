@@ -9,19 +9,28 @@ Inheritance diagram for Triangle\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\label{classTriangle_ae963a7340924e4678b3dee3a616364cb} 
-{\bfseries Triangle} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v0, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v1, const \mbox{\hyperlink{classVector3D}{Vector3D}} \&v2)
+\label{classTriangle_a11caf8a36ebdf4d18a2df0723ddc1acd} 
+{\bfseries Triangle} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&v0, const \mbox{\hyperlink{classVector3D}{Point3D}} \&v1, const \mbox{\hyperlink{classVector3D}{Point3D}} \&v2, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material)
 \item 
-bool \mbox{\hyperlink{classTriangle_ab7ce9c5f80b504fbd110f271acb43abe}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
-\end{DoxyCompactItemize}
+const std\+::string \& \mbox{\hyperlink{classTriangle_ad796e809b2e5a4c2b5820d9f63fb8300}{get\+Name}} (void) const override
+\begin{DoxyCompactList}\small\item\em Get the name of the primitive type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTriangle_a5f25d981a506e5b8e75591e1a33d310f}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
+\begin{DoxyCompactList}\small\item\em Calculate whether a ray hits this primitive. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries APrimitive} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+{\bfseries APrimitive} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
 \end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIPrimitive}{IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPrimitive} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
 \begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
 \item 
 \mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
 \item 
@@ -32,18 +41,55 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfs
 
 
 \doxysubsection{Member Function Documentation}
+\index{Triangle@{Triangle}!getName@{getName}}
+\index{getName@{getName}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classTriangle_ad796e809b2e5a4c2b5820d9f63fb8300} 
+const std\+::string \& Triangle\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the primitive type. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string\& The primitive\textquotesingle{}s type name 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a74c94f22e30c2e16e49560d475a15029}{APrimitive}}.
+
 \index{Triangle@{Triangle}!hit@{hit}}
 \index{hit@{hit}!Triangle@{Triangle}}
 \doxysubsubsection{\texorpdfstring{hit()}{hit()}}
-{\footnotesize\ttfamily \label{classTriangle_ab7ce9c5f80b504fbd110f271acb43abe} 
-bool Triangle\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{classTriangle_a5f25d981a506e5b8e75591e1a33d310f} 
+bool Triangle\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{r}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Implements \mbox{\hyperlink{classAPrimitive}{APrimitive}}.
+Calculate whether a ray hits this primitive. 
+
+Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The ray to check for intersection \\
+\hline
+{\em t\+\_\+min} & The minimum distance along the ray to check \\
+\hline
+{\em t\+\_\+max} & The maximum distance along the ray to check \\
+\hline
+{\em rec} & Output parameter for hit information if an intersection occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray intersects the primitive, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a31bd7f4356c8dea34e6c6ae121eeaf1c}{APrimitive}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-plugins/primitives/Triangle.\+hpp\end{DoxyCompactItemize}
+include/\+Ray\+Tracer/\+Primitives/Triangle.\+hpp\end{DoxyCompactItemize}

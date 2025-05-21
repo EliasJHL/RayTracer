@@ -120,51 +120,72 @@ $(function(){initNavTree('structs_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span><a class="code hl_class" href="classAMaterial.html">AMaterial</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span>Structs {</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structStructs_1_1Color.html">   17</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1Color.html">Color</a> {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">int</span> r;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">int</span> g;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">int</span> b;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    };</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceStructs.html">Structs</a> {</div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structStructs_1_1Color.html">   73</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1Color.html">Color</a> {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structStructs_1_1Color.html#a1ae98255afe2d47df3061fda3c51ad0e">   74</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Color.html#a1ae98255afe2d47df3061fda3c51ad0e">r</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structStructs_1_1Color.html#a5aab3edde3cd2e605356beb63fdfbc88">   75</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Color.html#a5aab3edde3cd2e605356beb63fdfbc88">g</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="structStructs_1_1Color.html#a7cb85dae8dae4c2f77bb2a94d1c9aea3">   76</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Color.html#a7cb85dae8dae4c2f77bb2a94d1c9aea3">b</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    };</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html">   23</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1hitRecord.html">hitRecord</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">double</span> t;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_class" href="classVector3D.html">Vector3D</a> point;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_class" href="classVector3D.html">Vector3D</a> normal;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        std::shared_ptr&lt;AMaterial&gt; material = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a> color;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    };</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html">   79</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1hitRecord.html">hitRecord</a> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html#adb4929e631f738e864347317039cace7">   80</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1hitRecord.html#adb4929e631f738e864347317039cace7">t</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html#ae44db1cc5e98399d77b744f64d45b375">   81</a></span>        <a class="code hl_class" href="classVector3D.html">Vector3D</a> <a class="code hl_variable" href="structStructs_1_1hitRecord.html#ae44db1cc5e98399d77b744f64d45b375">point</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html#ab1b5dd4542de95f89a512d44bf288cd7">   82</a></span>        <a class="code hl_class" href="classVector3D.html">Vector3D</a> <a class="code hl_variable" href="structStructs_1_1hitRecord.html#ab1b5dd4542de95f89a512d44bf288cd7">normal</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html#a270a9b4bf52aaabcebf8f4bfaf4e293b">   83</a></span>        std::shared_ptr&lt;AMaterial&gt; <a class="code hl_variable" href="structStructs_1_1hitRecord.html#a270a9b4bf52aaabcebf8f4bfaf4e293b">material</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structStructs_1_1hitRecord.html#a039aa66f9caf2dd769c60b4f5950b465">   84</a></span>        <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a> <a class="code hl_variable" href="structStructs_1_1hitRecord.html#a039aa66f9caf2dd769c60b4f5950b465">color</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    };</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html">   31</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1Camera.html">Camera</a> {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">/* Resolution */</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">int</span> width;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">int</span> height;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">/* Position */</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">double</span> pos_x;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">double</span> pos_y;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">double</span> pos_z;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">/* Rotation */</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">double</span> rot_x;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">double</span> rot_y;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">double</span> rot_z;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">/* Parameters */</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">double</span> fieldOfView;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="};">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html">   87</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structStructs_1_1Camera.html">Camera</a> {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">/* Resolution */</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a07c10dae551c07d297027f8f914db36f">   89</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a07c10dae551c07d297027f8f914db36f">width</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#aef3fa9f508d5dfef4879cc73bd26d728">   90</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#aef3fa9f508d5dfef4879cc73bd26d728">height</a>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="comment">/* Position */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#af12f3a154c9f5410222c396c9191967b">   92</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#af12f3a154c9f5410222c396c9191967b">pos_x</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a4ec3750749d04920858084c198ffa96a">   93</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a4ec3750749d04920858084c198ffa96a">pos_y</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#afba64fb20ef44e8e4a44e566045cf6ea">   94</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#afba64fb20ef44e8e4a44e566045cf6ea">pos_z</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">/* Rotation */</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a68957b1daadb330a0c9448a82d0d74aa">   96</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a68957b1daadb330a0c9448a82d0d74aa">rot_x</a>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a55e5b164e024862728f208897f8cdee1">   97</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a55e5b164e024862728f208897f8cdee1">rot_y</a>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a8e7f712a9133ea3bd64a2b1f663b611c">   98</a></span>        <span class="keywordtype">double</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a8e7f712a9133ea3bd64a2b1f663b611c">rot_z</a>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment">/* Parameters */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structStructs_1_1Camera.html#a7cbe6b3f43926cbd4171c981f0219f42">  100</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structStructs_1_1Camera.html#a7cbe6b3f43926cbd4171c981f0219f42">fieldOfView</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/* !STRUCTS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif </span><span class="comment">/* !STRUCTS_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassAMaterial_html"><div class="ttname"><a href="classAMaterial.html">AMaterial</a></div><div class="ttdef"><b>Definition</b> AMaterial.hpp:15</div></div>
-<div class="ttc" id="aclassVector3D_html"><div class="ttname"><a href="classVector3D.html">Vector3D</a></div><div class="ttdef"><b>Definition</b> vector3D.hpp:14</div></div>
-<div class="ttc" id="astructStructs_1_1Camera_html"><div class="ttname"><a href="structStructs_1_1Camera.html">Structs::Camera</a></div><div class="ttdef"><b>Definition</b> structs.hpp:31</div></div>
-<div class="ttc" id="astructStructs_1_1Color_html"><div class="ttname"><a href="structStructs_1_1Color.html">Structs::Color</a></div><div class="ttdef"><b>Definition</b> structs.hpp:17</div></div>
-<div class="ttc" id="astructStructs_1_1hitRecord_html"><div class="ttname"><a href="structStructs_1_1hitRecord.html">Structs::hitRecord</a></div><div class="ttdef"><b>Definition</b> structs.hpp:23</div></div>
+<div class="ttc" id="aclassVector3D_html"><div class="ttname"><a href="classVector3D.html">Vector3D</a></div><div class="ttdoc">3D vector class for mathematical operations</div><div class="ttdef"><b>Definition</b> vector3D.hpp:21</div></div>
+<div class="ttc" id="anamespaceStructs_html"><div class="ttname"><a href="namespaceStructs.html">Structs</a></div><div class="ttdoc">Contains utility structures used throughout the raytracer project.</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html"><div class="ttname"><a href="structStructs_1_1Camera.html">Structs::Camera</a></div><div class="ttdef"><b>Definition</b> structs.hpp:87</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a07c10dae551c07d297027f8f914db36f"><div class="ttname"><a href="structStructs_1_1Camera.html#a07c10dae551c07d297027f8f914db36f">Structs::Camera::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> structs.hpp:89</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a4ec3750749d04920858084c198ffa96a"><div class="ttname"><a href="structStructs_1_1Camera.html#a4ec3750749d04920858084c198ffa96a">Structs::Camera::pos_y</a></div><div class="ttdeci">double pos_y</div><div class="ttdef"><b>Definition</b> structs.hpp:93</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a55e5b164e024862728f208897f8cdee1"><div class="ttname"><a href="structStructs_1_1Camera.html#a55e5b164e024862728f208897f8cdee1">Structs::Camera::rot_y</a></div><div class="ttdeci">double rot_y</div><div class="ttdef"><b>Definition</b> structs.hpp:97</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a68957b1daadb330a0c9448a82d0d74aa"><div class="ttname"><a href="structStructs_1_1Camera.html#a68957b1daadb330a0c9448a82d0d74aa">Structs::Camera::rot_x</a></div><div class="ttdeci">double rot_x</div><div class="ttdef"><b>Definition</b> structs.hpp:96</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a7cbe6b3f43926cbd4171c981f0219f42"><div class="ttname"><a href="structStructs_1_1Camera.html#a7cbe6b3f43926cbd4171c981f0219f42">Structs::Camera::fieldOfView</a></div><div class="ttdeci">int fieldOfView</div><div class="ttdef"><b>Definition</b> structs.hpp:100</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_a8e7f712a9133ea3bd64a2b1f663b611c"><div class="ttname"><a href="structStructs_1_1Camera.html#a8e7f712a9133ea3bd64a2b1f663b611c">Structs::Camera::rot_z</a></div><div class="ttdeci">double rot_z</div><div class="ttdef"><b>Definition</b> structs.hpp:98</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_aef3fa9f508d5dfef4879cc73bd26d728"><div class="ttname"><a href="structStructs_1_1Camera.html#aef3fa9f508d5dfef4879cc73bd26d728">Structs::Camera::height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition</b> structs.hpp:90</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_af12f3a154c9f5410222c396c9191967b"><div class="ttname"><a href="structStructs_1_1Camera.html#af12f3a154c9f5410222c396c9191967b">Structs::Camera::pos_x</a></div><div class="ttdeci">double pos_x</div><div class="ttdef"><b>Definition</b> structs.hpp:92</div></div>
+<div class="ttc" id="astructStructs_1_1Camera_html_afba64fb20ef44e8e4a44e566045cf6ea"><div class="ttname"><a href="structStructs_1_1Camera.html#afba64fb20ef44e8e4a44e566045cf6ea">Structs::Camera::pos_z</a></div><div class="ttdeci">double pos_z</div><div class="ttdef"><b>Definition</b> structs.hpp:94</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html"><div class="ttname"><a href="structStructs_1_1Color.html">Structs::Color</a></div><div class="ttdef"><b>Definition</b> structs.hpp:73</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html_a1ae98255afe2d47df3061fda3c51ad0e"><div class="ttname"><a href="structStructs_1_1Color.html#a1ae98255afe2d47df3061fda3c51ad0e">Structs::Color::r</a></div><div class="ttdeci">int r</div><div class="ttdef"><b>Definition</b> structs.hpp:74</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html_a5aab3edde3cd2e605356beb63fdfbc88"><div class="ttname"><a href="structStructs_1_1Color.html#a5aab3edde3cd2e605356beb63fdfbc88">Structs::Color::g</a></div><div class="ttdeci">int g</div><div class="ttdef"><b>Definition</b> structs.hpp:75</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html_a7cb85dae8dae4c2f77bb2a94d1c9aea3"><div class="ttname"><a href="structStructs_1_1Color.html#a7cb85dae8dae4c2f77bb2a94d1c9aea3">Structs::Color::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition</b> structs.hpp:76</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html"><div class="ttname"><a href="structStructs_1_1hitRecord.html">Structs::hitRecord</a></div><div class="ttdef"><b>Definition</b> structs.hpp:79</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_a039aa66f9caf2dd769c60b4f5950b465"><div class="ttname"><a href="structStructs_1_1hitRecord.html#a039aa66f9caf2dd769c60b4f5950b465">Structs::hitRecord::color</a></div><div class="ttdeci">Structs::Color color</div><div class="ttdef"><b>Definition</b> structs.hpp:84</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_a270a9b4bf52aaabcebf8f4bfaf4e293b"><div class="ttname"><a href="structStructs_1_1hitRecord.html#a270a9b4bf52aaabcebf8f4bfaf4e293b">Structs::hitRecord::material</a></div><div class="ttdeci">std::shared_ptr&lt; AMaterial &gt; material</div><div class="ttdef"><b>Definition</b> structs.hpp:83</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_ab1b5dd4542de95f89a512d44bf288cd7"><div class="ttname"><a href="structStructs_1_1hitRecord.html#ab1b5dd4542de95f89a512d44bf288cd7">Structs::hitRecord::normal</a></div><div class="ttdeci">Vector3D normal</div><div class="ttdef"><b>Definition</b> structs.hpp:82</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_adb4929e631f738e864347317039cace7"><div class="ttname"><a href="structStructs_1_1hitRecord.html#adb4929e631f738e864347317039cace7">Structs::hitRecord::t</a></div><div class="ttdeci">double t</div><div class="ttdef"><b>Definition</b> structs.hpp:80</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_ae44db1cc5e98399d77b744f64d45b375"><div class="ttname"><a href="structStructs_1_1hitRecord.html#ae44db1cc5e98399d77b744f64d45b375">Structs::hitRecord::point</a></div><div class="ttdeci">Vector3D point</div><div class="ttdef"><b>Definition</b> structs.hpp:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

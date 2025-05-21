@@ -13,7 +13,12 @@ Inheritance diagram for AMaterial\+:\begin{figure}[H]
 {\bfseries AMaterial} (const std\+::string \&name="{}"{})
 \item 
 bool \mbox{\hyperlink{classAMaterial_a84b96e63496eced21a0a3b7f0584b9d8}{scatter}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray\+In, const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec, \mbox{\hyperlink{classVector3D}{Vector3D}} \&attenuation, \mbox{\hyperlink{classRay}{Ray}} \&scattered) const =0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculates how a ray scatters when hitting this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIMaterial}{IMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMaterial} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,7 +36,31 @@ bool AMaterial\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink
 
 
 
-Implements \mbox{\hyperlink{classIMaterial}{IMaterial}}.
+Calculates how a ray scatters when hitting this material. 
+
+This method determines whether a ray is absorbed or scattered by the material and if scattered, in what direction and with what attenuation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray\+In} & The incoming ray that hits the surface \\
+\hline
+{\em rec} & The hit record containing information about the intersection \\
+\hline
+{\em attenuation} & Output parameter for the ray\textquotesingle{}s color attenuation \\
+\hline
+{\em scattered} & Output parameter for the scattered ray \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray was scattered, false if it was absorbed 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIMaterial_af2fe1a2fe14a9fa742269d913b888f16}{IMaterial}}.
+
+
+
+Implemented in \mbox{\hyperlink{classFlatcolor_a9b2b249faaa34c696ff36f770bad2cc4}{Flatcolor}}, \mbox{\hyperlink{classMetal_abee221577ceee05b3afbd95100660ad7}{Metal}}, and \mbox{\hyperlink{classMirror_a7fd30d119f51c7a11e4b3178c088c159}{Mirror}}.
 
 
 

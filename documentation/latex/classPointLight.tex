@@ -1,0 +1,289 @@
+\doxysection{Point\+Light Class Reference}
+\label{classPointLight}\index{PointLight@{PointLight}}
+
+
+Point Light implementation.  
+
+
+
+
+{\ttfamily \#include $<$Point\+Light.\+hpp$>$}
+
+Inheritance diagram for Point\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPointLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPointLight_abbfdf5f05b559c49016f8bb97b0ca414}{Point\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPointLight_aaa2a4ee9fa6a100442289997461d4fa5}{Point\+Light}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&position, float intensity=1.\+0f, const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPointLight_aee5f04eb1518776dc22d51c62455ae68}{\texorpdfstring{$\sim$}{\string~}\+Point\+Light}} () override
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classPointLight_a434d68210fc93d8c587e7dbc7e4ca7a1}{get\+Direction}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get direction from point to light. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPointLight_aa9446984d0b4d4f767d8d2260cb5b601}{get\+Intensity}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Get light intensity at a point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \mbox{\hyperlink{classPointLight_a806e4822fa212a291a1f6dcc1c2ec8f1}{get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get light color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3D}{Vector3D}} \mbox{\hyperlink{classPointLight_ab64dcd41407b37c9ba17aae73d481b1b}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get light position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPointLight_acadbd57e16242d93e808e3054e950b86}{get\+Attenuation}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point) const override
+\begin{DoxyCompactList}\small\item\em Calculate attenuation based on distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPointLight_ab854bfd68cee9671fec03aeec63d3848}{set\+Position}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&position)
+\begin{DoxyCompactList}\small\item\em Set light position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPointLight_a9521fdc85c86ab3b12ee8f9a29950bca}{set\+Intensity}} (float intensity) override
+\begin{DoxyCompactList}\small\item\em Set light intensity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPointLight_adbb107102658159584bf4f8e3652b29c}{set\+Color}} (const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&color) override
+\begin{DoxyCompactList}\small\item\em Set light color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPointLight_ac797586e1706af99633a4350f084c1a1}{set\+Attenuation\+Factors}} (float constant, float linear, float quadratic)
+\begin{DoxyCompactList}\small\item\em Set attenuation factors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classILight}{ILight}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ILight} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classILight_a879a896c50e03a73fa97c202378adf3c}{is\+Shadowed}} (const \mbox{\hyperlink{classVector3D}{Vector3D}} \&point, const \mbox{\hyperlink{classRay}{Ray}} \&ray) const
+\begin{DoxyCompactList}\small\item\em Check if a point is in shadow relative to this light. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Point Light implementation. 
+
+A point light emits light in all directions from a specific point in space. The light intensity decreases with distance from the source according to physically-\/based attenuation factors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classPointLight_abbfdf5f05b559c49016f8bb97b0ca414} 
+Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Creates a point light at the origin with default parameters
+
+Default constructor Creates a point light at the origin with default intensity (1.\+0), white color, and default attenuation factors \index{PointLight@{PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classPointLight_aaa2a4ee9fa6a100442289997461d4fa5} 
+Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{position}{, }\item[{float}]{intensity}{ = {\ttfamily 1.0f}, }\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{ = {\ttfamily \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255,~255,~255\}}}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The 3D position of the light source \\
+\hline
+{\em intensity} & The base intensity of the light (0.\+0-\/1.\+0) \\
+\hline
+{\em color} & The RGB color of the light\\
+\hline
+\end{DoxyParams}
+Parameterized constructor Creates a point light with specified position, intensity, color, and default attenuation factors \index{PointLight@{PointLight}!````~PointLight@{\texorpdfstring{$\sim$}{\string~}PointLight}}
+\index{````~PointLight@{\texorpdfstring{$\sim$}{\string~}PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PointLight()}{\string~PointLight()}}
+{\footnotesize\ttfamily \label{classPointLight_aee5f04eb1518776dc22d51c62455ae68} 
+Point\+Light\+::\texorpdfstring{$\sim$}{\string~}\+Point\+Light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor. 
+
+Destructor 
+
+\doxysubsection{Member Function Documentation}
+\index{PointLight@{PointLight}!getAttenuation@{getAttenuation}}
+\index{getAttenuation@{getAttenuation}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getAttenuation()}{getAttenuation()}}
+{\footnotesize\ttfamily \label{classPointLight_acadbd57e16242d93e808e3054e950b86} 
+float Point\+Light\+::get\+Attenuation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate attenuation based on distance. 
+
+Uses the physically-\/based formula\+: attenuation = 1.\+0 / (constant + linear \texorpdfstring{$\ast$}{*} d + quadratic \texorpdfstring{$\ast$}{*} d\texorpdfstring{$^\wedge$}{\string^}2)
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point for which to calculate attenuation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The attenuation factor (0.\+0-\/1.\+0)
+\end{DoxyReturn}
+Calculate attenuation based on distance Uses the physically-\/based formula\+: attenuation = 1.\+0 / (constant + linear \texorpdfstring{$\ast$}{*} d + quadratic \texorpdfstring{$\ast$}{*} d\texorpdfstring{$^\wedge$}{\string^}2) 
+
+Reimplemented from \mbox{\hyperlink{classILight_af70c2902232a48a92915270050b54c0e}{ILight}}.
+
+\index{PointLight@{PointLight}!getColor@{getColor}}
+\index{getColor@{getColor}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{classPointLight_a806e4822fa212a291a1f6dcc1c2ec8f1} 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} Point\+Light\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light color. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structStructs_1_1Color}{Structs\+::\+Color} The RGB color of the point light
+\end{DoxyReturn}
+Get light color 
+
+Implements \mbox{\hyperlink{classILight_a79bdda1dadbb06fcefececc87a6267a8}{ILight}}.
+
+\index{PointLight@{PointLight}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily \label{classPointLight_a434d68210fc93d8c587e7dbc7e4ca7a1} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Point\+Light\+::get\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get direction from point to light. 
+
+For point lights, this is the normalized vector from the given point to the light\textquotesingle{}s position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point for which to calculate the direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} The normalized direction from the point to the light
+\end{DoxyReturn}
+Get direction from point to light For point lights, this is the normalized vector from the given point to the light\textquotesingle{}s position 
+
+Implements \mbox{\hyperlink{classILight_aaa3b9d09f776a569fa44a77ba6f5216b}{ILight}}.
+
+\index{PointLight@{PointLight}!getIntensity@{getIntensity}}
+\index{getIntensity@{getIntensity}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getIntensity()}{getIntensity()}}
+{\footnotesize\ttfamily \label{classPointLight_aa9446984d0b4d4f767d8d2260cb5b601} 
+float Point\+Light\+::get\+Intensity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light intensity at a point. 
+
+For point lights, intensity decreases with distance according to physically-\/based attenuation factors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The 3D point for which to calculate intensity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The attenuated light intensity at the point
+\end{DoxyReturn}
+Get light intensity at a point For point lights, intensity decreases with distance according to physically-\/based attenuation factors 
+
+Implements \mbox{\hyperlink{classILight_a6a0f1fba0c2d764f634c22ab7512526f}{ILight}}.
+
+\index{PointLight@{PointLight}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classPointLight_ab64dcd41407b37c9ba17aae73d481b1b} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} Point\+Light\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get light position. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classVector3D}{Vector3D} The 3D position of the light source
+\end{DoxyReturn}
+Get light position 
+
+Implements \mbox{\hyperlink{classILight_a20b0f7f8385a2d17b521148d048b57d8}{ILight}}.
+
+\index{PointLight@{PointLight}!setAttenuationFactors@{setAttenuationFactors}}
+\index{setAttenuationFactors@{setAttenuationFactors}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setAttenuationFactors()}{setAttenuationFactors()}}
+{\footnotesize\ttfamily \label{classPointLight_ac797586e1706af99633a4350f084c1a1} 
+void Point\+Light\+::set\+Attenuation\+Factors (\begin{DoxyParamCaption}\item[{float}]{constant}{, }\item[{float}]{linear}{, }\item[{float}]{quadratic}{}\end{DoxyParamCaption})}
+
+
+
+Set attenuation factors. 
+
+Modifies how quickly the light intensity decreases with distance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em constant} & The constant attenuation factor (typically 1.\+0) \\
+\hline
+{\em linear} & The linear attenuation factor (scales with distance) \\
+\hline
+{\em quadratic} & The quadratic attenuation factor (scales with distance²)\\
+\hline
+\end{DoxyParams}
+Set attenuation factors Modifies how quickly the light intensity decreases with distance \index{PointLight@{PointLight}!setColor@{setColor}}
+\index{setColor@{setColor}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classPointLight_adbb107102658159584bf4f8e3652b29c} 
+void Point\+Light\+::set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The new RGB color\\
+\hline
+\end{DoxyParams}
+Set light color 
+
+Implements \mbox{\hyperlink{classILight_a48d1bcf3861afa43baae5f0335f92081}{ILight}}.
+
+\index{PointLight@{PointLight}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily \label{classPointLight_a9521fdc85c86ab3b12ee8f9a29950bca} 
+void Point\+Light\+::set\+Intensity (\begin{DoxyParamCaption}\item[{float}]{intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set light intensity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & The new base intensity value (0.\+0-\/1.\+0)\\
+\hline
+\end{DoxyParams}
+Set light intensity 
+
+Implements \mbox{\hyperlink{classILight_a054870bb327c14e0fda175918bdba868}{ILight}}.
+
+\index{PointLight@{PointLight}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classPointLight_ab854bfd68cee9671fec03aeec63d3848} 
+void Point\+Light\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Set light position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new 3D position\\
+\hline
+\end{DoxyParams}
+Set light position 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Lights/Point\+Light.\+hpp\item 
+src/\+Raytracer/\+Lights/Point\+Light.\+cpp\end{DoxyCompactItemize}

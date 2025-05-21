@@ -1,27 +1,42 @@
 var annotated_dup =
 [
-    [ "ConfigStruct", null, [
-      [ "Color", "structConfigStruct_1_1Color.html", null ],
-      [ "Light", "structConfigStruct_1_1Light.html", "structConfigStruct_1_1Light" ]
+    [ "Structs", "namespaceStructs.html", [
+      [ "Camera", "structStructs_1_1Camera.html", "structStructs_1_1Camera" ],
+      [ "Color", "structStructs_1_1Color.html", "structStructs_1_1Color" ],
+      [ "hitRecord", "structStructs_1_1hitRecord.html", "structStructs_1_1hitRecord" ]
     ] ],
-    [ "Structs", null, [
-      [ "Camera", "structStructs_1_1Camera.html", null ],
-      [ "Color", "structStructs_1_1Color.html", null ],
-      [ "hitRecord", "structStructs_1_1hitRecord.html", null ]
-    ] ],
-    [ "AMaterial", "classAMaterial.html", null ],
-    [ "APrimitive", "classAPrimitive.html", null ],
+    [ "AMaterial", "classAMaterial.html", "classAMaterial" ],
+    [ "AmbientLight", "classAmbientLight.html", "classAmbientLight" ],
+    [ "APrimitive", "classAPrimitive.html", "classAPrimitive" ],
     [ "Camera", "classCamera.html", null ],
-    [ "Flatcolor", "classFlatcolor.html", null ],
-    [ "IMaterial", "classIMaterial.html", null ],
-    [ "IPrimitive", "classIPrimitive.html", null ],
-    [ "Metal", "classMetal.html", null ],
+    [ "Color", "structColor.html", null ],
+    [ "Cone", "classCone.html", "classCone" ],
+    [ "Cylinder", "classCylinder.html", "classCylinder" ],
+    [ "DirectionalLight", "classDirectionalLight.html", "classDirectionalLight" ],
+    [ "DLLoader", "classDLLoader.html", null ],
+    [ "FinishedState", "classFinishedState.html", null ],
+    [ "Flatcolor", "classFlatcolor.html", "classFlatcolor" ],
+    [ "hitRecord", "structhitRecord.html", null ],
+    [ "ILight", "classILight.html", "classILight" ],
+    [ "IMaterial", "classIMaterial.html", "classIMaterial" ],
+    [ "InitializationState", "classInitializationState.html", null ],
+    [ "IPrimitive", "classIPrimitive.html", "classIPrimitive" ],
+    [ "IRenderingState", "classIRenderingState.html", null ],
+    [ "Metal", "classMetal.html", "classMetal" ],
+    [ "Mirror", "classMirror.html", "classMirror" ],
     [ "Params", "structParams.html", null ],
     [ "Parser", "classParser.html", null ],
+    [ "Plane", "classPlane.html", "classPlane" ],
+    [ "PluginsManager", "classPluginsManager.html", null ],
+    [ "PointLight", "classPointLight.html", "classPointLight" ],
     [ "PrimitiveBuilder", "classPrimitiveBuilder.html", null ],
     [ "Ray", "classRay.html", null ],
+    [ "RenderingContext", "classRenderingContext.html", null ],
+    [ "RenderingState", "classRenderingState.html", null ],
     [ "Screen", "classScreen.html", null ],
-    [ "Sphere", "classSphere.html", null ],
-    [ "Triangle", "classTriangle.html", null ],
-    [ "Vector3D", "classVector3D.html", null ]
+    [ "Sphere", "classSphere.html", "classSphere" ],
+    [ "Square", "classSquare.html", "classSquare" ],
+    [ "Triangle", "classTriangle.html", "classTriangle" ],
+    [ "Vector3D", "classVector3D.html", "classVector3D" ],
+    [ "WindowManager", "classWindowManager.html", null ]
 ];

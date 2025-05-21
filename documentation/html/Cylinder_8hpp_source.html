@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RayTracer: architest/include/RayTracer/Primitives/Cylinder.hpp Source File</title>
+<title>RayTracer: include/RayTracer/Primitives/Cylinder.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,13 +106,114 @@ $(function(){initNavTree('Cylinder_8hpp_source.html',''); initResizable(true); }
   <div class="headertitle"><div class="title">Cylinder.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2025</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** B-OOP-400-MPL-4-1-raytracer-elias-josue.hajjar-llauquen</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Cylinder</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef CYLINDER_HPP_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define CYLINDER_HPP_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Abstracts/APrimitive.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Math/ray.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Math/vector3D.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Utils/structs.hpp&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Math/operators.hpp&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Math/vectorOperations.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classCylinder.html">   18</a></span><span class="keyword">class </span>Cylinder : <span class="keyword">public</span> APrimitive {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        Cylinder(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> Point3D &amp;baseCenter, <span class="keyword">const</span> <a class="code hl_class" href="classVector3D.html">Vector3D</a> &amp;direction, <a class="code hl_struct" href="structStructs_1_1Color.html">Structs::Color</a> color, </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                std::shared_ptr&lt;AMaterial&gt; material, <span class="keywordtype">double</span> radius, <span class="keywordtype">double</span> height)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            : APrimitive(name, baseCenter, color, material), direction(normalize(direction)), </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>              radius(radius), height(height) {};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        ~Cylinder() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classCylinder.html#a234bcd4406ae93691f95cbc7d53e945e">   26</a></span>        <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classCylinder.html#a234bcd4406ae93691f95cbc7d53e945e">getName</a>(<span class="keywordtype">void</span>)<span class="keyword"> const override</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> name;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        };</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classCylinder.html#acda956356c5d7ac7b56c2badfdc03bf0">   31</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classCylinder.html#acda956356c5d7ac7b56c2badfdc03bf0">hit</a>(<span class="keyword">const</span> <a class="code hl_class" href="classRay.html">Ray</a> &amp;r, <span class="keywordtype">double</span> t_min, <span class="keywordtype">double</span> t_max, <a class="code hl_struct" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;rec)<span class="keyword"> const override</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> dir = normalize(direction);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            Point3D topCenter = center + dir * height;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> oc = r.getOrigin() - center;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> rayDir = r.getDirection();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordtype">double</span> dotDirOc = dot(dir, oc);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordtype">double</span> dotDirRayDir = dot(dir, rayDir);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> ocPerp = oc - dir * dotDirOc;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> rayDirPerp = rayDir - dir * dotDirRayDir;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordtype">double</span> a = dot(rayDirPerp, rayDirPerp);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordtype">double</span> b = 2 * dot(rayDirPerp, ocPerp);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordtype">double</span> c = dot(ocPerp, ocPerp) - radius * radius;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordtype">double</span> discriminant = b * b - 4 * a * c;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">if</span> (discriminant &lt; 0)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">double</span> t = (-b - sqrt(discriminant)) / (2 * a);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">if</span> (t &lt; t_min || t &gt; t_max) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                t = (-b + sqrt(discriminant)) / (2 * a);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                <span class="keywordflow">if</span> (t &lt; t_min || t &gt; t_max)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            Point3D hitPoint = r.pointAtParameter(t);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> hitVector = hitPoint - center;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordtype">double</span> hitHeight = dot(hitVector, dir);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (hitHeight &lt; 0 || hitHeight &gt; height)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            rec.<a class="code hl_variable" href="structStructs_1_1hitRecord.html#adb4929e631f738e864347317039cace7">t</a> = t;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            rec.<a class="code hl_variable" href="structStructs_1_1hitRecord.html#ae44db1cc5e98399d77b744f64d45b375">point</a> = hitPoint;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            rec.<a class="code hl_variable" href="structStructs_1_1hitRecord.html#a270a9b4bf52aaabcebf8f4bfaf4e293b">material</a> = material;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            rec.<a class="code hl_variable" href="structStructs_1_1hitRecord.html#a039aa66f9caf2dd769c60b4f5950b465">color</a> = color;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="comment">// Calcul de la normale au point d&#39;intersection</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_class" href="classVector3D.html">Vector3D</a> projPoint = center + dir * hitHeight;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            rec.<a class="code hl_variable" href="structStructs_1_1hitRecord.html#ab1b5dd4542de95f89a512d44bf288cd7">normal</a> = normalize(hitPoint - projPoint);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">/* Params */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_class" href="classVector3D.html">Vector3D</a> direction;  <span class="comment">// Direction de l&#39;axe du cylindre</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">double</span> radius;       <span class="comment">// Rayon du cylindre</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordtype">double</span> height;       <span class="comment">// Hauteur du cylindre</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>};</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif </span><span class="comment">/* !CYLINDER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassCylinder_html_a234bcd4406ae93691f95cbc7d53e945e"><div class="ttname"><a href="classCylinder.html#a234bcd4406ae93691f95cbc7d53e945e">Cylinder::getName</a></div><div class="ttdeci">const std::string &amp; getName(void) const override</div><div class="ttdoc">Get the name of the primitive type.</div><div class="ttdef"><b>Definition</b> Cylinder.hpp:26</div></div>
+<div class="ttc" id="aclassCylinder_html_acda956356c5d7ac7b56c2badfdc03bf0"><div class="ttname"><a href="classCylinder.html#acda956356c5d7ac7b56c2badfdc03bf0">Cylinder::hit</a></div><div class="ttdeci">bool hit(const Ray &amp;r, double t_min, double t_max, Structs::hitRecord &amp;rec) const override</div><div class="ttdoc">Calculate whether a ray hits this primitive.</div><div class="ttdef"><b>Definition</b> Cylinder.hpp:31</div></div>
+<div class="ttc" id="aclassRay_html"><div class="ttname"><a href="classRay.html">Ray</a></div><div class="ttdef"><b>Definition</b> ray.hpp:23</div></div>
+<div class="ttc" id="aclassVector3D_html"><div class="ttname"><a href="classVector3D.html">Vector3D</a></div><div class="ttdoc">3D vector class for mathematical operations</div><div class="ttdef"><b>Definition</b> vector3D.hpp:21</div></div>
+<div class="ttc" id="astructStructs_1_1Color_html"><div class="ttname"><a href="structStructs_1_1Color.html">Structs::Color</a></div><div class="ttdef"><b>Definition</b> structs.hpp:73</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html"><div class="ttname"><a href="structStructs_1_1hitRecord.html">Structs::hitRecord</a></div><div class="ttdef"><b>Definition</b> structs.hpp:79</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_a039aa66f9caf2dd769c60b4f5950b465"><div class="ttname"><a href="structStructs_1_1hitRecord.html#a039aa66f9caf2dd769c60b4f5950b465">Structs::hitRecord::color</a></div><div class="ttdeci">Structs::Color color</div><div class="ttdef"><b>Definition</b> structs.hpp:84</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_a270a9b4bf52aaabcebf8f4bfaf4e293b"><div class="ttname"><a href="structStructs_1_1hitRecord.html#a270a9b4bf52aaabcebf8f4bfaf4e293b">Structs::hitRecord::material</a></div><div class="ttdeci">std::shared_ptr&lt; AMaterial &gt; material</div><div class="ttdef"><b>Definition</b> structs.hpp:83</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_ab1b5dd4542de95f89a512d44bf288cd7"><div class="ttname"><a href="structStructs_1_1hitRecord.html#ab1b5dd4542de95f89a512d44bf288cd7">Structs::hitRecord::normal</a></div><div class="ttdeci">Vector3D normal</div><div class="ttdef"><b>Definition</b> structs.hpp:82</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_adb4929e631f738e864347317039cace7"><div class="ttname"><a href="structStructs_1_1hitRecord.html#adb4929e631f738e864347317039cace7">Structs::hitRecord::t</a></div><div class="ttdeci">double t</div><div class="ttdef"><b>Definition</b> structs.hpp:80</div></div>
+<div class="ttc" id="astructStructs_1_1hitRecord_html_ae44db1cc5e98399d77b744f64d45b375"><div class="ttname"><a href="structStructs_1_1hitRecord.html#ae44db1cc5e98399d77b744f64d45b375">Structs::hitRecord::point</a></div><div class="ttdeci">Vector3D point</div><div class="ttdef"><b>Definition</b> structs.hpp:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3ca5e0d45a4baf0ba6ac7f6e242bf375.html">architest</a></li><li class="navelem"><a class="el" href="dir_a730f6cd98c6498294c4afd89cf5ac14.html">include</a></li><li class="navelem"><a class="el" href="dir_1a67a2c38e5c0e6627d84431e997aafc.html">RayTracer</a></li><li class="navelem"><a class="el" href="dir_b8a979c6831888adb57402f309e75306.html">Primitives</a></li><li class="navelem"><b>Cylinder.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7ea4d960c7cdbb1df7ad6e7465476ebf.html">RayTracer</a></li><li class="navelem"><a class="el" href="dir_7a17e5c4a0e4e182424feea29ac208b4.html">Primitives</a></li><li class="navelem"><b>Cylinder.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

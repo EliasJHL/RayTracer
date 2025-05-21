@@ -1,5 +1,14 @@
 \doxysection{IPrimitive Class Reference}
 \label{classIPrimitive}\index{IPrimitive@{IPrimitive}}
+
+
+Interface for all geometric primitives in the raytracer.  
+
+
+
+
+{\ttfamily \#include $<$IPrimitive.\+hpp$>$}
+
 Inheritance diagram for IPrimitive\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,9 +18,68 @@ Inheritance diagram for IPrimitive\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\label{classIPrimitive_a7a326ba9ce08639ca1cd8fa77f7c0cd7} 
-virtual bool {\bfseries hit} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const =0
-\end{DoxyCompactItemize}
+\label{classIPrimitive_a8079fb4001c84b6e715ffe521fd45897} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPrimitive} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual const std\+::string \& \mbox{\hyperlink{classIPrimitive_ab91e068ed90eeaa2d86f446385ef2172}{get\+Name}} (void) const =0
+\begin{DoxyCompactList}\small\item\em Get the name of the primitive type. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIPrimitive_a7a326ba9ce08639ca1cd8fa77f7c0cd7}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const =0
+\begin{DoxyCompactList}\small\item\em Calculate whether a ray hits this primitive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for all geometric primitives in the raytracer. 
+
+This interface defines the behaviors required for any geometric object that can be rendered in the scene, such as spheres, planes, or triangles. Primitives can determine ray intersections and provide information about the intersection point. 
+
+\doxysubsection{Member Function Documentation}
+\index{IPrimitive@{IPrimitive}!getName@{getName}}
+\index{getName@{getName}!IPrimitive@{IPrimitive}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classIPrimitive_ab91e068ed90eeaa2d86f446385ef2172} 
+virtual const std\+::string \& IPrimitive\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the name of the primitive type. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string\& The primitive\textquotesingle{}s type name 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classAPrimitive_a74c94f22e30c2e16e49560d475a15029}{APrimitive}}, \mbox{\hyperlink{classCone_ac65e5245b71c77b5311ae30dabe97301}{Cone}}, \mbox{\hyperlink{classCylinder_a234bcd4406ae93691f95cbc7d53e945e}{Cylinder}}, \mbox{\hyperlink{classPlane_ae84406cd6dbeda851ba35f14d2ec7330}{Plane}}, \mbox{\hyperlink{classSphere_a7bb91c2d826fc47c29a983008b1b4aa4}{Sphere}}, and \mbox{\hyperlink{classTriangle_ad796e809b2e5a4c2b5820d9f63fb8300}{Triangle}}.
+
+\index{IPrimitive@{IPrimitive}!hit@{hit}}
+\index{hit@{hit}!IPrimitive@{IPrimitive}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \label{classIPrimitive_a7a326ba9ce08639ca1cd8fa77f7c0cd7} 
+virtual bool IPrimitive\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{r}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate whether a ray hits this primitive. 
+
+Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The ray to check for intersection \\
+\hline
+{\em t\+\_\+min} & The minimum distance along the ray to check \\
+\hline
+{\em t\+\_\+max} & The maximum distance along the ray to check \\
+\hline
+{\em rec} & Output parameter for hit information if an intersection occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray intersects the primitive, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classAPrimitive_a31bd7f4356c8dea34e6c6ae121eeaf1c}{APrimitive}}, \mbox{\hyperlink{classCone_a9ded7de9dee274ad6ea10df84b98b770}{Cone}}, \mbox{\hyperlink{classCylinder_acda956356c5d7ac7b56c2badfdc03bf0}{Cylinder}}, \mbox{\hyperlink{classPlane_ae566a08ab17b61f7b658de25f309d424}{Plane}}, \mbox{\hyperlink{classSphere_aaa28222bf8846400fde695e28993620f}{Sphere}}, \mbox{\hyperlink{classSquare_a2e2aa5c2af4c629c92fd6d5fdba5f430}{Square}}, and \mbox{\hyperlink{classTriangle_a5f25d981a506e5b8e75591e1a33d310f}{Triangle}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

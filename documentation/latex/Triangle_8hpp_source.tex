@@ -1,5 +1,5 @@
 \doxysection{Triangle.\+hpp}
-\label{Triangle_8hpp_source}\index{plugins/primitives/Triangle.hpp@{plugins/primitives/Triangle.hpp}}
+\label{Triangle_8hpp_source}\index{include/RayTracer/Primitives/Triangle.hpp@{include/RayTracer/Primitives/Triangle.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -13,24 +13,83 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ TRIANGLE\_HPP\_}}
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/Vector3D.hpp"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Triangle\ :\ \textcolor{keyword}{public}\ APrimitive\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Triangle(\textcolor{keyword}{const}\ Vector3D\ \&center,\ Structs::Color\ color,\ std::shared\_ptr<AMaterial>\ material,}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector3D\ \&v0,\ \textcolor{keyword}{const}\ Vector3D\ \&v1,\ \textcolor{keyword}{const}\ Vector3D\ \&v2);}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Triangle()\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&ray,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Vector3D\ mV0;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector3D\ mV1;}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Vector3D\ mV2;}
-\DoxyCodeLine{00028\ \};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !TRIANGLE\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Utils/structs.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Math/vectorOperations.hpp"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }Triangle\ :\ \textcolor{keyword}{public}\ APrimitive\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Triangle(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ Point3D\ \&v0,\ \textcolor{keyword}{const}\ Point3D\ \&v1,\ \textcolor{keyword}{const}\ Point3D\ \&v2,\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Structs::Color\ color,\ std::shared\_ptr<AMaterial>\ material)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ :\ APrimitive(name,\ calculateCenter(v0,\ v1,\ v2),\ color,\ material),\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v0(v0),\ v1(v1),\ v2(v2)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ edge1\ =\ v1\ -\/\ v0;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ edge2\ =\ v2\ -\/\ v0;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ normal\ =\ normalize(cross(edge1,\ edge2));}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \string~Triangle()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&getName(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ edge1\ =\ v1\ -\/\ v0;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ edge2\ =\ v2\ -\/\ v0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ h\ =\ cross(r.getDirection(),\ edge2);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ dot(edge1,\ h);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >\ -\/1e-\/8\ \&\&\ a\ <\ 1e-\/8)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ f\ =\ 1.0\ /\ a;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ s\ =\ r.getOrigin()\ -\/\ v0;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ u\ =\ f\ *\ dot(s,\ h);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u\ <\ 0.0\ ||\ u\ >\ 1.0)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ q\ =\ cross(s,\ edge1);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ v\ =\ f\ *\ dot(r.getDirection(),\ q);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ <\ 0.0\ ||\ u\ +\ v\ >\ 1.0)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ f\ *\ dot(edge2,\ q);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ t\_min\ ||\ t\ >\ t\_max)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ rec.t\ =\ t;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ rec.point\ =\ r.pointAtParameter(t);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ rec.normal\ =\ normal;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ rec.material\ =\ material;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ rec.color\ =\ color;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ Point3D\ calculateCenter(\textcolor{keyword}{const}\ Point3D\ \&v0,\ \textcolor{keyword}{const}\ Point3D\ \&v1,\ \textcolor{keyword}{const}\ Point3D\ \&v2)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00076\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Point3D(}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (v0.x\ +\ v1.x\ +\ v2.x)\ /\ 3.0,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (v0.y\ +\ v1.y\ +\ v2.y)\ /\ 3.0,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (v0.z\ +\ v1.z\ +\ v2.z)\ /\ 3.0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Params\ */}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Point3D\ v0,\ v1,\ v2;\ \ \textcolor{comment}{//\ Les\ trois\ sommets\ du\ triangle}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ Vector3D\ normal;\ \ \ \ \ \textcolor{comment}{//\ Normale\ au\ plan\ du\ triangle}}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !TRIANGLE\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

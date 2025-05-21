@@ -14,6 +14,9 @@ void {\bfseries Parse\+Config} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdf
 \item 
 \label{classParser_a02db1167c397411e66723df8b6f972cb} 
 \mbox{\hyperlink{structStructs_1_1Camera}{Structs\+::\+Camera}} \& {\bfseries get\+Camera\+Config} (void)
+\item 
+\label{classParser_ae5318fad086626ac769d15f9d30a15b7} 
+void {\bfseries Parse\+Lights} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const libconfig\+::\+Config \&config)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -24,8 +27,8 @@ static \mbox{\hyperlink{classParser}{Parser}} \texorpdfstring{$\ast$}{*} {\bfser
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\label{classParser_a0c9cdc9a97e8624cece9430d3bc4ea3c} 
-\mbox{\hyperlink{structStructs_1_1Camera}{Structs\+::\+Camera}} \texorpdfstring{$\ast$}{*} {\bfseries m\+Camera\+Config}
+\label{classParser_a6ed470b91e0c81c9a06e4de89218e522} 
+\mbox{\hyperlink{structStructs_1_1Camera}{Structs\+::\+Camera}} {\bfseries m\+Camera\+Config}
 \item 
 \label{classParser_a36c508d62ff187dc239a80d3bfd005a2} 
 int {\bfseries anti\+Aliasing}
@@ -36,11 +39,23 @@ int {\bfseries anti\+Aliasing}
 \label{classParser_ae7a84b82aa8a6ef8521c1315df7a8b8b} 
 {\bfseries Parser} (const std\+::string \&path)
 \item 
-\label{classParser_a1fbd5318321571db438196c58ae8194a} 
-void {\bfseries Parse\+Camera} (const Conf\+Setting \&cam, const Conf\+Setting \&res, const Conf\+Setting \&pos, const Conf\+Setting \&rota)
+\label{classParser_a6b53ec8e6fc7550b3e48018a2df4acc9} 
+void {\bfseries Parse\+Camera} (const Conf\+Setting \&camera)
 \item 
 \label{classParser_a6de90c341d1ab04de24f1c7299a32c20} 
 void {\bfseries Parse\+Sphere} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&sphere)
+\item 
+\label{classParser_a5d21b01e92f595702c13894e16039c86} 
+void {\bfseries Parse\+Plane} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&plane)
+\item 
+\label{classParser_a4842d9fff7349f2284436fd5e37d9ff5} 
+void {\bfseries Parse\+Cone} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&cone)
+\item 
+\label{classParser_a3f71792854de6f26ebb18171dad26192} 
+void {\bfseries Parse\+Cylinder} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&cylinder)
+\item 
+\label{classParser_a60bd3e2c6065ecdc994800914594d58c} 
+void {\bfseries Parse\+Triangle} (\mbox{\hyperlink{classScreen}{Screen}} \texorpdfstring{$\ast$}{*}s, const Conf\+Setting \&triangle)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}

@@ -1,7 +1,91 @@
 \doxysection{Cylinder.\+hpp}
-\label{Cylinder_8hpp_source}\index{architest/include/RayTracer/Primitives/Cylinder.hpp@{architest/include/RayTracer/Primitives/Cylinder.hpp}}
+\label{Cylinder_8hpp_source}\index{include/RayTracer/Primitives/Cylinder.hpp@{include/RayTracer/Primitives/Cylinder.hpp}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2025}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/MPL-\/4-\/1-\/raytracer-\/elias-\/josue.hajjar-\/llauquen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Cylinder}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CYLINDER\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CYLINDER\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Utils/structs.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Math/vectorOperations.hpp"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }Cylinder\ :\ \textcolor{keyword}{public}\ APrimitive\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Cylinder(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ Point3D\ \&baseCenter,\ \textcolor{keyword}{const}\ Vector3D\ \&direction,\ Structs::Color\ color,\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<AMaterial>\ material,\ \textcolor{keywordtype}{double}\ radius,\ \textcolor{keywordtype}{double}\ height)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ :\ APrimitive(name,\ baseCenter,\ color,\ material),\ direction(normalize(direction)),\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ radius(radius),\ height(height)\ \{\};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \string~Cylinder()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&getName(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ dir\ =\ normalize(direction);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ Point3D\ topCenter\ =\ center\ +\ dir\ *\ height;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ oc\ =\ r.getOrigin()\ -\/\ center;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ rayDir\ =\ r.getDirection();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dotDirOc\ =\ dot(dir,\ oc);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dotDirRayDir\ =\ dot(dir,\ rayDir);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ ocPerp\ =\ oc\ -\/\ dir\ *\ dotDirOc;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ rayDirPerp\ =\ rayDir\ -\/\ dir\ *\ dotDirRayDir;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ dot(rayDirPerp,\ rayDirPerp);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ b\ =\ 2\ *\ dot(rayDirPerp,\ ocPerp);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ c\ =\ dot(ocPerp,\ ocPerp)\ -\/\ radius\ *\ radius;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ discriminant\ =\ b\ *\ b\ -\/\ 4\ *\ a\ *\ c;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (discriminant\ <\ 0)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ (-\/b\ -\/\ sqrt(discriminant))\ /\ (2\ *\ a);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ t\_min\ ||\ t\ >\ t\_max)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\ =\ (-\/b\ +\ sqrt(discriminant))\ /\ (2\ *\ a);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ t\_min\ ||\ t\ >\ t\_max)}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ Point3D\ hitPoint\ =\ r.pointAtParameter(t);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ hitVector\ =\ hitPoint\ -\/\ center;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ hitHeight\ =\ dot(hitVector,\ dir);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hitHeight\ <\ 0\ ||\ hitHeight\ >\ height)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ rec.t\ =\ t;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ rec.point\ =\ hitPoint;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ rec.material\ =\ material;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ rec.color\ =\ color;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcul\ de\ la\ normale\ au\ point\ d'intersection}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ projPoint\ =\ center\ +\ dir\ *\ hitHeight;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ rec.normal\ =\ normalize(hitPoint\ -\/\ projPoint);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Params\ */}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ Vector3D\ direction;\ \ \textcolor{comment}{//\ Direction\ de\ l'axe\ du\ cylindre}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ radius;\ \ \ \ \ \ \ \textcolor{comment}{//\ Rayon\ du\ cylindre}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ height;\ \ \ \ \ \ \ \textcolor{comment}{//\ Hauteur\ du\ cylindre}}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !CYLINDER\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -11,6 +11,8 @@ SFML_FLAGS	=	-L/usr/local/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 SRC	=	$(shell find src include -name "*.cpp")
 
+CXXFALGS	=	-std=c++17
+
 LIBS	=	$(shell pkg-config --libs libconfig++)
 
 PLUGINS_SRC	=	./plugins/materials/mirror.cpp $(wildcard ./src/*.cpp) $(wildcard ./src/Raytracer/Lights/*.cpp)
@@ -20,7 +22,7 @@ CFLAGS	=	$(shell pkg-config --cflags libconfig++)
 all: $(NAME)
 
 $(NAME): plugins
-	g++ -std=c++17 $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS) $(SFML_FLAGS)
+	g++ $(CXXFALGS)  $(CFLAGS) -o $(NAME) $(SRC) -I ./include $(LIBS) $(SFML_FLAGS)
 	@echo "\033[32m= = = = =  COMPILATION COMPLETED  = = = = =\033[0m"
 
 .PHONY: plugins

@@ -12,101 +12,66 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SCREEN\_HPP\_}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SCREEN\_HPP\_}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Camera.hpp"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Parser.hpp"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}PrimitiveBuilder.hpp"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <algorithm>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00019\ \textcolor{comment}{/*\ Primitives\ */}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Primitives/Plate.hpp"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Primitives/Sphere.hpp"{}}}
-\DoxyCodeLine{00023\ \textcolor{comment}{/*\ Materials\ */}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Materials/Metal.hpp"{}}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Materials/Flatcolor.hpp"{}}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ compare(\textcolor{keyword}{const}\ std::unique\_ptr<APrimitive>\ \&a,\ \textcolor{keyword}{const}\ std::unique\_ptr<APrimitive>\ \&b)}
-\DoxyCodeLine{00029\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ a-\/>center.z\ <\ b-\/>center.z;}
-\DoxyCodeLine{00031\ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }Screen\ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ Screen()\ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Create\ the\ default\ materials\ */}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ mMaterials[\textcolor{stringliteral}{"{}flatcolor"{}}]\ =\ std::make\_shared<Flatcolor>();}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ mMaterials[\textcolor{stringliteral}{"{}metal"{}}]\ =\ std::make\_shared<Metal>();}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \string~Screen()\ \{\};}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkForHit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Structs::hitRecord\ temp\_rec;}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hitAnything\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Camera.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Parser.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Math/ray.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Math/vector3D.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Math/operators.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}PrimitiveBuilder.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}RenderingContext.hpp"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}RenderingState.hpp"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}WindowManager.hpp"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00025\ \textcolor{comment}{/*\ Primitives\ */}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}Abstracts/APrimitive.hpp"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Primitives/Plane.hpp"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Primitives/Sphere.hpp"{}}}
+\DoxyCodeLine{00029\ \textcolor{comment}{/*\ Materials\ */}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}Interfaces/ILight.hpp"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}Abstracts/AMaterial.hpp"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Materials/Metal.hpp"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Materials/Flatcolor.hpp"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Lights/AmbientLight.hpp"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Lights/DirectionalLight.hpp"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}RayTracer/Lights/PointLight.hpp"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }Screen\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Screen(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \string~Screen();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkForHit(\textcolor{keyword}{const}\ Ray\ \&r,\ \textcolor{keywordtype}{double}\ t\_min,\ \textcolor{keywordtype}{double}\ t\_max,\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ Vector3D\ calculateLighting(\textcolor{keyword}{const}\ Ray\ \&ray,\ \textcolor{keyword}{const}\ Structs::hitRecord\ \&rec)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&primitive\ :\ mPrimitives)\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (primitive-\/>hit(r,\ t\_min,\ t\_max,\ temp\_rec))\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hitAnything\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rec\ =\ temp\_rec;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hitAnything;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ Vector3D\ getColor(\textcolor{keyword}{const}\ Ray\ \&ray,\ \textcolor{keywordtype}{int}\ depth)\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ Structs::hitRecord\ rec;}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (checkForHit(ray,\ 0.001,\ MAXFLOAT,\ rec))\ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Ray\ scattered;}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ attenuation;}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (depth\ <\ 50\ \&\&\ rec.material-\/>scatter(ray,\ rec,\ attenuation,\ scattered))\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ attenuation\ *\ getColor(scattered,\ depth\ +\ 1);}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3D(0,\ 0,\ 0);}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ unit\ =\ ray.getDirection()\ /\ ray.getDirection().length();}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ 0.5\ *\ (unit.y\ +\ 1);}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (1\ -\/\ t)\ *\ Vector3D(1,1,1);}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ startRendering(\textcolor{keywordtype}{void})\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ Parser\ *p\ =\ Parser::GetInstance(\textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Sort\ to\ get\ the\ closest\ to\ the\ camera\ on\ top\ */}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(mPrimitives.begin(),\ mPrimitives.end(),\ compare);}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ Camera\ cam(Point3D(p-\/>mCameraConfig-\/>pos\_x,\ p-\/>mCameraConfig-\/>pos\_y,\ p-\/>mCameraConfig-\/>pos\_z),\ -\/1);}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}P3\(\backslash\)n"{}}\ <<\ p-\/>mCameraConfig-\/>width\ <<\ \textcolor{charliteral}{'\ '}\ <<\ p-\/>mCameraConfig-\/>height\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n255\(\backslash\)n"{}};}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ p-\/>mCameraConfig-\/>height;\ y++)\ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ p-\/>mCameraConfig-\/>width;\ x++)\ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3D\ col\ =\ Vector3D(0,\ 0,\ 0);}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ p-\/>antiAliasing\ ;\ i++)\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ co\_x\ =\ float(x+drand48())\ /\ float(p-\/>mCameraConfig-\/>width);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ co\_y\ =\ float(y+drand48())\ /\ float(p-\/>mCameraConfig-\/>height);}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Ray\ ray\ =\ cam.getRay(co\_x,\ co\_y);}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ col\ +=\ getColor(ray,\ 0);}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ col\ /=\ p-\/>antiAliasing;}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ 255\ *\ col.x;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ g\ =\ 255\ *\ col.y;}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ b\ =\ 255\ *\ col.z;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ r\ <<\ \textcolor{charliteral}{'\ '}\ <<\ g\ <<\ \textcolor{charliteral}{'\ '}\ <<\ b\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<APrimitive>>\ mPrimitives;}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<AMaterial>>\ mMaterials;}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00104\ \};}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SCREEN\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ Vector3D\ getColor(\textcolor{keyword}{const}\ Ray\ \&ray,\ \textcolor{keywordtype}{int}\ depth);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ startRendering(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ createWindow(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ displayWindow();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ updatePixel(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{int}\ g,\ \textcolor{keywordtype}{int}\ b);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<APrimitive>>\ mPrimitives;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<AMaterial>>\ mMaterials;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<ILight>>\ mLights;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ambientIntensity;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ diffuseIntensity;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ cast\_shadows\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\_depth\ =\ 50;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ WindowManager*\ mWindow;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ sf::Texture\ mTexture;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ sf::Sprite\ mSprite;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ sf::Uint8*\ mPixels;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SCREEN\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

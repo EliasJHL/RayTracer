@@ -1,0 +1,103 @@
+\doxysection{Plane Class Reference}
+\label{classPlane}\index{Plane@{Plane}}
+Inheritance diagram for Plane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPlane}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{classPlane_ab61bc0cd184d0f15999f35d7e68aa771} 
+{\bfseries Plane} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, Axis axe)
+\item 
+const std\+::string \& \mbox{\hyperlink{classPlane_ae84406cd6dbeda851ba35f14d2ec7330}{get\+Name}} (void) const override
+\begin{DoxyCompactList}\small\item\em Get the name of the primitive type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlane_ae566a08ab17b61f7b658de25f309d424}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
+\begin{DoxyCompactList}\small\item\em Calculate whether a ray hits this primitive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries APrimitive} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIPrimitive}{IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPrimitive} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classPlane_a2d238c921679e3f5ac45211d816cd9b6} 
+Axis {\bfseries axis}
+\item 
+\label{classPlane_a07cb9ba650aea3f3ede0f918428a19d2} 
+\mbox{\hyperlink{classVector3D}{Vector3D}} {\bfseries normal}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\item 
+\mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
+\item 
+\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} {\bfseries color}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfseries material}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Plane@{Plane}!getName@{getName}}
+\index{getName@{getName}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classPlane_ae84406cd6dbeda851ba35f14d2ec7330} 
+const std\+::string \& Plane\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the primitive type. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string\& The primitive\textquotesingle{}s type name 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a74c94f22e30c2e16e49560d475a15029}{APrimitive}}.
+
+\index{Plane@{Plane}!hit@{hit}}
+\index{hit@{hit}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily \label{classPlane_ae566a08ab17b61f7b658de25f309d424} 
+bool Plane\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{r}{, }\item[{double}]{t\+\_\+min}{, }\item[{double}]{t\+\_\+max}{, }\item[{\mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate whether a ray hits this primitive. 
+
+Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The ray to check for intersection \\
+\hline
+{\em t\+\_\+min} & The minimum distance along the ray to check \\
+\hline
+{\em t\+\_\+max} & The maximum distance along the ray to check \\
+\hline
+{\em rec} & Output parameter for hit information if an intersection occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray intersects the primitive, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a31bd7f4356c8dea34e6c6ae121eeaf1c}{APrimitive}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Ray\+Tracer/\+Primitives/Plane.\+hpp\end{DoxyCompactItemize}

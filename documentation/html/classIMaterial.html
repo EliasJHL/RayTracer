@@ -109,26 +109,94 @@ $(function(){initNavTree('classIMaterial.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IMaterial Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for all materials in the raytracer.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IMaterial_8hpp_source.html">IMaterial.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IMaterial:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classIMaterial.png" usemap="#IMaterial_map" alt=""/>
   <map id="IMaterial_map" name="IMaterial_map">
-<area href="classAMaterial.html" alt="AMaterial" shape="rect" coords="38,56,105,80"/>
+<area href="classAMaterial.html" alt="AMaterial" shape="rect" coords="77,56,144,80"/>
 <area href="classFlatcolor.html" alt="Flatcolor" shape="rect" coords="0,112,67,136"/>
 <area href="classMetal.html" alt="Metal" shape="rect" coords="77,112,144,136"/>
+<area href="classMirror.html" alt="Mirror" shape="rect" coords="154,112,221,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af2fe1a2fe14a9fa742269d913b888f16" id="r_af2fe1a2fe14a9fa742269d913b888f16"><td class="memItemLeft" align="right" valign="top"><a id="af2fe1a2fe14a9fa742269d913b888f16" name="af2fe1a2fe14a9fa742269d913b888f16"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>scatter</b> (const <a class="el" href="classRay.html">Ray</a> &amp;rayIn, const <a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;rec, <a class="el" href="classVector3D.html">Vector3D</a> &amp;attenuation, <a class="el" href="classRay.html">Ray</a> &amp;scattered) const =0</td></tr>
+<tr class="memitem:a43ad960a33ef87b199c1d8b28c364130" id="r_a43ad960a33ef87b199c1d8b28c364130"><td class="memItemLeft" align="right" valign="top"><a id="a43ad960a33ef87b199c1d8b28c364130" name="a43ad960a33ef87b199c1d8b28c364130"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IMaterial</b> ()=default</td></tr>
+<tr class="memdesc:a43ad960a33ef87b199c1d8b28c364130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:a43ad960a33ef87b199c1d8b28c364130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2fe1a2fe14a9fa742269d913b888f16" id="r_af2fe1a2fe14a9fa742269d913b888f16"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2fe1a2fe14a9fa742269d913b888f16">scatter</a> (const <a class="el" href="classRay.html">Ray</a> &amp;rayIn, const <a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;rec, <a class="el" href="classVector3D.html">Vector3D</a> &amp;attenuation, <a class="el" href="classRay.html">Ray</a> &amp;scattered) const =0</td></tr>
+<tr class="memdesc:af2fe1a2fe14a9fa742269d913b888f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates how a ray scatters when hitting this material.  <br /></td></tr>
 <tr class="separator:af2fe1a2fe14a9fa742269d913b888f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for all materials in the raytracer. </p>
+<p>This interface defines the behaviors required for any material. Materials determine how light interacts with object surfaces, including reflection, refraction, and absorption properties. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af2fe1a2fe14a9fa742269d913b888f16" name="af2fe1a2fe14a9fa742269d913b888f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2fe1a2fe14a9fa742269d913b888f16">&#9670;&#160;</a></span>scatter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool IMaterial::scatter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classRay.html">Ray</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rayIn</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structStructs_1_1hitRecord.html">Structs::hitRecord</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rec</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVector3D.html">Vector3D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>attenuation</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRay.html">Ray</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>scattered</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates how a ray scatters when hitting this material. </p>
+<p>This method determines whether a ray is absorbed or scattered by the material and if scattered, in what direction and with what attenuation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rayIn</td><td>The incoming ray that hits the surface </td></tr>
+    <tr><td class="paramname">rec</td><td>The hit record containing information about the intersection </td></tr>
+    <tr><td class="paramname">attenuation</td><td>Output parameter for the ray's color attenuation </td></tr>
+    <tr><td class="paramname">scattered</td><td>Output parameter for the scattered ray </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the ray was scattered, false if it was absorbed </dd></dl>
+
+<p>Implemented in <a class="el" href="classAMaterial.html#a84b96e63496eced21a0a3b7f0584b9d8">AMaterial</a>, <a class="el" href="classFlatcolor.html#a9b2b249faaa34c696ff36f770bad2cc4">Flatcolor</a>, <a class="el" href="classMetal.html#abee221577ceee05b3afbd95100660ad7">Metal</a>, and <a class="el" href="classMirror.html#a7fd30d119f51c7a11e4b3178c088c159">Mirror</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/Interfaces/<a class="el" href="include_2Interfaces_2IMaterial_8hpp_source.html">IMaterial.hpp</a></li>
+<li>include/Interfaces/<a class="el" href="IMaterial_8hpp_source.html">IMaterial.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RayTracer: Camera Class Reference</title>
+<title>RayTracer: Camera Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,24 +107,35 @@ $(function(){initNavTree('classCamera.html',''); initResizable(true); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classCamera-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Camera Class Reference</div></div>
+  <div class="headertitle"><div class="title">Camera Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines the camera's properties and parameters.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="structs_8hpp_source.html">structs.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a32a123f08156bf53d7e103915bcb1217" id="r_a32a123f08156bf53d7e103915bcb1217"><td class="memItemLeft" align="right" valign="top"><a id="a32a123f08156bf53d7e103915bcb1217" name="a32a123f08156bf53d7e103915bcb1217"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (const <a class="el" href="classVector3D.html">Point3D</a> &amp;pos, double fieldOfView)</td></tr>
-<tr class="separator:a32a123f08156bf53d7e103915bcb1217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73566d773c25351a7b000b65ff5c258" id="r_aa73566d773c25351a7b000b65ff5c258"><td class="memItemLeft" align="right" valign="top"><a id="aa73566d773c25351a7b000b65ff5c258" name="aa73566d773c25351a7b000b65ff5c258"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (const <a class="el" href="classVector3D.html">Point3D</a> &amp;pos, int fieldOfView, const <a class="el" href="classVector3D.html">Vector3D</a> &amp;rot)</td></tr>
+<tr class="separator:aa73566d773c25351a7b000b65ff5c258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0292e95749bb3f9fdc61e165199c41ee" id="r_a0292e95749bb3f9fdc61e165199c41ee"><td class="memItemLeft" align="right" valign="top"><a id="a0292e95749bb3f9fdc61e165199c41ee" name="a0292e95749bb3f9fdc61e165199c41ee"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;origin, const <a class="el" href="classVector3D.html">Vector3D</a> &amp;lower_l, const <a class="el" href="classVector3D.html">Vector3D</a> &amp;horiz, const <a class="el" href="classVector3D.html">Vector3D</a> &amp;verti)</td></tr>
 <tr class="separator:a0292e95749bb3f9fdc61e165199c41ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ac941734bb22ca6b5fbacf32998c665" id="r_a3ac941734bb22ca6b5fbacf32998c665"><td class="memItemLeft" align="right" valign="top"><a id="a3ac941734bb22ca6b5fbacf32998c665" name="a3ac941734bb22ca6b5fbacf32998c665"></a>
 <a class="el" href="classRay.html">Ray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getRay</b> (double u, double v)</td></tr>
 <tr class="separator:a3ac941734bb22ca6b5fbacf32998c665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f22864394c567b3687569346cf7bed" id="r_a98f22864394c567b3687569346cf7bed"><td class="memItemLeft" align="right" valign="top"><a id="a98f22864394c567b3687569346cf7bed" name="a98f22864394c567b3687569346cf7bed"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rotateVector</b> (const <a class="el" href="classVector3D.html">Vector3D</a> &amp;vec) const</td></tr>
+<tr class="separator:a98f22864394c567b3687569346cf7bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a704aa540921a83596678823202f2c913" id="r_a704aa540921a83596678823202f2c913"><td class="memItemLeft" align="right" valign="top"><a id="a704aa540921a83596678823202f2c913" name="a704aa540921a83596678823202f2c913"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>origin</b></td></tr>
+<tr class="separator:a704aa540921a83596678823202f2c913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a275b548d966694468a000668a2ba1287" id="r_a275b548d966694468a000668a2ba1287"><td class="memItemLeft" align="right" valign="top"><a id="a275b548d966694468a000668a2ba1287" name="a275b548d966694468a000668a2ba1287"></a>
 <a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lower_left</b></td></tr>
 <tr class="separator:a275b548d966694468a000668a2ba1287"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,12 +145,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a190eb4ac4ca7af578a34fc78821dca5f" id="r_a190eb4ac4ca7af578a34fc78821dca5f"><td class="memItemLeft" align="right" valign="top"><a id="a190eb4ac4ca7af578a34fc78821dca5f" name="a190eb4ac4ca7af578a34fc78821dca5f"></a>
 <a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>vertical</b></td></tr>
 <tr class="separator:a190eb4ac4ca7af578a34fc78821dca5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a704aa540921a83596678823202f2c913" id="r_a704aa540921a83596678823202f2c913"><td class="memItemLeft" align="right" valign="top"><a id="a704aa540921a83596678823202f2c913" name="a704aa540921a83596678823202f2c913"></a>
-<a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>origin</b></td></tr>
-<tr class="separator:a704aa540921a83596678823202f2c913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c03fc8b025a9d17abf552eefa71bd0e" id="r_a6c03fc8b025a9d17abf552eefa71bd0e"><td class="memItemLeft" align="right" valign="top"><a id="a6c03fc8b025a9d17abf552eefa71bd0e" name="a6c03fc8b025a9d17abf552eefa71bd0e"></a>
+<a class="el" href="classVector3D.html">Vector3D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></tr>
+<tr class="separator:a6c03fc8b025a9d17abf552eefa71bd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="include_2Camera_8hpp_source.html">Camera.hpp</a></li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the camera's properties and parameters. </p>
+</div><hr/>The documentation for this struct was generated from the following files:<ul>
+<li>include/<a class="el" href="Camera_8hpp_source.html">Camera.hpp</a></li>
+<li>src/<b>Camera.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

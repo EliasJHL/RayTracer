@@ -14,14 +14,14 @@
 #include "Camera.hpp"
 #include "Parser.hpp"
 #include "Math/ray.hpp"
+#include <SFML/Window.hpp>
 #include "Math/vector3D.hpp"
-#include "Math/operators.hpp"
-#include "PrimitiveBuilder.hpp"
-#include "RenderingContext.hpp"
-#include "RenderingState.hpp"
 #include "WindowManager.hpp"
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
+#include "Math/operators.hpp"
+#include "RenderingState.hpp"
+#include "RenderingContext.hpp"
+#include "PrimitiveBuilder.hpp"
 /* Primitives */
 #include "Abstracts/APrimitive.hpp"
 #include "RayTracer/Primitives/Plane.hpp"
@@ -63,8 +63,8 @@ class Screen {
         int max_depth = 50;
     private:
         WindowManager* mWindow;
-        sf::Texture mTexture;       // Texture pour stocker l'image
-        sf::Sprite mSprite;         // Sprite pour afficher l'image
+        sf::Texture mTexture;
+        sf::Sprite mSprite;
         sf::Uint8* mPixels;
 };
 

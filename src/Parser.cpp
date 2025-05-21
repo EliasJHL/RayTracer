@@ -261,6 +261,20 @@ void Parser::ParseConfig(Screen *s)
         throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
     }
     ParseLights(s, cfg);
+
+    try {
+        if (root.exists("scene")) {
+            std::string nextScene = root["scene"].c_str();
+            if (!nextScene.empty() && nextScene != mConfigPath) {
+                mConfigPath = nextScene;
+                ParseConfig(s);
+            }
+        }
+    } catch (const libconfig::SettingNotFoundException &nfex) {
+        throw std::runtime_error(nfex.what());
+    } catch (const libconfig::SettingTypeException &e) {
+        throw std::runtime_error("Error : Invalid data type : " + std::string(e.getPath()));
+    }
 }
 
 void Parser::ParseLights(Screen *s, const libconfig::Config &config)

@@ -1,5 +1,14 @@
 \doxysection{IMaterial Class Reference}
 \label{classIMaterial}\index{IMaterial@{IMaterial}}
+
+
+Interface for all materials in the raytracer.  
+
+
+
+
+{\ttfamily \#include $<$IMaterial.\+hpp$>$}
+
 Inheritance diagram for IMaterial\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,9 +18,49 @@ Inheritance diagram for IMaterial\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\label{classIMaterial_af2fe1a2fe14a9fa742269d913b888f16} 
-virtual bool {\bfseries scatter} (const \mbox{\hyperlink{classRay}{Ray}} \&ray\+In, const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec, \mbox{\hyperlink{classVector3D}{Vector3D}} \&attenuation, \mbox{\hyperlink{classRay}{Ray}} \&scattered) const =0
-\end{DoxyCompactItemize}
+\label{classIMaterial_a43ad960a33ef87b199c1d8b28c364130} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMaterial} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIMaterial_af2fe1a2fe14a9fa742269d913b888f16}{scatter}} (const \mbox{\hyperlink{classRay}{Ray}} \&ray\+In, const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec, \mbox{\hyperlink{classVector3D}{Vector3D}} \&attenuation, \mbox{\hyperlink{classRay}{Ray}} \&scattered) const =0
+\begin{DoxyCompactList}\small\item\em Calculates how a ray scatters when hitting this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for all materials in the raytracer. 
+
+This interface defines the behaviors required for any material. Materials determine how light interacts with object surfaces, including reflection, refraction, and absorption properties. 
+
+\doxysubsection{Member Function Documentation}
+\index{IMaterial@{IMaterial}!scatter@{scatter}}
+\index{scatter@{scatter}!IMaterial@{IMaterial}}
+\doxysubsubsection{\texorpdfstring{scatter()}{scatter()}}
+{\footnotesize\ttfamily \label{classIMaterial_af2fe1a2fe14a9fa742269d913b888f16} 
+virtual bool IMaterial\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRay}{Ray}} \&}]{ray\+In}{, }\item[{const \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&}]{rec}{, }\item[{\mbox{\hyperlink{classVector3D}{Vector3D}} \&}]{attenuation}{, }\item[{\mbox{\hyperlink{classRay}{Ray}} \&}]{scattered}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculates how a ray scatters when hitting this material. 
+
+This method determines whether a ray is absorbed or scattered by the material and if scattered, in what direction and with what attenuation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray\+In} & The incoming ray that hits the surface \\
+\hline
+{\em rec} & The hit record containing information about the intersection \\
+\hline
+{\em attenuation} & Output parameter for the ray\textquotesingle{}s color attenuation \\
+\hline
+{\em scattered} & Output parameter for the scattered ray \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray was scattered, false if it was absorbed 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classAMaterial_a84b96e63496eced21a0a3b7f0584b9d8}{AMaterial}}, \mbox{\hyperlink{classFlatcolor_a9b2b249faaa34c696ff36f770bad2cc4}{Flatcolor}}, \mbox{\hyperlink{classMetal_abee221577ceee05b3afbd95100660ad7}{Metal}}, and \mbox{\hyperlink{classMirror_a7fd30d119f51c7a11e4b3178c088c159}{Mirror}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

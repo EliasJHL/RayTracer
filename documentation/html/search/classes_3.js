@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hitrecord_0',['hitRecord',['../structStructs_1_1hitRecord.html',1,'Structs']]]
+  ['finishedstate_0',['FinishedState',['../classFinishedState.html',1,'']]],
+  ['flatcolor_1',['Flatcolor',['../classFlatcolor.html',1,'']]]
 ];

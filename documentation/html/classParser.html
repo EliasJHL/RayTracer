@@ -129,6 +129,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseConfig</b> (<a c
 <tr class="memitem:a02db1167c397411e66723df8b6f972cb" id="r_a02db1167c397411e66723df8b6f972cb"><td class="memItemLeft" align="right" valign="top"><a id="a02db1167c397411e66723df8b6f972cb" name="a02db1167c397411e66723df8b6f972cb"></a>
 <a class="el" href="structStructs_1_1Camera.html">Structs::Camera</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCameraConfig</b> (void)</td></tr>
 <tr class="separator:a02db1167c397411e66723df8b6f972cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5318fad086626ac769d15f9d30a15b7" id="r_ae5318fad086626ac769d15f9d30a15b7"><td class="memItemLeft" align="right" valign="top"><a id="ae5318fad086626ac769d15f9d30a15b7" name="ae5318fad086626ac769d15f9d30a15b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseLights</b> (<a class="el" href="classScreen.html">Screen</a> *s, const libconfig::Config &amp;config)</td></tr>
+<tr class="separator:ae5318fad086626ac769d15f9d30a15b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -138,9 +141,9 @@ static <a class="el" href="classParser.html">Parser</a> *&#160;</td><td class="m
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0c9cdc9a97e8624cece9430d3bc4ea3c" id="r_a0c9cdc9a97e8624cece9430d3bc4ea3c"><td class="memItemLeft" align="right" valign="top"><a id="a0c9cdc9a97e8624cece9430d3bc4ea3c" name="a0c9cdc9a97e8624cece9430d3bc4ea3c"></a>
-<a class="el" href="structStructs_1_1Camera.html">Structs::Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraConfig</b></td></tr>
-<tr class="separator:a0c9cdc9a97e8624cece9430d3bc4ea3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed470b91e0c81c9a06e4de89218e522" id="r_a6ed470b91e0c81c9a06e4de89218e522"><td class="memItemLeft" align="right" valign="top"><a id="a6ed470b91e0c81c9a06e4de89218e522" name="a6ed470b91e0c81c9a06e4de89218e522"></a>
+<a class="el" href="structStructs_1_1Camera.html">Structs::Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraConfig</b></td></tr>
+<tr class="separator:a6ed470b91e0c81c9a06e4de89218e522"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36c508d62ff187dc239a80d3bfd005a2" id="r_a36c508d62ff187dc239a80d3bfd005a2"><td class="memItemLeft" align="right" valign="top"><a id="a36c508d62ff187dc239a80d3bfd005a2" name="a36c508d62ff187dc239a80d3bfd005a2"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>antiAliasing</b></td></tr>
 <tr class="separator:a36c508d62ff187dc239a80d3bfd005a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,12 +153,24 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae7a84b82aa8a6ef8521c1315df7a8b8b" id="r_ae7a84b82aa8a6ef8521c1315df7a8b8b"><td class="memItemLeft" align="right" valign="top"><a id="ae7a84b82aa8a6ef8521c1315df7a8b8b" name="ae7a84b82aa8a6ef8521c1315df7a8b8b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Parser</b> (const std::string &amp;path)</td></tr>
 <tr class="separator:ae7a84b82aa8a6ef8521c1315df7a8b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fbd5318321571db438196c58ae8194a" id="r_a1fbd5318321571db438196c58ae8194a"><td class="memItemLeft" align="right" valign="top"><a id="a1fbd5318321571db438196c58ae8194a" name="a1fbd5318321571db438196c58ae8194a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseCamera</b> (const ConfSetting &amp;cam, const ConfSetting &amp;res, const ConfSetting &amp;pos, const ConfSetting &amp;rota)</td></tr>
-<tr class="separator:a1fbd5318321571db438196c58ae8194a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b53ec8e6fc7550b3e48018a2df4acc9" id="r_a6b53ec8e6fc7550b3e48018a2df4acc9"><td class="memItemLeft" align="right" valign="top"><a id="a6b53ec8e6fc7550b3e48018a2df4acc9" name="a6b53ec8e6fc7550b3e48018a2df4acc9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseCamera</b> (const ConfSetting &amp;camera)</td></tr>
+<tr class="separator:a6b53ec8e6fc7550b3e48018a2df4acc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6de90c341d1ab04de24f1c7299a32c20" id="r_a6de90c341d1ab04de24f1c7299a32c20"><td class="memItemLeft" align="right" valign="top"><a id="a6de90c341d1ab04de24f1c7299a32c20" name="a6de90c341d1ab04de24f1c7299a32c20"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseSphere</b> (<a class="el" href="classScreen.html">Screen</a> *s, const ConfSetting &amp;sphere)</td></tr>
 <tr class="separator:a6de90c341d1ab04de24f1c7299a32c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d21b01e92f595702c13894e16039c86" id="r_a5d21b01e92f595702c13894e16039c86"><td class="memItemLeft" align="right" valign="top"><a id="a5d21b01e92f595702c13894e16039c86" name="a5d21b01e92f595702c13894e16039c86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParsePlane</b> (<a class="el" href="classScreen.html">Screen</a> *s, const ConfSetting &amp;plane)</td></tr>
+<tr class="separator:a5d21b01e92f595702c13894e16039c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4842d9fff7349f2284436fd5e37d9ff5" id="r_a4842d9fff7349f2284436fd5e37d9ff5"><td class="memItemLeft" align="right" valign="top"><a id="a4842d9fff7349f2284436fd5e37d9ff5" name="a4842d9fff7349f2284436fd5e37d9ff5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseCone</b> (<a class="el" href="classScreen.html">Screen</a> *s, const ConfSetting &amp;cone)</td></tr>
+<tr class="separator:a4842d9fff7349f2284436fd5e37d9ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f71792854de6f26ebb18171dad26192" id="r_a3f71792854de6f26ebb18171dad26192"><td class="memItemLeft" align="right" valign="top"><a id="a3f71792854de6f26ebb18171dad26192" name="a3f71792854de6f26ebb18171dad26192"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseCylinder</b> (<a class="el" href="classScreen.html">Screen</a> *s, const ConfSetting &amp;cylinder)</td></tr>
+<tr class="separator:a3f71792854de6f26ebb18171dad26192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bd3e2c6065ecdc994800914594d58c" id="r_a60bd3e2c6065ecdc994800914594d58c"><td class="memItemLeft" align="right" valign="top"><a id="a60bd3e2c6065ecdc994800914594d58c" name="a60bd3e2c6065ecdc994800914594d58c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseTriangle</b> (<a class="el" href="classScreen.html">Screen</a> *s, const ConfSetting &amp;triangle)</td></tr>
+<tr class="separator:a60bd3e2c6065ecdc994800914594d58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -170,7 +185,7 @@ static <a class="el" href="classParser.html">Parser</a> *&#160;</td><td class="m
 <tr class="separator:a1ead15dca39479a93e70a601de6fef3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/<a class="el" href="include_2Parser_8hpp_source.html">Parser.hpp</a></li>
+<li>include/<a class="el" href="Parser_8hpp_source.html">Parser.hpp</a></li>
 <li>src/<b>Parser.cpp</b></li>
 </ul>
 </div><!-- contents -->

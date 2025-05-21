@@ -1,21 +1,30 @@
 var indexSectionsWithContent =
 {
-  0: "acfhilmoprstv",
-  1: "acfhilmprstv",
-  2: "pr"
+  0: "abcdfghilmnoprstvwxyz~",
+  1: "acdfhimprstvw",
+  2: "s",
+  3: "adghilnopsv~",
+  4: "bcfghmnprtwxyz",
+  5: "pr"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "pages"
+  2: "namespaces",
+  3: "functions",
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Pages"
+  2: "Namespaces",
+  3: "Functions",
+  4: "Variables",
+  5: "Pages"
 };
 

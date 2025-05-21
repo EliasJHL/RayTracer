@@ -68,7 +68,7 @@ Vector3D Vector3D::normalize(void) const
 }
 
 /* Get Data */
-double Vector3D::length(void) const 
+double Vector3D::length(void) const
 {
     return std::sqrt(length_sqrt());
 }

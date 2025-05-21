@@ -9,16 +9,23 @@ Inheritance diagram for Sphere\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\label{classSphere_ac906863dfaed09579affab5020c79457} 
-{\bfseries Sphere} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, double radius)
+\label{classSphere_a49bc574a1a10de44cc22b373b61268cf} 
+{\bfseries Sphere} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&center, \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material, double radius)
 \item 
+const std\+::string \& \mbox{\hyperlink{classSphere_a7bb91c2d826fc47c29a983008b1b4aa4}{get\+Name}} (void) const override
+\begin{DoxyCompactList}\small\item\em Get the name of the primitive type. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSphere_aaa28222bf8846400fde695e28993620f}{hit}} (const \mbox{\hyperlink{classRay}{Ray}} \&r, double t\+\_\+min, double t\+\_\+max, \mbox{\hyperlink{structStructs_1_1hitRecord}{Structs\+::hit\+Record}} \&rec) const override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculate whether a ray hits this primitive. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries APrimitive} (const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
+{\bfseries APrimitive} (const std\+::string \&name, const \mbox{\hyperlink{classVector3D}{Point3D}} \&c=\mbox{\hyperlink{classVector3D}{Point3D}}(0, 0, 0), \mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}} col=\mbox{\hyperlink{structStructs_1_1Color}{Structs\+::\+Color}}\{255, 255, 255\}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ material=nullptr)
 \end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIPrimitive}{IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPrimitive} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +34,8 @@ double {\bfseries radius}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classAPrimitive}{APrimitive}}}
 \begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
 \item 
 \mbox{\hyperlink{classVector3D}{Point3D}} {\bfseries center}
 \item 
@@ -37,6 +46,23 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classAMaterial}{AMaterial}} $>$ {\bfs
 
 
 \doxysubsection{Member Function Documentation}
+\index{Sphere@{Sphere}!getName@{getName}}
+\index{getName@{getName}!Sphere@{Sphere}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classSphere_a7bb91c2d826fc47c29a983008b1b4aa4} 
+const std\+::string \& Sphere\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the primitive type. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string\& The primitive\textquotesingle{}s type name 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a74c94f22e30c2e16e49560d475a15029}{APrimitive}}.
+
 \index{Sphere@{Sphere}!hit@{hit}}
 \index{hit@{hit}!Sphere@{Sphere}}
 \doxysubsubsection{\texorpdfstring{hit()}{hit()}}
@@ -45,7 +71,27 @@ bool Sphere\+::hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classR
 
 
 
-Implements \mbox{\hyperlink{classAPrimitive}{APrimitive}}.
+Calculate whether a ray hits this primitive. 
+
+Determines if a ray intersects with this primitive between the specified distance bounds and returns information about the hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The ray to check for intersection \\
+\hline
+{\em t\+\_\+min} & The minimum distance along the ray to check \\
+\hline
+{\em t\+\_\+max} & The maximum distance along the ray to check \\
+\hline
+{\em rec} & Output parameter for hit information if an intersection occurs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the ray intersects the primitive, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAPrimitive_a31bd7f4356c8dea34e6c6ae121eeaf1c}{APrimitive}}.
 
 
 

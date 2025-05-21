@@ -27,12 +27,21 @@ var NAVTREE =
   [ "RayTracer", "index.html", [
     [ "Raytracer Project", "md_README.html", [
       [ "Project Overview", "md_README.html#autotoc_md1", null ],
-      [ "Project Structure", "md_README.html#autotoc_md3", null ]
+      [ "Requirements", "md_README.html#autotoc_md3", null ],
+      [ "Project Structure", "md_README.html#autotoc_md4", null ]
+    ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
