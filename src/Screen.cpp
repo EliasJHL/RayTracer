@@ -176,7 +176,7 @@ void Screen::startRendering(void)
   
     context.execute();
     Camera cam(Point3D(p->mCameraConfig.pos_x, p->mCameraConfig.pos_y, p->mCameraConfig.pos_z), p->mCameraConfig.fieldOfView, Vector3D(p->mCameraConfig.rot_x, p->mCameraConfig.rot_y, p->mCameraConfig.rot_z));
-    createWindow(p->mCameraConfig.width, p->mCameraConfig.height);
+    // createWindow(p->mCameraConfig.width, p->mCameraConfig.height);
 
     std::cout << "P3\n" << p->mCameraConfig.width << ' ' << p->mCameraConfig.height << "\n255\n";
     
@@ -194,17 +194,17 @@ void Screen::startRendering(void)
             int g = std::min(255, int(255 * col.y));
             int b = std::min(255, int(255 * col.z));
             std::cout << r << ' ' << g << ' ' << b << '\n';
-            updatePixel(x, y, r, g, b);
+            // updatePixel(x, y, r, g, b);
         }
-        if (y % 10 == 0 || y == p->mCameraConfig.height - 1) {
-            displayWindow();
-        }
+        // if (y % 10 == 0 || y == p->mCameraConfig.height - 1) {
+        //     displayWindow();
+        // }
     }
     context.execute();
-    while (mWindow && mWindow->isOpen()) {
-        mWindow->processEvents();
-        sf::sleep(sf::milliseconds(100));
-    }
+    // while (mWindow && mWindow->isOpen()) {
+    //     mWindow->processEvents();
+    //     sf::sleep(sf::milliseconds(100));
+    // }
 }
 
 void Screen::createWindow(int width, int height)
