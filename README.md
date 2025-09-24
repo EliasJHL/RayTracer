@@ -4,6 +4,8 @@
 
 This project is a raytracer implementation designed to render 3D scenes based on configuration files. It uses a modular architecture to separate concerns such as mathematical operations, scene parsing, and rendering primitives. The project is written in C++ and follows object-oriented principles.
 
+<img width="1405" height="757" alt="image" src="https://github.com/user-attachments/assets/8f04747b-c7dc-47f3-a153-054834a8d4ef" />
+
 ---
 
 ## Requirements
